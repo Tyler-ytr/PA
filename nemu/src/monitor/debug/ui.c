@@ -52,11 +52,43 @@ else
 int N=1;
 sscanf(arg,"%d",&N);
 cpu_exec(N);
-
-
 }
 return 0;
 }
+
+static void show_register()
+{int i;
+	for(i=R_EAX;i<=R_EDI;i++)
+	{	
+	printf("%s:0x%08x\n ",regsl[i],cpu.gpr[i]._32);	
+	}
+printf("eip:0x%08x\n",cpu.eip);
+for(i=R_AX;i<=R_DI;i++)
+{
+printf("%s: 0x%08x\n",regsw[i],cpu.gpr[i]._16);
+}
+int j=0;
+for(i=R_AL;i<=R_BH;i=i+2)
+{printf("%s:0x%08x\n",regsb[i],cpu.gpr[j]._8[0]);
+printf("%s:0x%08x\n",regsb[i+1],cpu.gpr[j]._8[1]);
+j++;
+
+}
+}
+static int cmd_info(char *args)
+{
+char *arg=strtok(NULL," ");
+switch(*arg)
+{
+	case 'r':show_register();return 0;
+case 'w':/*show_watch();*/return 0;
+default: printf("error");return 1; 
+}
+
+
+}
+
+
 
 static struct {
   char *name;
@@ -69,6 +101,7 @@ static struct {
   
   /* TODO: Add more commands */
   {"si","step n or Single step if n==NULL",cmd_step},
+  {"info","show you the informoation of register with r(register)",cmd_info},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

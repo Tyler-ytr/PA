@@ -38,6 +38,8 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+
+//static int cmd_step(char *args)
 static struct {
   char *name;
   char *description;
@@ -46,9 +48,9 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  
   /* TODO: Add more commands */
-
+ // {"si","step n or Single step if n==NULL",cmd_step},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

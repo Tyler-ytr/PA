@@ -97,6 +97,8 @@ printf("%u",l);
 sscanf(addr,"0x%x",&ad);
 printf("%x",ad);*/
 sscanf(args,"%u 0x%x",&l,&ad);
+printf("%u",l);
+printf("\n0x%x",ad);
 for(i=0;i<l;i++)
 {/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*16));
 

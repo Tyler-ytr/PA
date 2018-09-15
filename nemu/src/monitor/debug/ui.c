@@ -96,7 +96,7 @@ sscanf(len,"%d",&l);
 printf("%u",l);
 sscanf(addr,"0x%x",&ad);
 for(i=0;i<l;i++)
-{if(!(i&0xf))printf("\n0x%08x:",(ad+i*16));
+{/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*16));
 
 	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));
 		}

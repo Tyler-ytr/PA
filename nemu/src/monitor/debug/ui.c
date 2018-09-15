@@ -101,7 +101,7 @@ printf("%u",l);
 printf("\n0x%x",ad);
 uint8_t temp;
 for(i=0;i<l;i++)
-{/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*16));
+{/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*4));
 temp=pmem[ad+i*16];
 printf("0x%08x",(unsigned int)temp);
 	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));

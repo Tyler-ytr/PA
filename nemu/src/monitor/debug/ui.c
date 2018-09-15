@@ -87,7 +87,22 @@ default: printf("error");return 1;
 
 
 }
+static int cmd_x(char *args)
+{
+unsigned int ad,l,i;
+char *len=strtok(NULL," ");
+char *addr=strtok(NULL," ");
+sscanf(len,"%d",&l);
+sscanf(addr,"0x%x",&ad);
+for(i=0;i<l;i++)
+{printf("\n0x%08x:",(ad+i*16));
 
+	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));
+		}
+printf("\n");
+return 0;
+
+}
 
 
 static struct {
@@ -102,6 +117,7 @@ static struct {
   /* TODO: Add more commands */
   {"si","step n or Single step if n==NULL",cmd_step},
   {"info","show you the informoation of register with r(register)",cmd_info},
+  {"x","show you the information of the memory with EXPR_0x",cmd_x},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

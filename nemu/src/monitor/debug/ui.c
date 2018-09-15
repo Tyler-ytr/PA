@@ -92,9 +92,10 @@ static int cmd_x(char *args)
 unsigned int ad,l,i;
 char *len=strtok(NULL," ");
 char *addr=strtok(NULL," ");
-sscanf(len,"%d",&l);
+sscanf(len,"%u",&l);
 printf("%u",l);
 sscanf(addr,"0x%x",&ad);
+printf("%x",ad);
 for(i=0;i<l;i++)
 {/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*16));
 

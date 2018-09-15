@@ -93,9 +93,10 @@ unsigned int ad,l,i;
 char *len=strtok(NULL," ");
 char *addr=strtok(NULL," ");
 sscanf(len,"%d",&l);
+printf("%u",l);
 sscanf(addr,"0x%x",&ad);
 for(i=0;i<l;i++)
-{printf("\n0x%08x:",(ad+i*16));
+{if(!(i&0xf))printf("\n0x%08x:",(ad+i*16));
 
 	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));
 		}

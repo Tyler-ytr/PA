@@ -99,9 +99,11 @@ printf("%x",ad);*/
 sscanf(args,"%u 0x%x",&l,&ad);
 printf("%u",l);
 printf("\n0x%x",ad);
+uint8_t temp;
 for(i=0;i<l;i++)
 {/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i*16));
-
+temp=pmem[ad+i];
+printf("0x%08x",(unsigned int)temp);
 	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));
 		}
 printf("\n");

@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ
+  TK_NOTYPE = 256, TK_EQ,i_num
 
   /* TODO: Add more token types */
 
@@ -29,6 +29,7 @@ static struct rule {
   {"\\/", '/'},         //divide
   {"\\(", '('},         //left-bracket
   {"\\)", ')'},         //right-bracket
+  {"-?[0-9]+",i_num} ,  //integer
   {"==", TK_EQ}         // equal
 };
 

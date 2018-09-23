@@ -176,6 +176,7 @@ int dominant_operator_place(int p,int q){
 //	tp=tokens[i].type;
 	//wait to continue
 	pri=priority(i);
+	printf("pri:%d",pri);
 	if(pri<min&&pri!=-1)
 	{	min=pri;
 		dom=i;
@@ -191,7 +192,7 @@ int dominant_operator_place(int p,int q){
 }
 	
 uint32_t eval(int p,int q){
-printf("in eval!");
+
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
 		assert(0);

@@ -149,7 +149,7 @@ switch (tokens[i].type){
 }
 }
   
-int dominant_operator_place(int p,int q){
+/*int dominant_operator_place(int p,int q){
 //plus
  printf("in dominant_operator\n");
 	int i;
@@ -184,14 +184,14 @@ int dominant_operator_place(int p,int q){
 		dom=i;
 		}
 	}
-/*	if(dom==-1){
+	if(dom==-1){
 	printf(COLORRED "The operator can't be found here.\n" COLORNORMAL);
 	assert(0);
-	}*/
+	}
 	//plus
 	printf("out of dom\n");
 	return dom;
-}
+}*/
 	
 uint32_t eval(int p,int q){
 
@@ -215,14 +215,35 @@ uint32_t eval(int p,int q){
 		return eval(p+1,q-1);
 			}
 	 else {
-int op=dominant_operator_place(p,q) ;
+int if_check=0;
+int if_main=true;
+int main_op=p;
+for (int i=p;i<=q;i++)
+{
+	if_main=(if_check==0);
+	if(tokens[i].type=='('){
+		if_check++;}
+	if(tokens[i].type==')'){
+		if_check--;}
+	if(if_main){
+		if(tokens[i].type=='+'||tokens[i].type=='-'){
+			main_op=i;
+			break;
+		}else if(tokens[i].type=='*'||tokens[i].type=='/'){
+			main_op=i;
+		}
+		
+	}
+}
+
+
 	//plus
 	printf("stuck in op");
 
 
-		int val1=eval(p,op-1);
-		int val2=eval(op+1,q);
-		switch(tokens[op].type){
+		int val1=eval(p,main_op-1);
+		int val2=eval(main_op+1,q);
+		switch(tokens[main_op].type){
 			case '+':return val1+val2;
 			case '-':return val1-val2;
 			case '*':return val1*val2;

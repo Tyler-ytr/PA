@@ -242,6 +242,8 @@ for (int i=p;i<=q;i++)
 
 
 		int val1=eval(p,main_op-1);
+		//plus
+		printf("val1 ok\n");
 		int val2=eval(main_op+1,q);
 		switch(tokens[main_op].type){
 			case '+':return val1+val2;

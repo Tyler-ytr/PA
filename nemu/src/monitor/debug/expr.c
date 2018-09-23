@@ -147,15 +147,22 @@ switch (i){
 int dominant_operator_place(int p,int q){
 	int i;
 	int pri,dom;
+	int cnt;
 	dom=-1;
 	pri=20;
 	int min=20;
 	for( i=p;i<=q;++i){
+		cnt=0;
 		if(tokens[i].type=='('){
+			i++;cnt++;
+			while(1)
+			{if(tokens[i].type=='(')
+				++cnt;
+			else if(tokens[i].type==')')
+				--cnt;
 			i++;
-			while(tokens[i].type!=')')
-				i++;
-			i++;
+			if(cnt==0)
+			break;}
 			if(i>q)
 				break;
 		}
@@ -220,7 +227,9 @@ uint32_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
-
+ // TODO();
+  else{*success=true;
+	  return eval(0,nr_token-1);
+  }
   return 0;
 }

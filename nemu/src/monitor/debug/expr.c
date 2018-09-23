@@ -206,15 +206,16 @@ printf("orignal p=%d,q=%d",p,q);
 		assert(0);
 	}
 	else if(p==q){
-		int type=tokens[p].type;
+	//	int type=tokens[p].type;
 //	uint32_t t=0;
 //  plus
 	printf("stuck in p==q");
-	switch(type){
-		case NAT_NUM:return atoi(tokens[p].str);
+//	switch(type){
+//		case NAT_NUM:
+	return atoi(tokens[p].str);
 
-		default:assert(0);
-	}
+//		default:assert(0);
+//	}
 	}
 	else if(check_parentheses(p,q)==true){
 

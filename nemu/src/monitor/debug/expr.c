@@ -131,6 +131,8 @@ bool check_parentheses(int p,int q){
 		if(par==0&&i<q)
 		return false;
 }
+//plus
+printf("out of check par\n");
 	return true;
 	}
   
@@ -145,13 +147,15 @@ switch (i){
 }
   
 int dominant_operator_place(int p,int q){
+//plus
+ printf("in dominant_operator\n");
 	int i;
 	int pri,dom;
 	int cnt;
 	dom=-1;
 	pri=20;
 	int min=20;
-	for( i=p;i<=q;++i){
+	for( i=p;i<=q;++i){ 
 		cnt=0;
 		if(tokens[i].type=='('){
 			i++;cnt++;
@@ -165,7 +169,7 @@ int dominant_operator_place(int p,int q){
 			break;}
 			if(i>q)
 				break;
-		}
+ 		}
 //	tp=tokens[i].type;
 	//wait to continue
 	pri=priority(i);
@@ -178,19 +182,22 @@ int dominant_operator_place(int p,int q){
 	printf(COLORRED "The operator can't be found here.\n" COLORNORMAL);
 	assert(0);
 	}
+	//plus
+	printf("out of dom\n");
 	return dom;
 }
 	
 uint32_t eval(int p,int q){
 printf("in eval!");
 	if(p>q){
-		printf(COLORRED "Bad expression\n" COLORNORMAL);
-		return false;
+		printf("overflow:p>q,p=%d,q=%d\n",p,q);
+		assert(0);
 	}
 	else if(p==q){
 		int type=tokens[p].type;
 //	uint32_t t=0;
-
+//  plus
+	printf("stuck in p==q");
 	switch(type){
 		case NAT_NUM:return atoi(tokens[p].str);
 
@@ -203,7 +210,8 @@ printf("in eval!");
 			}
 	 else {
 int op=dominant_operator_place(p,q) ;
-		
+	//plus
+	printf("stuck in op");
 
 
 		int val1=eval(p,op-1);

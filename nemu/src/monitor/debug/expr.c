@@ -182,6 +182,7 @@ int dominant_operator_place(int p,int q){
 }
 	
 uint32_t eval(int p,int q){
+printf("in eval!");
 	if(p>q){
 		printf(COLORRED "Bad expression\n" COLORNORMAL);
 		return false;
@@ -221,6 +222,7 @@ int op=dominant_operator_place(p,q) ;
 }
 
 uint32_t expr(char *e, bool *success) {
+	printf("in expr!");
   if (!make_token(e)) {
     *success = false;
     return 0;

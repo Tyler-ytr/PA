@@ -113,7 +113,7 @@ printf("%x",ad);*/
 static int cmd_p(char *args)
 {
 	printf("in it!");
-	bool SUCCESS=0;
+/*	bool SUCCESS=0;
 	bool *Success=NULL;
 	Success = &SUCCESS;
 	char *E=strtok(NULL," ");
@@ -124,7 +124,7 @@ static int cmd_p(char *args)
 		return 1;
 	}
 	else 
-		printf("Answer is:%d\n",result);
+		printf("Answer is:%d\n",result);*/
 	return 0;
 }
 

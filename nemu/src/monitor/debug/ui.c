@@ -113,18 +113,19 @@ printf("%x",ad);*/
 static int cmd_p(char *args)
 {
 	printf("in it!");
-	bool SUCCESS=0;
-	bool *Success=NULL;
-	Success = &SUCCESS;
+//	bool SUCCESS=0;
+//	bool *Success=NULL;
+//	Success = &SUCCESS;
+	printf("%s\n",args);
 //	char *E=strtok(NULL," ");
-	uint32_t result=expr(args,Success);
-	printf("%s",args);
-	if(*Success==false)
-	{	printf("\033[1;33m""Invaild input.\n""\033[0m");
-		return 1;
-	}
-	else 
-		printf("Answer is:%d\n",result);
+//	uint32_t result=expr(args,Success);
+//	printf("%s",args);
+//	if(*Success==false)
+//	{	printf("\033[1;33m""Invaild input.\n""\033[0m");
+//		return 1;
+//	}
+//	else 
+//		printf("Answer is:%d\n",result);
 	return 0;
 }
 

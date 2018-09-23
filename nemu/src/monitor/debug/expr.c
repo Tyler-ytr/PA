@@ -76,10 +76,10 @@ static bool make_token(char *e) {
     for (i = 0; i < NR_REGEX; i ++) {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
 	
-	  	  if(nr_token>31){
+	  	 /* if(nr_token>31){
 			printf("\033[01;31m TOO MANY INPUTS!!!PLEASE LESS OR EQUAL THAN 32!!! \033[0m \n");
 			return false;}
-
+*/
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 
@@ -91,19 +91,22 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-int j=0;
+
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 			case NAT_NUM:
-					for(j=pmatch.rm_so;j<pmatch.rm_eo;j++){
-					tokens[nr_token].str[j]=substr_start[j];
-					}
+					tokens[nr_token].type=rules[i].token_type;
+					if(substr_len<32){memcpy(tokens[nr_token].str,substr_start,substr_len);}
+					else{Log("Error");return false;}
 					nr_token++;break;
-		/*	case '-':if(nr_token==0)
-					 {tokens[nr_token].type=NEG;}
-					 else {tokens[nr_token].type=rules[i].token_type;
+			case '-':if(nr_token==0||((tokens[nr_token-1]).type!=NAT_NUM&&(tokens[nr_token-1]).type!=')'))
+					 {tokens[nr_token].type=NEG;
+					 nr_token++;break;
 					 }
-*/
+			case '+':;
+			case '*':;
+			case '/':;
+
 	   		default: tokens[nr_token].type=rules[i].token_type;
 					 nr_token++;
 				   break;
@@ -219,6 +222,9 @@ printf("orignal p=%d,q=%d",p,q);
 
 		return eval(p+1,q-1);
 			}
+	else if(tokens[p].type==NEG){
+	return -eval(p+1,q);
+	}
 	 else {
 int if_check=0;
 int if_main=true;

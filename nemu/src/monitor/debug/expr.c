@@ -140,7 +140,7 @@ printf("out of check par\n");
 	}
   
 int priority(int i){
-switch (i){
+switch (tokens[i].type){
 	case (int)'+':return 5;
 	case (int)'-':return 5;
 	case (int)'*':return 2;

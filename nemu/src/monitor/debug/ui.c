@@ -41,76 +41,91 @@ static int cmd_help(char *args);
 
 static int cmd_step(char *args)
 {
-char *arg=strtok(NULL," ");
-if(arg==NULL)
-{
-cpu_exec(1);
-}
-else
-{
+	char *arg=strtok(NULL," ");
+	if(arg==NULL)
+	{
+		cpu_exec(1);
+	}
+	else
+	{
 	
-int N=1;
-sscanf(arg,"%d",&N);
-cpu_exec(N);
-}
-return 0;
+	int N=1;
+	sscanf(arg,"%d",&N);
+	cpu_exec(N);
+	}
+	return 0;
 }
 
 static void show_register()
-{int i;
+{	int i;
 	for(i=R_EAX;i<=R_EDI;i++)
 	{	
-	printf("%s:0x%08x\n ",regsl[i],cpu.gpr[i]._32);	
+		printf("%s:0x%08x\n ",regsl[i],cpu.gpr[i]._32);	
 	}
-printf("eip:0x%08x\n",cpu.eip);
-for(i=R_AX;i<=R_DI;i++)
-{
-printf("%s: 0x%08x\n",regsw[i],cpu.gpr[i]._16);
-}
-int j=0;
-for(i=R_AL;i<=R_BH;i=i+2)
-{printf("%s:0x%08x\n",regsb[i],cpu.gpr[j]._8[0]);
-printf("%s:0x%08x\n",regsb[i+1],cpu.gpr[j]._8[1]);
-j++;
+	printf("eip:0x%08x\n",cpu.eip);
+	for(i=R_AX;i<=R_DI;i++)
+	{
+		printf("%s: 0x%08x\n",regsw[i],cpu.gpr[i]._16);
+	}
+	int j=0;
+	for(i=R_AL;i<=R_BH;i=i+2)
+	{	printf("%s:0x%08x\n",regsb[i],cpu.gpr[j]._8[0]);
+		printf("%s:0x%08x\n",regsb[i+1],cpu.gpr[j]._8[1]);
+		j++;
 
-}
+		}
 }
 static int cmd_info(char *args)
 {
-char *arg=strtok(NULL," ");
-switch(*arg)
+	char *arg=strtok(NULL," ");
+	switch(*arg)
 {
 	case 'r':show_register();return 0;
-case 'w':/*show_watch();*/return 0;
-default: printf("error");return 1; 
+	case 'w':/*show_watch();*/return 0;
+	default: printf("error");return 1; 
 }
 
 
 }
 static int cmd_x(char *args)
 {
-unsigned int ad,l,i;
+	unsigned int ad,l,i;
 /*char *len=strtok(NULL," ");
 char *addr=strtok(NULL," ");
 sscanf(len,"%u",&l);
 printf("%u",l);
 sscanf(addr,"0x%x",&ad);
 printf("%x",ad);*/
-sscanf(args,"%u 0x%x",&l,&ad);
-printf("%u",l);
-printf("\n0x%x",ad);
-uint8_t temp;
-for(i=0;i<l;i++)
-{/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i));
-temp=pmem[ad+i];
-printf("0x%08x",(unsigned int)temp);
+	sscanf(args,"%u 0x%x",&l,&ad);
+	printf("%u",l);
+	printf("\n0x%x",ad);
+	uint8_t temp;
+	for(i=0;i<l;i++)
+	{/*if(!(i&0xf))*/printf("\n0x%08x:",(ad+i));
+		temp=pmem[ad+i];
+		printf("0x%08x",(unsigned int)temp);
 	//	printf("0x%02x",*(unsigned char *)hwa_to_va((ad+i)));
 		}
-printf("\n");
-return 0;
+		printf("\n");
+	return 0;
 
 }
-
+static int cmd_p(char *args)
+{
+	
+	bool SUCCESS=0;
+	bool *Success=NULL;
+	Success = &SUCCESS;
+	char *E=strtok(NULL," ");
+	uint32_t result=expr(E,Success);
+	if(*Success==false)
+	{	printf("\033[1;33m""Invaild input.\n""\033[0m");
+		return 1;
+	}
+	else 
+		printf("Answer is:%d\n",result);
+	return 0;
+}
 
 static struct {
   char *name;
@@ -125,6 +140,7 @@ static struct {
   {"si","step n or Single step if n==NULL",cmd_step},
   {"info","show you the informoation of register with r(register)",cmd_info},
   {"x","show you the information of the memory with EXPR_0x",cmd_x},
+  {"p","do expression evalution through you commands",cmd_p},
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

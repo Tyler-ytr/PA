@@ -73,6 +73,11 @@ static bool make_token(char *e) {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
+	
+	  	  if(nr_token>31){
+			printf("\033[01;31m TOO MANY INPUTS!!!PLEASE LESS OR EQUAL THAN 32!!! \033[0m \n");
+			return false;}
+
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
 

@@ -184,10 +184,10 @@ int dominant_operator_place(int p,int q){
 		dom=i;
 		}
 	}
-	if(dom==-1){
+/*	if(dom==-1){
 	printf(COLORRED "The operator can't be found here.\n" COLORNORMAL);
 	assert(0);
-	}
+	}*/
 	//plus
 	printf("out of dom\n");
 	return dom;

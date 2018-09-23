@@ -39,7 +39,7 @@ static struct rule {
 
 static regex_t re[NR_REGEX];
 
-/* Rules are used for many times.
+/* R333ules are used for many times.
  * Therefore we compile them only once before any usage.
  */
 void init_regex() {
@@ -110,7 +110,7 @@ int j=0;
         break;
       }
 	  ++nr_token;
-	  break;
+	 // break;
     }
 
     if (i == NR_REGEX) {

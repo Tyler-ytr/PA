@@ -92,6 +92,8 @@ static bool make_token(char *e) {
 
         break;
       }
+	  ++nr_token;
+	  break;
     }
 
     if (i == NR_REGEX) {

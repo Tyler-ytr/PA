@@ -95,11 +95,11 @@ static bool make_token(char *e) {
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 
-			case '-':if(nr_token==0)
+		/*	case '-':if(nr_token==0)
 					 {tokens[nr_token].type=NEG;}
 					 else {tokens[nr_token].type=rules[i].token_type;
 					 }
-
+*/
 	   		default: tokens[nr_token].type=rules[i].token_type;
 				   break;
         }

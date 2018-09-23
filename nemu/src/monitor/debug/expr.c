@@ -246,6 +246,7 @@ for (int i=p;i<=q;i++)
 	//plus
 	printf("stuck in op");
 	printf("p=%d,q=%d",p,q);
+	printf("mainop=%d\n",main_op);
 
 		int val1=eval(p,main_op-1);
 		//plus

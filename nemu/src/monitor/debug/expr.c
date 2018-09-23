@@ -98,7 +98,7 @@ int j=0;
 					for(j=0;j<substr_len;j++){
 					tokens[nr_token].str[j]=e[position+j];
 					}
-					nr_token++;
+					nr_token++;break;
 		/*	case '-':if(nr_token==0)
 					 {tokens[nr_token].type=NEG;}
 					 else {tokens[nr_token].type=rules[i].token_type;

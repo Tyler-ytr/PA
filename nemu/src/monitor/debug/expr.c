@@ -156,7 +156,39 @@ switch (tokens[i].type){
 }
 }
   
-
+//find the op_main;
+uint32_t getOp(uint32_t p,uint32_t q)
+{
+	int par=0;
+	int op=p;
+	int pri=0;
+	for(;p<=q;p++)
+	{
+		if(tokens[p].type==NAT_NUM||tokens[p].type==NEG)
+			continue;
+		else if(tokens[p].type=='(')
+		{
+			par++;
+			p++;
+			while(par!=0){
+			if(tokens[p].type=='(')par++;
+			else if(tokens[p].type==')')par--;
+			p++;}
+			p--;
+		}
+		else if(tokens[p].type=='/'||tokens[p].type=='*'){
+		if(pri<=3){
+		op=p;pri=3;
+		}
+		}
+		else if(tokens[p].type=='+'||tokens[p].type=='-'){
+		if(pri<=4){
+		op=p;pri=4;
+		}
+		}
+	}
+	return op;
+}
 	
 uint32_t eval(int p,int q){
 //plus
@@ -184,7 +216,7 @@ printf("orignal p=%d,q=%d",p,q);
 	return -eval(p+1,q);
 	}
 	 else {
-int if_check=0;
+/*int if_check=0;
 int if_main=true;
 int main_op=p;
 for (int i=p;i<=q;i++)
@@ -205,18 +237,20 @@ for (int i=p;i<=q;i++)
 	}
 }
 
+*/
 
+	uint32_t op=getOp(p,q);
 	//plus
 	printf("stuck in op");
 	printf("p=%d,q=%d",p,q);
-	printf("mainop=%d\n",main_op);
+	printf("mainop=%d\n",op);
 
-		int val1=eval(p,main_op-1);
+		int val1=eval(p,op-1);
 		//plus
 		printf("val1=%d\n ",val1);
-		int val2=eval(main_op+1,q);
+		int val2=eval(op+1,q);
 		printf("val2=%d\n ",val2);
-		switch(tokens[main_op].type){
+		switch(tokens[op].type){
 			case '+':return val1+val2;
 			case '-':return val1-val2;
 			case '*':return val1*val2;

@@ -110,7 +110,9 @@ int j=0;
         break;
       }
 	  ++nr_token;
-	 // break;
+	 //plus
+	 printf("nr_token: %d\n",nr_token);
+	  // break;
     }
 
     if (i == NR_REGEX) {

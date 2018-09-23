@@ -155,7 +155,7 @@ int dominant_operator_place(int p,int q){
 	int i;
 	int pri,dom;
 	int cnt;
-	dom=-1;
+	dom=p;
 	pri=20;
 	int min=20;
 	for( i=p;i<=q;++i){ 

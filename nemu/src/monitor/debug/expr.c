@@ -156,49 +156,7 @@ switch (tokens[i].type){
 }
 }
   
-/*int dominant_operator_place(int p,int q){
-//plus
- printf("in dominant_operator\n");
-	int i;
-	int pri,dom;
-	int cnt;
-	dom=p;
-	pri=20;
-	int min=20;
-	for( i=p;i<=q;++i){ 
-		cnt=0;
-		if(tokens[i].type=='('){
-			i++;cnt++;
-			while(1)
-			{if(tokens[i].type=='(')
-				++cnt;
-			else if(tokens[i].type==')')
-				--cnt;
-			i++;
-			if(cnt==0)
-			break;}
-			if(i>q)
-				break;
- 		}
-//	tp=tokens[i].type;
-	//wait to continue
-	pri=priority(i);
-	printf("i:%d\n:",i);
 
-	printf("pri:%d",pri);
-	if(pri<min&&pri!=-1)
-	{	min=pri;
-		dom=i;
-		}
-	}
-	if(dom==-1){
-	printf(COLORRED "The operator can't be found here.\n" COLORNORMAL);
-	assert(0);
-	}
-	//plus
-	printf("out of dom\n");
-	return dom;
-}*/
 	
 uint32_t eval(int p,int q){
 //plus

@@ -176,6 +176,8 @@ int dominant_operator_place(int p,int q){
 //	tp=tokens[i].type;
 	//wait to continue
 	pri=priority(i);
+	printf("i:%d\n:",i);
+
 	printf("pri:%d",pri);
 	if(pri<min&&pri!=-1)
 	{	min=pri;

@@ -95,8 +95,8 @@ int j=0;
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 			case NAT_NUM:
-					for(j=0;j<substr_len;j++){
-					tokens[nr_token].str[j]=e[position+j];
+					for(j=pmatch.rm_so;j<pmatch.rm_eo;j++){
+					tokens[nr_token].str[j]=substr_start[j];
 					}
 					nr_token++;break;
 		/*	case '-':if(nr_token==0)

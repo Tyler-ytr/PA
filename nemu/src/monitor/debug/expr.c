@@ -106,7 +106,7 @@ int j=0;
 	   		default: tokens[nr_token].type=rules[i].token_type;
 				   break;
         }
-       position+=substr_len;
+    
         break;
       }
 	  ++nr_token;
@@ -233,7 +233,7 @@ int op=dominant_operator_place(p,q) ;
 }
 
 uint32_t expr(char *e, bool *success) {
-	printf("in expr!");
+
   if (!make_token(e)) {
     *success = false;
     return 0;

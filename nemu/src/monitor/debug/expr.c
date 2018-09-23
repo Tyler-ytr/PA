@@ -194,6 +194,8 @@ switch (tokens[i].type){
 }*/
 	
 uint32_t eval(int p,int q){
+//plus
+printf("orignal p=%d,q=%d",p,q);
 
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);

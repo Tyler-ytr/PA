@@ -7,8 +7,70 @@
 
 // this should be enough
 static char buf[65536];
+
+
+static inline uint32_t choose(int n)
+{
+	srand((unsigned)time(NULL));
+	uint32_t i=(uint32_t)(rand()%(n));
+	return i;
+}
+static inline uint32_t chooseoff(int n)
+{
+	srand((unsigned)time(NULL));
+	uint32_t i=(uint32_t)(rand()%n)+1;
+	return i;
+}
+
+
+
+static inline void gen_num(int *p)
+{
+	uint32_t ran=choose(32767);
+	if(ran==0&&buf[*p-1]=='/')
+	{
+	ran=chooseoff(32767);
+	}
+	buf[*p]=ran;
+	buf[*p+1]='\0';
+	*p=*p+1;
+}
+static inline void gen_rand_op(int *p)
+{
+	int k=choose(4);
+	switch(k)
+	{
+		case 0:buf[*p]='+';
+		case 1:buf[*p]='-';
+		case 2:buf[*p]='*';
+		case 3:buf[*p]='/';
+		default :assert(0);
+	}	
+	buf[*p+1]='\0';
+	*p=*p+1;
+
+}
+static inline void gen(char p,int *p)
+{
+	buf[*p]=p;
+	*p=*p+1;
+}
+
+
+
 static inline void gen_rand_expr() {
-  buf[0] = '\0';
+ // buf[0] = '\0';
+ int place=0;
+ int *P=&place;
+ if(place<65500)
+  switch(choose(3))
+  {
+	case 0:gen_num(P);break;
+	case 1:gen('(',P);gen_rand_expr();gen(')',P);break;
+	default :gen_rand_expr();gen_rand_op(P);gen_rand_expr();break;  
+  
+  }
+ else return;
 }
 
 static char code_buf[65536];

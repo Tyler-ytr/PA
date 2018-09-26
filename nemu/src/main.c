@@ -19,13 +19,14 @@ FILE *ffp=fopen("..//tools/gen-expr/input","r");
 //while(~fscanf){int i=0;
 int i=0;	
 while(fscanf(ffp,"%u",&tresult[i])){
-fscanf(ffp,"%s",&tbuf[i]);
+fscanf(ffp,"%s",tbuf);
 ttresult=expr(tbuf,ts);
 printf("trueresult:%d testresult: %d",tresult[i],ttresult);
 if(ttresult!=tresult[i]){
 printf("wrong result of %s\n",tbuf);
 break;
 }i++;
+
 }
   /* Receive commands from user. */
   ui_mainloop(is_batch_mode);

@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 FILE *ffp=fopen("..//tools/gen-expr/input","r");
 //while(~fscanf){int i=0;
 int i=0;	
-while(fscanf(ffp,"%u%*[^\n]%*c%s",&tresult[i],tbuf)){
+while(fscanf(ffp,"%u%*[^\n]%*c%s",&tresult[i],&tbuf[i])){
 
 ttresult=expr(tbuf,ts);
 printf("trueresult:%d testresult: %d",tresult[i],ttresult);

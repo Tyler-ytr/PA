@@ -194,7 +194,7 @@ uint32_t getOp(uint32_t p,uint32_t q)
 uint32_t eval(int p,int q){
 //plus
 //printf("orignal p=%d,q=%d",p,q);
-assert (0);
+
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
 		assert(0);
@@ -274,6 +274,7 @@ uint32_t expr(char *e, bool *success) {
   /* TODO: Insert codes to evaluate the expression. */
  // TODO();
   else{*success=true;
+	  assert(0);
 	  return eval(0,nr_token-1);
   }
   return 0;

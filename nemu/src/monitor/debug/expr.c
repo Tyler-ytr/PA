@@ -116,7 +116,7 @@ static bool make_token(char *e) {
       }
 	 // ++nr_token;
 	 //plus
-	 printf("nr_token: %d\n",nr_token);
+	// printf("nr_token: %d\n",nr_token);
 	  // break;
     }
 
@@ -142,7 +142,7 @@ bool check_parentheses(int p,int q){
 		return false;
 }
 //plus
-printf("out of check par\n");
+//printf("out of check par\n");
 	return true;
 	}
   
@@ -192,7 +192,7 @@ uint32_t getOp(uint32_t p,uint32_t q)
 	
 uint32_t eval(int p,int q){
 //plus
-printf("orignal p=%d,q=%d",p,q);
+//printf("orignal p=%d,q=%d",p,q);
 
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
@@ -200,7 +200,7 @@ printf("orignal p=%d,q=%d",p,q);
 	}
 	else if(p==q){
 //  plus
-	printf("stuck in p==q");
+//	printf("stuck in p==q");
 
 	int tempresult=0;
 	sscanf(tokens[p].str,"%d",&tempresult);
@@ -241,15 +241,15 @@ for (int i=p;i<=q;i++)
 
 	uint32_t op=getOp(p,q);
 	//plus
-	printf("stuck in op");
-	printf("p=%d,q=%d",p,q);
-	printf("mainop=%d\n",op);
+//	printf("stuck in op");
+//	printf("p=%d,q=%d",p,q);
+//	printf("mainop=%d\n",op);
 
 		int val1=eval(p,op-1);
 		//plus
-		printf("val1=%d\n ",val1);
+//		printf("val1=%d\n ",val1);
 		int val2=eval(op+1,q);
-		printf("val2=%d\n ",val2);
+//		printf("val2=%d\n ",val2);
 		switch(tokens[op].type){
 			case '+':return val1+val2;
 			case '-':return val1-val2;

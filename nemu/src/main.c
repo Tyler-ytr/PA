@@ -30,6 +30,7 @@ t_result+=t_expr[i]-48;
 t_buf=strtok(t_expr," ");
 t_buf=strtok(NULL,"\n");
 assert(t_buf!=NULL);
+printf("%s\n",t_buf);
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
 assert (0);

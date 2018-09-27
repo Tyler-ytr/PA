@@ -264,7 +264,7 @@ for (int i=p;i<=q;i++)
 }
 
 uint32_t expr(char *e, bool *success) {
-
+assert(0);
   if (!make_token(e)) {
     *success = false;
     return 0;

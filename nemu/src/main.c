@@ -9,7 +9,7 @@ void ui_mainloop(int);
 
 void woqu()
 {
-FILE *ffp=fopen("..//tools/gen-expr/inout","r");
+FILE *ffp=fopen("..//tools/gen-expr/input","r");
 for(int i=0;i<100;i++)
 {
 
@@ -17,13 +17,12 @@ char t_expr[2000];
 char *t_buf;
 fgets(t_expr,5000,ffp);
 uint32_t t_result=0;
+
 for(int i=0;t_expr[i]!=' ';i++)
 {
 
 t_result*=10;
 t_result+=t_expr[i]-48;
-
-
 }
 
 t_buf=strtok(t_expr," ");

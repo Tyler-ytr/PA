@@ -71,7 +71,7 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
-assert(0);
+
   while (e[position] != '\0') {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
@@ -92,7 +92,7 @@ assert(0);
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-
+assert(0);
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 			case NAT_NUM:

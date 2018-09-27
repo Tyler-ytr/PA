@@ -10,6 +10,7 @@ void ui_mainloop(int);
 void woqu()
 {
 FILE *ffp=fopen("./../tools/gen-expr/input","r");
+assert(0);
 for(int i=0;i<100;i++)
 {
 
@@ -47,7 +48,7 @@ break;
 int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
 	int is_batch_mode=init_monitor(argc,argv);
-	assert(0);
+//	assert(0);
 	woqu();
 //	uint32_t expr(char *e,bool*success);
 // uint32_t tresult;

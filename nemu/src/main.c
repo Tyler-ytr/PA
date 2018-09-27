@@ -29,8 +29,8 @@ t_result+=t_expr[i]-48;
 t_buf=strtok(t_expr," ");
 t_buf=strtok(NULL,"\n");
 
-bool* MUSTSUCCESS =0;
-uint32_t e_result=expr(t_buf,MUSTSUCCESS);
+bool* MUST =0;
+uint32_t e_result=expr(t_buf,MUST);
 if(t_result!=e_result)
 {
 printf("wrong\n");
@@ -39,16 +39,7 @@ break;
 
 }
 
-
-
-
-
-
 }
-
-
-
-
 
 }
 

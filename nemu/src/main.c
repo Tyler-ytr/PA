@@ -16,7 +16,7 @@ for(int i=0;i<100;i++)
 
 char t_expr[2000];
 char *t_buf;
-assert(0);
+
 fgets(t_expr,5000,ffp);
 uint32_t t_result=0;
 assert(0);

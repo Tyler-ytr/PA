@@ -6,7 +6,7 @@
 int init_monitor(int, char *[]);
 void ui_mainloop(int);
 
-
+extern uint32_t expr(char *str,bool *success);
 void woqu()
 {
 FILE *ffp=fopen("/home/ytr/ics2018/nemu/tools/gen-expr/input","r");

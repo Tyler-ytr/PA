@@ -31,6 +31,7 @@ t_buf=strtok(t_expr," ");
 t_buf=strtok(NULL,"\n");
 assert(t_buf!=NULL);
 printf("%s\n",t_buf);
+printf("%u\n",t_result);
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
 assert (0);

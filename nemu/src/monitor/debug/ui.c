@@ -123,7 +123,7 @@ static int cmd_p(char *args)
 		return 1;
 	}
 	else 
-		printf("Answer is:%d\n",result);
+		printf("%d\n",result);
 	return 0;
 }
 

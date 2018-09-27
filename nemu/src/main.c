@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
 //   	int is_batch_mode = init_monitor(argc, argv);
 FILE *ffp=fopen("..//tools/gen-expr/input","r");
 fscanf(ffp,"%u",&tresult);
+printf("yingyingying");
 fscanf(ffp,"%s",ttemp);
 //fscanf(ffp,"%u%*[^\n]%*c%s",&tresult,ttemp);
 //while(~fscanf){int i=0;

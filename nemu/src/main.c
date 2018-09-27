@@ -11,7 +11,7 @@ void woqu()
 {
 FILE *ffp=fopen("/home/ytr/ics2018/nemu/tools/gen-expr/input","r");
 
-for(int i=0;i<100;i++)
+for(int i=0;i<84;i++)
 {
 
 char t_expr[2000];
@@ -29,7 +29,7 @@ t_result+=t_expr[i]-48;
 
 t_buf=strtok(t_expr," ");
 t_buf=strtok(NULL,"\n");
-
+assert(t_buf!=NULL);
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
 assert (0);

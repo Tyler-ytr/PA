@@ -159,7 +159,7 @@ switch (tokens[i].type){
   
 //find the op_main;
 uint32_t getOp(uint32_t p,uint32_t q)
-{assert(0);
+{
 	int par=0;
 	int op=p;
 	int pri=0;
@@ -194,7 +194,7 @@ uint32_t getOp(uint32_t p,uint32_t q)
 uint32_t eval(int p,int q){
 //plus
 //printf("orignal p=%d,q=%d",p,q);
-
+assert (0);
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
 		assert(0);

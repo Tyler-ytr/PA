@@ -126,7 +126,7 @@ static bool make_token(char *e) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
   return false;
     }
-  }assert (0);
+  }
 
   return true;
   
@@ -277,7 +277,7 @@ uint32_t expr(char *e, bool *success) {
   /* TODO: Insert codes to evaluate the expression. */
  // TODO();
   else{*success=true;
-
+assert (0);
 	  return eval(0,nr_token-1);
   }
   return 0;

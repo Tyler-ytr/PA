@@ -9,7 +9,7 @@ void ui_mainloop(int);
 
 void woqu()
 {
-FILE *ffp=fopen("~/ics2018/nemu/tools/gen-expr/input","r");
+FILE *ffp=fopen("/home/ytr/ics2018/nemu/tools/gen-expr/input","r");
 
 for(int i=0;i<100;i++)
 {

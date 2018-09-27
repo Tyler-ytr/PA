@@ -32,6 +32,7 @@ t_buf=strtok(NULL,"\n");
 
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
+assert (0);
 if(t_result!=e_result)
 {
 printf("wrong\n");

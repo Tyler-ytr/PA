@@ -77,7 +77,7 @@ static bool make_token(char *e) {
     for (i = 0; i < NR_REGEX; i ++) {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
 	
-	  	 /* if(nr_token>31){
+	   	 /* if(nr_token>31){
 			printf("\033[01;31m TOO MANY INPUTS!!!PLEASE LESS OR EQUAL THAN 32!!! \033[0m \n");
 			return false;}
 */
@@ -120,7 +120,7 @@ static bool make_token(char *e) {
 	// printf("nr_token: %d\n",nr_token);
 	  // break;
     }
-
+printf("%d%s",tokens[i].type,tokens[i].str);
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
   return false;

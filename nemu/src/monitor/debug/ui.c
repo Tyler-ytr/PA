@@ -112,7 +112,7 @@ printf("%x",ad);*/
 }
 static int cmd_p(char *args)
 {
-	printf("in it!");
+//	printf("in it!");
 	bool Success;
 //	printf("%s\n",args);
 //	char *E=strtok(NULL," ");

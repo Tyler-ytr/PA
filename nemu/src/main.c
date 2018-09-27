@@ -17,7 +17,7 @@ for(int i=0;i<84;i++)
 char t_expr[2000];
 char *t_buf;
 assert (ffp!=NULL);
-fgets(t_expr,600,ffp);
+fgets(t_expr,6000,ffp);
 uint32_t t_result=0;
 //assert(0);
 for(int i=0;t_expr[i]!=' ';i++)
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
 	int is_batch_mode=init_monitor(argc,argv);
 //	assert(0);
-//	woqu();
+	woqu();
 //	uint32_t expr(char *e,bool*success);
 // uint32_t tresult;
 // char tbuf[65535];

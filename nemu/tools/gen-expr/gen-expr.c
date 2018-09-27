@@ -29,14 +29,16 @@ static inline void gen_num(int *p)
 	uint32_t lens=choose(10)+1;
 	char find[10]={'0','1','2','3','4','5','6','7','8','9'};
 	int flag=0;
-	if(lens==1)flag=1;
+	int cnt=0;
+	cnt=0;
 	for(int i=0;i<lens;i++)
 	{	
 	c=choose(10);
+	if(i==lens-1&&cnt==0)i--;
 	if(c==0&&(*p==0||buf[*p-1]=='+'||buf[*p-1]=='-'||buf[*p-1]=='*'||buf[*p-1]=='/'||buf[*p-1]=='(')){
 	
 	continue;
-	}
+	}cnt++;
 	buf[*p]=find[c];
 	*p=*p+1;
 	buf[*p]='\0';
@@ -59,14 +61,15 @@ static inline void gen_rand_op(int *p)
 		case 3:buf[*p]='/';break;
 		default:buf[*p]='+';break;
 	}	
-	buf[*p+1]='\0';
+	buf[(*p)+1]='\0';
 	*p=*p+1;
 
 }
 static inline void gen(char t,int *p)
-{
+{ 
 	buf[*p]=t;
 	*p=*p+1;
+	buf[*p]='\0';
 }
 
 
@@ -106,9 +109,12 @@ int main(int argc, char *argv[]) {
   int place=0;
   int *p=&place;
   for (i = 0; i < loop; i ++) {
-	if(place<50000)
+	  place=0;
+	  p=&place;
   	  gen_rand_expr(p);
-
+	buf[place+1]='\0';
+	if(place>100)
+continue;
     sprintf(code_buf, code_format, buf);//insert buf into code_buf
 
     FILE *fp = fopen(".code.c", "w");//creat c.code for writing in
@@ -116,7 +122,7 @@ int main(int argc, char *argv[]) {
     fputs(code_buf, fp);
     fclose(fp);//close the fp
 
-    int ret = system("gcc .code.c -o .expr");//call the system to create .expr based on code.c
+    int ret = system("gcc .code.c -o .expr");//call the system to create .expr based on .code.c
     if (ret != 0) continue;
 
     fp = popen("./.expr", "r");

@@ -10,7 +10,7 @@ void ui_mainloop(int);
 void woqu()
 {
 FILE *ffp=fopen("./../tools/gen-expr/input","r");
-assert(0);
+
 for(int i=0;i<100;i++)
 {
 

@@ -92,7 +92,7 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-assert(0);
+
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 			case NAT_NUM:
@@ -120,7 +120,7 @@ assert(0);
 	// printf("nr_token: %d\n",nr_token);
 	  // break;
     }
-
+assert(0);
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;

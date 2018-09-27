@@ -112,10 +112,10 @@ static bool make_token(char *e) {
 					 nr_token++;
 				   break;
     }
-		assert(0);
+
 // printf("%d%s",tokens[nr_token].type,tokens[nr_token].str);   
         break;
-      }
+      }assert (0);
 	 // ++nr_token;
 	 //plus
 	// printf("nr_token: %d\n",nr_token);

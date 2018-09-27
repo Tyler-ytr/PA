@@ -66,7 +66,7 @@ int nr_token;
 
 static bool make_token(char *e) {
   int position = 0;
- assert(0);
+ 
   int i;
   regmatch_t pmatch;
 
@@ -194,7 +194,7 @@ uint32_t getOp(uint32_t p,uint32_t q)
 uint32_t eval(int p,int q){
 //plus
 //printf("orignal p=%d,q=%d",p,q);
-
+assert(0);
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
 		assert(0);

@@ -34,7 +34,7 @@ printf("%s\n",t_buf);
 printf("%u\n",t_result);
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
-assert (0);
+//assert (0);
 if(t_result!=e_result)
 {
 printf("wrong\n");

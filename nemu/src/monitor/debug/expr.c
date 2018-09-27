@@ -120,7 +120,7 @@ static bool make_token(char *e) {
 	// printf("nr_token: %d\n",nr_token);
 	  // break;
     }
-assert(0);
+
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
@@ -159,7 +159,7 @@ switch (tokens[i].type){
   
 //find the op_main;
 uint32_t getOp(uint32_t p,uint32_t q)
-{
+{assert(0);
 	int par=0;
 	int op=p;
 	int pri=0;

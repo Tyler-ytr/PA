@@ -66,6 +66,7 @@ int nr_token;
 
 static bool make_token(char *e) {
   int position = 0;
+ assert(0);
   int i;
   regmatch_t pmatch;
 
@@ -264,7 +265,7 @@ for (int i=p;i<=q;i++)
 }
 
 uint32_t expr(char *e, bool *success) {
-assert(0);
+
   if (!make_token(e)) {
     *success = false;
     return 0;

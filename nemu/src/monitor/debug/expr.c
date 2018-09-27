@@ -71,7 +71,7 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
-
+assert(0);
   while (e[position] != '\0') {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
@@ -194,7 +194,7 @@ uint32_t getOp(uint32_t p,uint32_t q)
 uint32_t eval(int p,int q){
 //plus
 //printf("orignal p=%d,q=%d",p,q);
-assert(0);
+
 	if(p>q){
 		printf("overflow:p>q,p=%d,q=%d\n",p,q);
 		assert(0);

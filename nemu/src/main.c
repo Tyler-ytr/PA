@@ -29,7 +29,7 @@ t_result+=t_expr[i]-48;
 
 t_buf=strtok(t_expr," ");
 t_buf=strtok(NULL,"\n");
-
+assert(0);
 bool* MUST =0;
 uint32_t e_result=expr(t_buf,MUST);
 if(t_result!=e_result)
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
 	int is_batch_mode=init_monitor(argc,argv);
 //	assert(0);
-//	woqu();
+	woqu();
 //	uint32_t expr(char *e,bool*success);
 // uint32_t tresult;
 // char tbuf[65535];

@@ -20,11 +20,11 @@ assert (ffp!=NULL);
 fgets(t_expr,6000,ffp);
 uint32_t t_result=0;
 //assert(0);
-for(int i=0;t_expr[i]!=' ';i++)
+for(int k=0;t_expr[k]!=' ';k++)
 {
 
 t_result*=10;
-t_result+=t_expr[i]-48;
+t_result+=t_expr[k]-48;
 }
 
 t_buf=strtok(t_expr," ");

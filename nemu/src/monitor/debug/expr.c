@@ -126,8 +126,10 @@ static bool make_token(char *e) {
       return false;
     }
   }
-assert(0);
+
   return true;
+  assert(0);
+
 }
 //begin
 bool check_parentheses(int p,int q){

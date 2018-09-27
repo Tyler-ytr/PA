@@ -17,7 +17,7 @@ for(int i=0;i<100;i++)
 char t_expr[2000];
 char *t_buf;
 
-fgets(t_expr,5000,ffp);
+fgets(t_expr,2000,ffp);
 uint32_t t_result=0;
 assert(0);
 for(int i=0;t_expr[i]!=' ';i++)

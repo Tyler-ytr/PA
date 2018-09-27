@@ -6,9 +6,57 @@
 int init_monitor(int, char *[]);
 void ui_mainloop(int);
 
+
+void woqu()
+{
+FILE *ffp=fopen("..//tools/gen-expr/inout","r");
+for(int i=0;i<100;i++)
+{
+
+char t_expr[2000];
+char *t_buf;
+fgets(t_expr,5000,ffp);
+uint32_t t_result=0;
+for(int i=0;t_expr[i]!=' ';i++)
+{
+
+t_result*=10;
+t_result+=t_expr[i]-48;
+
+
+}
+
+t_buf=strtok(t_expr," ");
+t_buf=strtok(NULL,"\n");
+
+bool* MUSTSUCCESS =0;
+uint32_t e_result=expr(t_buf,MUSTSUCCESS);
+if(t_result!=e_result)
+{
+printf("wrong\n");
+break;
+
+
+}
+
+
+
+
+
+
+}
+
+
+
+
+
+}
+
+
 int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
 	int is_batch_mode=init_monitor(argc,argv);
+	woqu();
 //	uint32_t expr(char *e,bool*success);
 // uint32_t tresult;
 // char tbuf[65535];

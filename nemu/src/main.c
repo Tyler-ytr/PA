@@ -19,7 +19,7 @@ char *t_buf;
 assert (ffp!=NULL);
 fgets(t_expr,600,ffp);
 uint32_t t_result=0;
-assert(0);
+//assert(0);
 for(int i=0;t_expr[i]!=' ';i++)
 {
 

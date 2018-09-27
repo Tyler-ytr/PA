@@ -92,7 +92,7 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-
+assert(0);
         switch (rules[i].token_type) {
 			case TK_NOTYPE: break;
 			case NAT_NUM:
@@ -112,7 +112,7 @@ static bool make_token(char *e) {
 					 nr_token++;
 				   break;
         }
- printf("%d%s",tokens[nr_token].type,tokens[nr_token].str);   
+// printf("%d%s",tokens[nr_token].type,tokens[nr_token].str);   
         break;
       }
 	 // ++nr_token;

@@ -82,9 +82,9 @@ void free_wp(WP *wp)
 
 
 WP* Whereislist()
-{
+{WP *h=head;
 if (head!=NULL)
-return head;
+return h;
 else return NULL;
 
 }

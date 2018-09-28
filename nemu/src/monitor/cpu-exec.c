@@ -18,7 +18,7 @@ static uint64_t g_nr_guest_instr = 0;
 void nr_guest_instr_add(uint32_t n) {
   g_nr_guest_instr += n;
 }
-
+extern WP* Whereislist();
 void monitor_statistic() {
   Log("total guest instructions = %ld", g_nr_guest_instr);
 }
@@ -27,7 +27,7 @@ WP*  check_watch(WP* t)
 	WP* w=NULL;
 	if(t==NULL)
 	{
-		w=whereislist();//w is pointing to head;
+		w=Whereislist();//w is pointing to head;
 	}
 	else{ w=t; }
 	while(w!=NULL)

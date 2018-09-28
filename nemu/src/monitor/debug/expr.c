@@ -275,7 +275,8 @@ int tempresult2;
 					else if(strcmp(tokens[p].str,"ebp")==0)return cpu.ebp; 
 					 
 					else if(strcmp(tokens[p].str,"esi")==0)return cpu.esi; 
-					 
+				 
+					else if(strcmp(tokens[p].str,"eip")==0)return cpu.eip; 
 					else if(strcmp(tokens[p].str,"edi")==0)return cpu.edi; 
 	    default: printf("type overflow");assert(0);				 		 
          	}

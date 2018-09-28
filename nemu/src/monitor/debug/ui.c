@@ -76,13 +76,34 @@ static void show_register()
 
 		}
 }
+WP*  Whereislist();
+static void show_watch()
+{
+	WP* w=Whereislist();
+	if(w==NULL)
+	printf("There is no watchpoint,maybe you need to help w.\n");
+	else{
+	printf("NO:\tSTR:\tvalue:\n");
+	while(w!=NULL)
+	{
+	printf("%d\t%s\t%d|%x\n",w->NO,w->str,w->value,w->value);
+	
+	
+	
+	}	
+
+
+	}
+
+}
 static int cmd_info(char *args)
 {
 	char *arg=strtok(NULL," ");
 	switch(*arg)
 {
 	case 'r':show_register();return 0;
-	case 'w':/*show_watch();*/return 0;
+	case 'w':show_watch();return 0;
+	
 	default: printf("error");return 1; 
 }
 

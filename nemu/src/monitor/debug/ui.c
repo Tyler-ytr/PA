@@ -87,7 +87,7 @@ static void show_watch()
 	while(w!=NULL)
 	{
 	printf("%d\t%s\t%d|%x\n",w->NO,w->str,w->value,w->value);
-	
+	w=w->next;	
 	
 	
 	}	

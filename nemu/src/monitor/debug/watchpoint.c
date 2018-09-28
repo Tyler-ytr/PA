@@ -19,7 +19,7 @@ void init_wp_pool() {
 }
 
 /* TODO: Implement the functionality of watchpoint */
-WP* new_wp()
+WP* new_wp(char *str,int value )
 {	WP* TEMPH=head;
 	 if(free_==NULL)
 	 {
@@ -29,7 +29,8 @@ WP* new_wp()
 	WP* TEMPF=NULL;
 	TEMPF=free_;
 	free_=free_->next;
-    
+    TEMPF->value=value;
+   	strcpy(TEMPF->str,str);
 	if(TEMPH==NULL)
 	{
 	head=TEMPF;

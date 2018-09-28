@@ -128,6 +128,41 @@ static int cmd_p(char *args)
 	return 0;
 }
 
+static int cmd_w(char *args)
+{
+	if(args==NULL)
+	{
+		printf("Are you kidding? Where is the expr?\n");
+		return 0;}
+	else
+	{
+		bool Success=0;
+		uint32_t wresult=expr(args,&Success);
+		if(Success)
+		{
+			new_wp(args,wresult);
+			printf("You have added a watchpoint:%s=%d |0x%x\n",args,wresult,wresult);
+
+		
+		}
+	else
+	{
+		printf("Some errors happen when devepoing the EXPR!\n");
+	}		
+	
+	return 0;
+	
+	
+	
+	}
+
+
+
+
+}
+
+
+
 static struct {
   char *name;
   char *description;
@@ -142,6 +177,10 @@ static struct {
   {"info","show you the informoation of register with r(register)",cmd_info},
   {"x","show you the information of the memory with EXPR_0x",cmd_x},
   {"p","do expression evalution through you commands",cmd_p},
+  {"w","watch a expr therefore you can watch the change of it",cmd_w},
+
+
+
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

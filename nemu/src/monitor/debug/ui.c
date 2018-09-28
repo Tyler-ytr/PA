@@ -86,7 +86,7 @@ static void show_watch()
 	printf("NO:\tSTR:\tvalue:\n");
 	while(w!=NULL)
 	{
-	printf("%d\t%s\t%d|%x\n",w->NO,w->str,w->value,w->value);
+	printf("w[%d]\t%s\t%d | 0x%x\n",w->NO,w->str,w->value,w->value);
 	w=w->next;	
 	
 	
@@ -174,7 +174,49 @@ static int cmd_w(char *args)
 	return 0;
 	}
 }
+extern void free_up(WP *w);
+static int cmd_d(char *args)
+{
+if(args==NULL)
+{
+printf("Are you kidding?Maybe you need to read help!\n");
+return 0;
 
+}
+else{
+int tempno;
+tempno=atoi(args);
+if(tempno>=32||tempno<0)
+{
+printf("Error of inputing!\n");
+return 1;
+}
+else {
+WP* w=Whereislist();
+while(w->NO!=tempno)
+{
+w=w->next;
+if(w==NULL)
+{
+printf("No such watchpoint\n");
+return 0;
+
+}
+
+}
+
+free_up(w);
+
+
+};
+return 0;
+
+
+}
+
+
+
+}
 
 
 static struct {
@@ -192,7 +234,7 @@ static struct {
   {"x","show you the information of the memory with EXPR_0x",cmd_x},
   {"p","do expression evalution through you commands",cmd_p},
   {"w","watch a expr therefore you can watch the change of it",cmd_w},
-
+  {"d","delete the watchpoint as you want.",cmd_d},
 
 
 };

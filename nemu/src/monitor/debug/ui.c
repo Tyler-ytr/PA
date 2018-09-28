@@ -174,7 +174,7 @@ static int cmd_w(char *args)
 	return 0;
 	}
 }
-extern void free_up(WP *wp);
+extern void free_wp(WP *wp);
 static int cmd_d(char *args)
 {
 if(args==NULL)
@@ -205,7 +205,7 @@ return 0;
 
 }
 
-free_up(w);
+free_wp(w);
 
 
 };

@@ -45,8 +45,8 @@ WP* new_wp()
 	}
 	return TEMPF;
 }
-/*
-void free_wp(WP *wp);
+
+void free_wp(WP *wp)
 {
 	WP* TEMPH=head;
 	WP* TEMPF=free_;
@@ -62,7 +62,7 @@ void free_wp(WP *wp);
 	}
 	TEMPH->next=wp->next;//delete the wp from the head list;
 	}
-	
+//assert(0);	
 	if(TEMPF!=NULL)
 	{
 	while(TEMPF->next!=NULL)
@@ -70,7 +70,7 @@ void free_wp(WP *wp);
 	TEMPF=TEMPF->next;
 	}
 	TEMPF->next=wp;
-	TEMP->next->next=NULL;
+	TEMPF->next->next=NULL;
 	}
 	else
 	{
@@ -80,4 +80,4 @@ void free_wp(WP *wp);
 }
 
 
-*/
+

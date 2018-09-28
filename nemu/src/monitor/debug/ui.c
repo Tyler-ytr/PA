@@ -8,7 +8,7 @@
 #include <readline/history.h>
 
 void cpu_exec(uint64_t);
-int woqusds;
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
   static char *line_read = NULL;
@@ -58,6 +58,7 @@ static int cmd_step(char *args)
 
 static void show_register()
 {	int i;
+	
 	for(i=R_EAX;i<=R_EDI;i++)
 	{	
 		printf("%s:0x%08x\n ",regsl[i],cpu.gpr[i]._32);	

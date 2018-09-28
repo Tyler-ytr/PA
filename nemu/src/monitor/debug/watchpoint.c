@@ -19,5 +19,65 @@ void init_wp_pool() {
 }
 
 /* TODO: Implement the functionality of watchpoint */
+WP* new_wp()
+{	WP* TEMPH=head;
+	 if(free_==NULL)
+	 {
+		 printf("TOO MANY WATCHPOINT!!!\n WHY NOT CHANGE THE NR_WP IN WATCHPOINT.C?\n");
+		 assert(0);
+	 }
+	WP* TEMPF=NULL;
+	TEMPF=free_;
+	free_=free_->next;
+    
+	if(TEMPH==NULL)
+	{
+	head=TEMPF;
+	head->next=NULL;
+	}else
+	{
+	while(TEMPH->next!=NULL)
+	{
+	TEMPH=TEMPH->next;//travel until it reaches the end of the list
+	}
+	TEMPH->next=TEMPF;
+	TEMPF->next=NULL;
+	}
+	return TEMPF;
+}
+/*
+void free_wp(WP *wp);
+{
+	WP* TEMPH=head;
+	WP* TEMPF=free_;
+
+	if(TEMPH==wp)
+	{
+	head=head->next;	
+	
+	}else
+	{
+	while(TEMPH->next!=wp)
+	{TEMPH=TEMPH->next;
+	}
+	TEMPH->next=wp->next;//delete the wp from the head list;
+	}
+	
+	if(TEMPF!=NULL)
+	{
+	while(TEMPF->next!=NULL)
+	{
+	TEMPF=TEMPF->next;
+	}
+	TEMPF->next=wp;
+	TEMP->next->next=NULL;
+	}
+	else
+	{
+	free_=wp;
+	free_->next=NULL;
+	}
+}
 
 
+*/

@@ -192,9 +192,11 @@ printf("Error of inputing!\n");
 return 1;
 }
 else {
+
+	
 WP* w=Whereislist();
 while(w->NO!=tempno)
-{
+{printf("%d",w->NO);
 w=w->next;
 if(w==NULL)
 {

@@ -208,7 +208,7 @@ return 0;
 }
 
 free_wp(w);
-printf("Successlly delete w[%d]\n",w->NO);
+printf("Successlly delete w[%d]:%s\n",w->NO,w->str);
 
 };
 return 0;

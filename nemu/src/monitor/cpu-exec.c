@@ -1,6 +1,7 @@
 #include "nemu.h"
 #include "monitor/monitor.h"
-
+#include "monitor/watchpoint.h"
+#include "monitor/expr.h"
 /* The assembly code of instructions executed is only output to the screen
  * when the number of instructions executed is less than this value.
  * This is useful when you use the `si' command.
@@ -21,13 +22,42 @@ void nr_guest_instr_add(uint32_t n) {
 void monitor_statistic() {
   Log("total guest instructions = %ld", g_nr_guest_instr);
 }
+WP*  check_watch(WP* t)
+{
+	WP* w=NULL;
+	if(t==NULL)
+	{
+		w=whereislist();//w is pointing to head;
+	}
+	else{ w=t; }
+	while(w!=NULL)
+	{
+		bool csuccess	;
+		int cresult=expr(w->str,&csuccess);
+		if(!csuccess)
+		{
+			printf("Something wrong in caculating the str!\n");
+			assert(0);
+		
+		}
+		else if(cresult!=w->value){
+			w->value=cresult;
+			return w;
+		}
+		w=w->next;
+	
+	}
+return NULL;
+
+}
+
 
 /* Simulate how the CPU works. */
 void cpu_exec(uint64_t n) {
   if (nemu_state == NEMU_END || nemu_state == NEMU_ABORT) {
     printf("Program execution has ended. To restart the program, exit NEMU and run again.\n");
     return;
-  }
+   }
   nemu_state = NEMU_RUNNING;
 
   bool print_flag = n < MAX_INSTR_TO_PRINT;
@@ -40,6 +70,24 @@ void cpu_exec(uint64_t n) {
 
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
+	
+	WP* tw=check_watch(NULL);
+	while(tw!=NULL)
+	{
+        printf("w[%d] changed : %s=%d | %x\n",tw->NO,tw->str,tw->value,tw->value);
+		if(nemu_state!=NEMU_END)
+		{		nemu_state=NEMU_STOP;	}
+		tw=check_watch(tw);	
+	}
+
+
+	
+
+
+
+
+
+
 
 #endif
 

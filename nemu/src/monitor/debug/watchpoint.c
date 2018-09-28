@@ -81,4 +81,10 @@ void free_wp(WP *wp)
 }
 
 
+WP* Whereislist()
+{
 
+return head;
+
+
+}

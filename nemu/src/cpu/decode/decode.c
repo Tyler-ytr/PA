@@ -64,9 +64,9 @@ op->simm=(int16_t)(int8_t)((uint8_t)instr_fetch(eip,op->width));
 
 }
 
-printf("miaomaiomao\n");
+//printf("miaomaiomao\n");
   rtl_li(&op->val, op->simm);
-
+printf("miaomiaomiao\n");
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->simm);
 #endif

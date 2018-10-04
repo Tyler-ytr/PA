@@ -29,7 +29,7 @@ make_EHelper(call) {
  // TODO();
 printf("callmiaomiaomiao\n");
 rtl_push(&decoding.seq_eip);
-rtl_addi(&decoding.jmp_eip,eip,id_dest->val);
+//rtl_addi(&decoding.jmp_eip,eip,id_dest->val);
 printf("callmiaomiaomiao\n");
 decoding.is_jmp=1;
 //assert(0);

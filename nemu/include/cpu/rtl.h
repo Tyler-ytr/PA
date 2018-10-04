@@ -167,7 +167,7 @@ cpu.esp-=4;
 
 printf("miaomiaomioa\n");
 vaddr_write(cpu.esp,4,*src1);
-//printf("miaomiaomioa\n");
+printf("miaomiaomioa\n");
 }
 
 static inline void rtl_pop(rtlreg_t* dest) {

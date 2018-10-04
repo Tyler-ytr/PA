@@ -70,6 +70,8 @@ printf("miaomiaomiao\n");
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->simm);
 #endif
+
+printf("miaomiaomiao\n");
 }
 
 /* I386 manual does not contain this abbreviation.

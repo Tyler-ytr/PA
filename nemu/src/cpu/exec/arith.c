@@ -8,7 +8,10 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
 //  TODO();
-//printf("here miaomiaomiao\n");
+printf("here miaomiaomiao\n");
+
+
+
 	rtl_sub(&t2,&id_dest->val,&id_src->val);
 	operand_write(id_dest,&t2);
 

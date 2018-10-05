@@ -41,7 +41,9 @@ make_EHelper(ret) {
 rtl_pop(&decoding.jmp_eip);
 
 decoding.is_jmp=1;
-Log("ret from 0x%x\n",decoding.jmp_eip);
+Log("ret into  0x%x\n",decoding.jmp_eip);
+
+rtl_j(decoding.jmp_eip);
   print_asm("ret");
 }
 

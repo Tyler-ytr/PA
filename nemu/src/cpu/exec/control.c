@@ -39,7 +39,9 @@ rtl_j(decoding.jmp_eip);
 make_EHelper(ret) {
 //  TODO();
 rtl_pop(&decoding.jmp_eip);
+
 decoding.is_jmp=1;
+Log("ret from 0x%x\n",decoding.jmp_eip);
   print_asm("ret");
 }
 

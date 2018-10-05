@@ -25,7 +25,7 @@ typedef struct{
 			uint32_t   :1;//waiting for DF
             uint32_t OF:1;
 			uint32_t   :20;//waiting for OLIP,NT,0,RF,VM and nothing but 0;
-			}BIT;
+			};
 			uint32_t value;			
 			};
 	}EFLAGS;

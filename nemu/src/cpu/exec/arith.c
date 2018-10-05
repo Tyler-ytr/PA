@@ -8,7 +8,8 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
 //  TODO();
-printf("here miaomiaomiao\n");
+//printf("here miaomiaomiao\n");
+rtl_sub(&t1,&id_dest->val,&id_src->val);
   print_asm_template2(sub);
 }
 

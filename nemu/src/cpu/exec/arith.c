@@ -7,8 +7,8 @@ make_EHelper(add) {
 }
 
 make_EHelper(sub) {
-  TODO();
-
+//  TODO();
+printf("here miaomiaomiao\n");
   print_asm_template2(sub);
 }
 

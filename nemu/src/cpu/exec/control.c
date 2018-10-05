@@ -30,8 +30,8 @@ make_EHelper(call) {
 printf("callmiaomiaomiao\n");
 rtl_push(&decoding.seq_eip);
 //rtl_addi(&decoding.jmp_eip,eip,id_dest->val);
-printf("callmiaomiaomiao\n");
-decoding.is_jmp=1;
+Log("Call from 0x%x to 0x%x\n",cpu.eip,decoding.jmp_eip);
+rtl_j(decoding.jmp_eip);
 //assert(0);
   print_asm("call %x", decoding.jmp_eip);
 }

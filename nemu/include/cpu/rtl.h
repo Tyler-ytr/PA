@@ -156,7 +156,18 @@ static inline void rtl_not(rtlreg_t *dest, const rtlreg_t* src1) {
 
 static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
-  TODO();
+//  TODO();
+  switch(width){
+	  case 1: *dest=(int32_t)(int16_t) *src1;
+			  return;
+	  case 2:
+			  *dest=(int32_t)(int16_t) *src1;
+			  return ;
+	  case 4:
+			  *dest=(int32_t)*src1;
+			  return;
+  }  
+  
 }
 
 static inline void rtl_push(const rtlreg_t* src1) {
@@ -165,10 +176,10 @@ static inline void rtl_push(const rtlreg_t* src1) {
  // TODO();
 cpu.esp-=4;
 
-printf("miaomiaomiao\n");
+//printf("miaomiaomiao\n");
 //vaddr_write(cpu.esp,4,*src1);
 rtl_sm(&cpu.esp,src1,4);
-printf("miaomiaomiao\n");
+//printf("miaomiaomiao\n");
 }
 
 static inline void rtl_pop(rtlreg_t* dest) {

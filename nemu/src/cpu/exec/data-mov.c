@@ -6,9 +6,11 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-assert(0);
-  	TODO();
-
+//assert(0);
+ // 	TODO();
+rtl_sext(&id_dest->val,&id_dest->val,id_dest->width);
+rtl_push(&id_dest->val);
+Log("push 0x%x into 0x%x\n",id_dest->val,cpu.esp);
   print_asm_template1(push);
 }
 

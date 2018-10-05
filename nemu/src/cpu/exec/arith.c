@@ -8,14 +8,14 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
 //  TODO();
-printf("here miaomiaomiao\n");
+//printf("here miaomiaomiao\n");
 
 
 
 	rtl_sub(&t2,&id_dest->val,&id_src->val);
 	operand_write(id_dest,&t2);
 
-    rtl_update_ZFSF(&t2,id_dest->width);
+ //   rtl_update_ZFSF(&t2,id_dest->width);
 
 	rtl_setrelop(RELOP_LTU, &t0, &t2, &id_dest->val);
 	rtl_or(&t0, &t3, &t0);

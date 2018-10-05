@@ -16,7 +16,9 @@ Log("push 0x%x into 0x%x\n",id_dest->val,cpu.esp);
 
 make_EHelper(pop) {
 //  TODO();
-printf("into pop\n");
+//printf("into pop\n");
+rtl_pop(&t2);
+operand_write(id_dest,&t2);
   print_asm_template1(pop);
 }
 

@@ -16,7 +16,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   switch (subcode & 0xe) {
     case CC_O:Log("I am cc 0");
     case CC_B:Log("I am cc B");
-    case CC_E:*dest=cpu.eflags.ZF;
+    case CC_E:*dest=cpu.eflags.ZF;break;
     case CC_BE:Log("I am cc_be");
     case CC_S:Log("I am cc s");
     case CC_L:Log("I am cc l");

@@ -209,8 +209,11 @@ static make_EHelper(2byte_esc) {
   uint32_t opcode = instr_fetch(eip, 1) | 0x100;
 	Log("in 2byte");
   decoding.opcode = opcode;
+  Log("in 2byte decode");
   set_width(opcode_table[opcode].width);
+  Log("in 2byte setwidth");
   idex(eip, &opcode_table[opcode]);
+  Log("in 2byte end");
 }
 
 make_EHelper(real) {

@@ -177,9 +177,9 @@ static inline void rtl_push(const rtlreg_t* src1) {
 cpu.esp-=4;
 
 printf("miaomiaomiao\n");
-vaddr_write(cpu.esp,4,*src1);
+//vaddr_write(cpu.esp,4,*src1);
 rtl_sm(&cpu.esp,src1,4);
-printf("miaomiaomiao\n");
+//printf("miaomiaomiao\n");
 }
 
 static inline void rtl_pop(rtlreg_t* dest) {

@@ -72,14 +72,8 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
   //TODO();
-//	bool tragic=false;
-//	tragic=false;
-	if(
-
-
-true
-	  )assert(0);
-	/*
+	bool tragic=false;
+	tragic=false;
 	if(	ref_r.eax!=cpu.eax||
 		ref_r.ecx!=cpu.ecx||
 		ref_r.edx!=cpu.edx||
@@ -88,7 +82,7 @@ true
 		ref_r.ebp!=cpu.ebp||
 		ref_r.esi!=cpu.esi||
 		ref_r.edi!=cpu.edi||
-		ref_r.eip!=cpu.eip||	)
+		ref_r.eip!=cpu.eip )
 	{
 	tragic=true;
 	Log("\33[1;31m There are something different between Nemu and Qemu!X﹏X \33[0m ");
@@ -141,7 +135,6 @@ true
 	nemu_state=NEMU_ABORT;
 	
 	}
-*/
-	TODO();
+
 
 }

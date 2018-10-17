@@ -305,7 +305,7 @@ make_DHelper(a2O) {
 
 make_DHelper(J) {
 
-printf("into J:\n");  
+//printf("into J:\n");  
 
 	decode_op_SI(eip, id_dest, false);
   // the target address can be computed in the decode stage

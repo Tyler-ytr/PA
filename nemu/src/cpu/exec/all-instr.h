@@ -12,7 +12,7 @@ make_EHelper(xor);
 
 make_EHelper(call);
 make_EHelper(operand_size);
-
+make_EHelper(lea);
 
 make_EHelper(ret);
 make_EHelper(inv);

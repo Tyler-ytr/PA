@@ -116,7 +116,7 @@ void difftest_step(uint32_t eip) {
 	if(ref_r.eip!=cpu.eip)
 	Log("eip is different!");
 
-	printf("\033[1;33m Regs\t	Qemu\t\t\t Nemu \033[0m \n ");
+	printf("\033[1;33mRegs\tQemu\t\t\tNemu \033[0m\n");
 	printf("eax\t 0x%08x\t\t 0x%08x\n",ref_r.eax,cpu.eax);
 	printf("ebx\t 0x%08x\t\t 0x%08x\n",ref_r.ebx,cpu.ebx);
 	printf("ecx\t 0x%08x\t\t 0x%08x\n",ref_r.ecx,cpu.ecx);

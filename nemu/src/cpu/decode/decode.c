@@ -211,7 +211,9 @@ make_DHelper(r) {
 }
 
 make_DHelper(E) {
-  decode_op_rm(eip, id_dest, true, NULL, false);
+
+Log("in E");  
+	decode_op_rm(eip, id_dest, true, NULL, false);
 }
 
 make_DHelper(setcc_E) {

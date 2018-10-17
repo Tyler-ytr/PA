@@ -17,3 +17,5 @@ make_EHelper(lea);
 make_EHelper(ret);
 make_EHelper(inv);
 make_EHelper(nemu_trap);
+
+make_EHelper(nop);

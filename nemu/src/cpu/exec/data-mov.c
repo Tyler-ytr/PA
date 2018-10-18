@@ -10,6 +10,7 @@ make_EHelper(push) {
  // 	TODO();
 //Log("in push"); 	
 rtl_sext(&id_dest->val,&id_dest->val,id_dest->width);
+// dest <- signext(src1[(width * 8 - 1) .. 0]) 
 rtl_push(&id_dest->val);
 Log("push 0x%x into 0x%x\n",id_dest->val,cpu.esp);
   print_asm_template1(push);
@@ -37,7 +38,24 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  TODO();
+//  TODO();
+	reg_l(R_ESP)=reg_l(R_EBP);
+	rtl_lm(&t0,&reg_l(R_ESP),id_src->width);
+	id_dest->type=OP_TYPE_REG;
+	id_dest->reg=R_EBP;
+	operand_write(id_dest,&t0);
+	if(id_dest->width==2)
+	{
+	reg_w(R_ESP)+=2;
+	
+	
+	}else
+	{
+	reg_l(R_ESP)+=4;
+	
+	
+	}
+
 
   print_asm("leave");
 }

@@ -163,7 +163,8 @@ make_DHelper(lea_M2G) {
  * eAX <- Iv
  */
 make_DHelper(I2a) {
-  decode_op_a(eip, id_dest, true);
+Log("I am in I2a");
+  	decode_op_a(eip, id_dest, true);
   decode_op_I(eip, id_src, true);
 }
 

@@ -62,7 +62,7 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decoding.is_operand_size_16) {
-//    TODO();
+  TODO();
  rtl_lr(&t1,R_AX,2);
 	if((int32_t)(int16_t)(uint16_t)t1<0)
 		{t2=0;t0=0;
@@ -72,10 +72,10 @@ make_EHelper(cltd) {
 	else
 		{t2=0;
 		rtl_sr(R_DX,&t2,2);
-		}	
+ 		}	
   }
-  else {
-    //TODO();
+   else {
+    TODO();
 	rtl_lr(&t1,R_EAX,4);
 	if((int32_t)t1<0)
 		{t2=0;t0=0;

@@ -84,7 +84,7 @@ static inline void interpret_rtl_lm(rtlreg_t *dest, const rtlreg_t* addr, int le
 static inline void interpret_rtl_sm(const rtlreg_t* addr, const rtlreg_t* src1, int len) {
   vaddr_write(*addr, *src1, len);
 }
-
+//write src1 into addr
 static inline void interpret_rtl_host_lm(rtlreg_t* dest, const void *addr, int len) {
   switch (len) {
     case 4: *dest = *(uint32_t *)addr; return;
@@ -141,7 +141,7 @@ static inline void rtl_lr(rtlreg_t* dest, int r, int width) {
 
 static inline void rtl_sr(int r, const rtlreg_t* src1, int width) {
   switch (width) {
-    case 4: rtl_mv(&reg_l(r), src1); return;
+	  case 4: rtl_mv(&reg_l(r), src1); return;//let reg_l(r)=src1;
     case 1: rtl_host_sm(&reg_b(r), src1, 1); return;
     case 2: rtl_host_sm(&reg_w(r), src1, 2); return;
     default: assert(0);

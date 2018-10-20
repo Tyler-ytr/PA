@@ -13,6 +13,7 @@ make_EHelper(adc);
 make_EHelper(and);
 make_EHelper(or);
 make_EHelper(xor);
+make_EHelper(sar);
 
 
 make_EHelper(call);

@@ -21,7 +21,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_BE:Log("I am cc_be");
     case CC_S:Log("I am cc s");
     case CC_L:Log("I am cc l");
-    case CC_LE://Log("I am cc le");
+    case CC_LE:Log("I am cc le");
 	*dest=((cpu.eflags.ZF)||(cpu.eflags.SF!=cpu.eflags.OF));break;
     //  TODO();
     default: panic("should not reach here");

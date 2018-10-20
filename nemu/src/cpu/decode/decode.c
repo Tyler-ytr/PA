@@ -148,7 +148,7 @@ make_DHelper(mov_G2E) {
  * Gv <- Ev
  */
 make_DHelper(E2G) {
-Log("I am in E2G");
+//Log("I am in E2G");
   	decode_op_rm(eip, id_src, true, id_dest, true);
 }
 

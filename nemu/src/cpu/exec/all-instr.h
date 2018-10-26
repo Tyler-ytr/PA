@@ -9,6 +9,7 @@ make_EHelper(pop);
 make_EHelper(sub);
 make_EHelper(add);
 make_EHelper(idiv);
+make_EHelper(div);
 make_EHelper(adc);
 make_EHelper(dec);
 make_EHelper(inc);

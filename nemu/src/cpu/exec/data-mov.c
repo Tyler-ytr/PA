@@ -12,7 +12,7 @@ make_EHelper(push) {
 rtl_sext(&id_dest->val,&id_dest->val,id_dest->width);
 // dest <- signext(src1[(width * 8 - 1) .. 0]) 
 rtl_push(&id_dest->val);
-Log("push 0x%x into 0x%x\n",id_dest->val,cpu.esp);
+//Log("push 0x%x into 0x%x\n",id_dest->val,cpu.esp);
   print_asm_template1(push);
 }
 

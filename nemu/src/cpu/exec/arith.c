@@ -114,7 +114,7 @@ Log("I am in cmp");
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
 
-	Log("In cmp : ZF=%d ,OF=%d",cpu.eflags.ZF,cpu.eflags.OF);
+//	Log("In cmp : ZF=%d ,OF=%d",cpu.eflags.ZF,cpu.eflags.OF);
 
 
   print_asm_template2(cmp);

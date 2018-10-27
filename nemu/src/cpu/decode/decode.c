@@ -18,8 +18,8 @@ void decoding_set_jmp(bool is_jmp) {
 static inline make_DopHelper(I) {
   /* eip here is pointing to the immediate */
   op->type = OP_TYPE_IMM;
-  op->imm = instr_fetch(eip, op->width);
-  rtl_li(&op->val, op->imm);
+  op->imm = instr_fetch(eip, op->width);//change the *eip
+  rtl_li(&op->val, op->imm);//op->val=op->imm
 
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->imm);

@@ -10,7 +10,7 @@ make_EHelper(jmp) {
 
 make_EHelper(jcc) {
   // the target address is calculated at the decode stage
-Log("I am in jcc!");
+//Log("I am in jcc!");
   	uint32_t cc = decoding.opcode & 0xf;
   rtl_setcc(&t0, cc);
   rtl_li(&t1, 0);

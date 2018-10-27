@@ -22,8 +22,8 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_S:Log("I am cc s");assert(0);
     case CC_L://Log("I am cc l");
 			  *dest=(cpu.eflags.SF!=cpu.eflags.OF);break;
-    case CC_LE:Log("I am cc le");
-			   Log("ZF: %d SF: %d OF: %d",cpu.eflags.ZF,cpu.eflags.SF,cpu.eflags.OF);
+    case CC_LE://Log("I am cc le");
+			  // Log("ZF: %d SF: %d OF: %d",cpu.eflags.ZF,cpu.eflags.SF,cpu.eflags.OF);
 	*dest=((cpu.eflags.ZF)||(cpu.eflags.SF!=cpu.eflags.OF));break;
 
     //  TODO();

@@ -118,7 +118,7 @@ static inline make_DopHelper(r) {
  */
 static inline void decode_op_rm(vaddr_t *eip, Operand *rm, bool load_rm_val, Operand *reg, bool load_reg_val) {
   read_ModR_M(eip, rm, load_rm_val, reg, load_reg_val);
-}
+}//rm's type and its reg and its val have been changed
 
 /* Ob, Ov */
 static inline make_DopHelper(O) {

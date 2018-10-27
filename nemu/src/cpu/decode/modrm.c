@@ -80,14 +80,14 @@ void load_addr(vaddr_t *eip, ModR_M *m, Operand *rm) {
 
 void read_ModR_M(vaddr_t *eip, Operand *rm, bool load_rm_val, Operand *reg, bool load_reg_val) {
   ModR_M m;
-  m.val = instr_fetch(eip, 1);
+  m.val = instr_fetch(eip, 1);//get *(eip+1)
   decoding.ext_opcode = m.opcode;
   if (reg != NULL) {
     reg->type = OP_TYPE_REG;
-    reg->reg = m.reg;
+    reg->reg = m.reg;//set reg and its type
     if (load_reg_val) {
       rtl_lr(&reg->val, reg->reg, reg->width);
-    }
+    }//set the reg_val
 
 #ifdef DEBUG
     snprintf(reg->str, OP_STR_SIZE, "%%%s", reg_name(reg->reg, reg->width));

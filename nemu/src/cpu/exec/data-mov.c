@@ -21,7 +21,7 @@ make_EHelper(pop) {
 //printf("into pop\n");
 rtl_pop(&t2);
 operand_write(id_dest,&t2);
-Log("pop 0x%x",t2);
+//Log("pop 0x%x",t2);
   print_asm_template1(pop);
 }
 

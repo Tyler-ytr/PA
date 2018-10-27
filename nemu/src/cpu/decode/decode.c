@@ -165,7 +165,7 @@ make_DHelper(lea_M2G) {
  * eAX <- Iv
  */
 make_DHelper(I2a) {
-Log("I am in I2a");
+//Log("I am in I2a");
   	decode_op_a(eip, id_dest, true);
   decode_op_I(eip, id_src, true);
 }
@@ -233,7 +233,7 @@ make_DHelper(test_I) {
 }
 
 make_DHelper(SI2E) {
- Log("I am in SI2E");
+// Log("I am in SI2E");
    	assert(id_dest->width == 2 || id_dest->width == 4);
   decode_op_rm(eip, id_dest, true, NULL, false);
   id_src->width = 1;
@@ -323,7 +323,7 @@ make_DHelper(push_SI) {
 }
 
 make_DHelper(in_I2a) {
-Log("I am in I2a");
+//Log("I am in I2a");
   	id_src->width = 1;
   decode_op_I(eip, id_src, true);
   decode_op_a(eip, id_dest, false);

@@ -28,6 +28,7 @@ make_EHelper(imul3);
 make_EHelper(cltd);
 
 make_EHelper(call);
+make_EHelper(call_rm);
 make_EHelper(jmp);
 make_EHelper(leave);
 make_EHelper(test);

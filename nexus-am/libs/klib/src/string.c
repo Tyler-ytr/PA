@@ -13,7 +13,18 @@ size_t strlen(const char *s) {
 
   	return ((int)(p-s));
 }
-
+/*size_t strnlen(const char *s,size_t count)
+{
+	
+	if(s==NULL)
+		return -1;
+	size_t n;
+	size_t cnt=count;
+	for(n=0;n<cnt && *s;n++,s++)
+		;
+	return n;
+}
+*/
 char *strcpy(char* dst,const char* src) {
 	assert(dst!=NULL&&src!=NULL);
 	char *ret=dst;

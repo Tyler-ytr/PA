@@ -3,20 +3,306 @@
 
 //#ifndef __ISA_NATIVE__
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
+#define ZEROPAD 1
+#define SIGN 2
+#define PLUS 4
+#define SPACE 8
+#define LEFT 16
+#define SPECIAL 32
+#define LARGE 64
+ int _div(long* n,unsigned base)
+	 {
+		      int __res; 
+			           __res = ((unsigned long) *n) % (unsigned) base; 
+					            *n = ((unsigned long) *n) / (unsigned) base; 
+								         return __res;
+										  }
+
+#define do_div(n,base) _div(&n,base)
+size_t strnlen(const char *s,size_t count)
+	  {
+		        
+				      if(s==NULL)
+						            return -1;
+					       size_t n;
+						         size_t cnt=count;
+								       for(n=0;n<cnt && *s;n++,s++)
+										            ;
+									       return n;
+										     }       
+static inline int isdigit(int ch)
+{
+	return (ch>='0')&&(ch<='9');
+}
+
+static char *getnumber(char *str,long num,int base,int size,int precision,int type)
+{
+	char c,sign,tmp[66];
+	const char *digits="0123456789abcdefghijklmnopqrstuvwxyz";
+	int i;
+	sign=0;
+	if(type&LARGE)
+		digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	if(type&LEFT)
+		type&=~ZEROPAD;
+	if(base<2||base>36)
+	return 0;	
+	c=(type&ZEROPAD)?'0':' ';
+
+
+
+	if(type&SIGN)
+	{
+		if(num<0)
+		{
+			sign='-';
+			num=-num;
+			size--;
+		}
+		else if(type&PLUS)
+		{
+			sign='+';
+			size--;
+		}
+		else if(type&SPACE)
+		{
+			sign=' ';
+			size--;
+		}
+	}
+		
+	if(type&SPECIAL)
+	{
+		if(base==16)
+			size-=2;
+		else if(base==8)
+			size--;
+	
+	}
+
+	i=0;
+	if(num==0)
+	{
+	tmp[i++]=0;
+	}
+	else
+	{
+		while(num!=0)
+		{
+		
+		tmp[i++]=digits[do_div(num,base)];
+		
+		}	
+	
+	}
+
+	if(i>precision)
+		precision=i;
+	size-=precision;
+	if(!(type&(ZEROPAD+LEFT)))
+		while(size-->0)
+			*str++=' ';
+
+	if(sign&&sign!=0)
+		*str++=sign;
+
+	if(type&SPECIAL)
+	{
+		if(base==8)
+			*str++=0;
+		else if(base==16)
+		{
+			*str++='0';
+			*str++=digits[33];
+		
+		}
+	
+	
+	}
+
+	if(!(type&LEFT))
+		while(size-->0)
+			*str++=c;
+	while(i<precision--)
+		*str++='0';
+	while(i-->0)
+		*str++=tmp[i];
+	while(size-->0)
+		*str++=' ';
+	return str;
+
+
+}
+int vprintf(char *out,const char* fmt,va_list ap)
+{
+	const char*format=fmt;//format==fmt;
+	char *str;
+	const char *s;
+	int len,i;
+	unsigned long num;
+	int flags=0;
+	int precision;
+//	int qualifier;
+	int base;
+	int field_width=-1;
+	for(str=out;*format;++format)
+	{
+		if(*format!='%')
+		{ 
+			*str++=*format;
+			continue;
+		
+		} 
+			
+		flags=0;
+		repeat:
+		format++;
+		switch (*format)
+			{	
+			case '-':flags|=LEFT;
+					 goto repeat;
+			case '+':flags|=PLUS;
+					 goto repeat;
+			case ' ':
+					 flags|=SPACE;
+					 goto repeat;
+			case '#':flags|=SPECIAL;
+					 goto repeat;
+			case '0':flags|=ZEROPAD;
+					 goto repeat;
+			}
+		//change process flags
+			
+		//get field width
+		//wait to do
+		field_width=-1;
+		if(isdigit(*format))
+		{//	Log("digit has not been set");
+			assert(0);}
+		else if(*format=='*'){
+		//	Log("* is not set");
+			assert(0);
+					
+				}
+		
+			precision=-1;
+			if(*format=='.')
+			{
+		//		Log(". is not set");
+				assert(0);	
+				if (isdigit(*format))
+				{//	Log(". is not set");
+					assert(0);	}
+				else if(*format=='*')
+				{
+			
+				//	Log("* is not set");
+					assert(0);
+			
+				}
+				if(precision<0)
+					precision=0;
+			}
+			//get the conversion qualifier
+	//		qualifier=-1;
+	//		if(*format=='h'||*format=='l'||*format=='L')
+	//		{
+	//			qualifier=*format;
+	//			++format;
+	//		
+	//		}
+	base=10;
+			switch(*format){	
+			case 'c': 
+				//	Log("I am in c");
+				assert(0);
+			case 'e':
+				//	Log("I am in e");assert(0);
+			case 'E':
+				//	Log("I am in E");assert(0);
+			case 'f':
+				//	Log("I am in f");assert(0);
+			case 'g':
+				//	Log("I am in g");assert(0);
+			case 'G':
+				//	Log("I am in G");assert(0);
+			case 'o':
+				//	Log("I am in o");
+				assert(0);
+			case 's':
+					s=va_arg(ap,char *);
+					len=strnlen(s,precision);
+					
+					if(!(flags&LEFT))
+						while(len<field_width--)
+							*str++=' ';
+					for(i=0;i<len;++i)
+						*str++=*s++;
+					while(len<field_width--)
+						*str++=' ';
+					continue;
+			case 'x':
+				//	Log("I am in x");assert(0);
+			case 'X':
+				//	Log("I am in X");assert(0);
+			case 'p':
+				//	Log("I am in p");assert(0);
+			case 'n':
+				//	Log("I am in n");assert(0);
+			case '%':
+				//	Log("I am in %");
+					assert(0);
+			case 'd':
+			case 'i':
+					flags|=SIGN;
+			case 'u':break;
+			default:
+					*str++='%';
+				   if(*format)
+				   *str++=*format;
+				   else
+				--format;
+			continue;	   ;
+			}
+			
+			if(flags&SIGN)
+				num=va_arg(ap,int);
+			else
+				num=va_arg(ap,unsigned int);
+
+			str=getnumber(str,num,base,field_width,precision,flags);
+	}
+		*str='\0';
+		return (str-out);
+
+}
+
+
+
+
 
 int printf(const char *fmt, ...) {
-  return 0;
+//Log("I am in printf");
+  	return 0;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
+//Log("I am in vsprintf");
   return 0;
 }
 
 int sprintf(char *out, const char *fmt, ...) {
-  return 0;
+	va_list ap;
+	va_start(ap,fmt);
+	int ret=vprintf(out,fmt,ap);
+	va_end(ap);
+	return ret;
+	
+//	return 0;
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
+//Log("I am in snprintf");
   return 0;
 }
 

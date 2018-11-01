@@ -13,7 +13,7 @@ typedef struct {
   pio_callback_t callback;
 } PIO_t;
 
-static PIO_t maps[NR_MAP];
+static PIO_t maps[NR_MAP];//the relationship for I/O
 static int nr_map = 0;
 
 static void pio_callback(ioaddr_t addr, int len, bool is_write) {
@@ -37,7 +37,7 @@ void* add_pio_map(ioaddr_t addr, int len, pio_callback_t callback) {
   maps[nr_map].callback = callback;
   nr_map ++;
   return pio_space + addr;
-}
+}//set the I/O map relationship
 
 static inline uint32_t pio_read_common(ioaddr_t addr, int len) {
   assert(addr + len - 1 < PORT_IO_SPACE_MAX);
@@ -48,7 +48,7 @@ static inline uint32_t pio_read_common(ioaddr_t addr, int len) {
     case 1: return *(uint8_t *)(pio_space + addr);
     default: assert(0);
   }
-}
+}//read the I/O for cpu in different environment
 
 static inline void pio_write_common(ioaddr_t addr, uint32_t data, int len) {
   assert(addr + len - 1 < PORT_IO_SPACE_MAX);
@@ -59,7 +59,7 @@ static inline void pio_write_common(ioaddr_t addr, uint32_t data, int len) {
     default: assert(0);
   }
   pio_callback(addr, len, true);
-}
+}//write the I/O for cpu
 
 /* CPU interface */
 uint32_t pio_read_l(ioaddr_t addr) {

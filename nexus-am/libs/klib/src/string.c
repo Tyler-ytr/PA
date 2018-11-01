@@ -1,5 +1,5 @@
 #include "klib.h"
-
+//#include "am.h"
 //#ifndef __ISA_NATIVE__
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 size_t strlen(const char *s) {
@@ -10,7 +10,8 @@ size_t strlen(const char *s) {
 	while(*p)
 	{p++;
 	}
-
+	
+//	_put((p-s));
   	return ((int)(p-s));
 }
 /*size_t strnlen(const char *s,size_t count)
@@ -46,6 +47,7 @@ char *strcpy(char* dst,const char* src) {
 		}
 		
 	}
+//	_put(*ret);
 	return ret;
 	// return NULL;
 }
@@ -61,6 +63,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 	{
 		*s++='\0';
 	}
+//	_put(*dst);
 	return dst;
 }
 
@@ -70,6 +73,7 @@ char* strcat(char* dst, const char* src) {
 	{;}
 	for(;(*s=*src)!='\0';++s,++src)
 	{;}
+//	_put(dst);
 	return dst;
 }
 
@@ -87,6 +91,8 @@ int strcmp(const char* s1, const char* s2) {
   }
 
 	flag=*s1-*s2;
+//	_put(*s1);
+//	_put(*s2);
 	return flag;
 }
 
@@ -111,7 +117,7 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 }
 
 void* memset(void* v,int c,size_t n) {
-	char * s=v;
+	char * s=(char*)v;
 	const unsigned char uc=c;
 	for(;n>0;++s,--n)
 	{
@@ -145,7 +151,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 int memcmp(const void* s1, const void* s2, size_t n){
 	unsigned char* a=(unsigned char*)s1;
 	unsigned char* b=(unsigned char*)s2;
-	while(n)
+/*	while(n)
 	{
 		if(*a==*b)
 		{
@@ -161,6 +167,18 @@ int memcmp(const void* s1, const void* s2, size_t n){
 	}
    
 return *a-*b;
+*/
+	for(int i=0;i<n;i++)
+	{	
+		if(a[i]>b[i])
+			return (a[i]-b[i]);
+		else if(a[i]<b[i])
+			return (a[i]-b[i]);
+
+
+
+	}
+return 0;
 
 	
 }

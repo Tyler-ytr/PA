@@ -48,7 +48,7 @@ make_EHelper(in) {
 //  TODO();
 Log("I am in in");
 	switch(id_src->width)
-	{	case	4:t1=pio_read_l(id_src->val);break;
+	{	case	4:t1=pio_read_l(reg_w(R_EDX));break;
 		case	2:t1=pio_read_w(id_src->val);break;
 		case	1:t1=pio_read_b(id_src->val);break;}
 //	t1=pio_read_common(id_src->val,id_src->width);

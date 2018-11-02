@@ -1,5 +1,7 @@
 #include "cpu/exec.h"
-
+extern uint32_t pio_read_l(ioaddr_t addr);
+extern uint32_t pio_read_w(ioaddr_t addr);
+extern uint32_t pio_read_b(ioaddr_t addr);
 void difftest_skip_ref();
 void difftest_skip_dut();
 
@@ -42,7 +44,16 @@ make_EHelper(iret) {
 }
 
 make_EHelper(in) {
-  TODO();
+//  TODO();
+	switch(id_src->width)
+	{	case	1:t1=pio_read_l(id_src->val);break;
+		case	2:t1=pio_read_w(id_src->val);break;
+		case	4:t1=pio_read_b(id_src->val);break;}
+//	t1=pio_read_common(id_src->val,id_src->width);
+	operand_write(id_dest,&t1);
+
+
+
 
   print_asm_template2(in);
 

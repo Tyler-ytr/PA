@@ -3,6 +3,9 @@ extern uint32_t pio_read_common(ioaddr_t addr);
 extern uint32_t pio_read_l(ioaddr_t addr);
 extern uint32_t pio_read_w(ioaddr_t addr);
 extern uint32_t pio_read_b(ioaddr_t addr);
+extern void pio_write_l(ioaddr_t addr,uint32_t data);
+extern void pio_write_w(ioaddr_t addr,uint32_t data);
+extern void pio_write_b(ioaddr_t addr,uint32_t data);
 void difftest_skip_ref();
 void difftest_skip_dut();
 
@@ -46,12 +49,12 @@ make_EHelper(iret) {
 
 make_EHelper(in) {
 //  TODO();
-Log("I am in in");
+//Log("I am in in");
 	switch(id_src->width)
-	{	case	4:t1=pio_read_l(reg_w(R_EDX));break;
-		case	2:t1=pio_read_w(reg_w(R_EDX));break;
+	{	case	4:t1=pio_read_l(id_src->val);break;
+		case	2:t1=pio_read_w(id_src->val);break;
 	//	case	1:t1=pio_read_b(reg_w(R_EDX));break;}
-		case	1:t1=pio_read_b(id_src->val);break;}
+	 	case	1:t1=pio_read_b(id_src->val);break;}
 //	t1=pio_read_common(id_src->val,id_src->width);
 	operand_write(id_dest,&t1);
 //reg_l(R_EAX)=t1;
@@ -64,7 +67,16 @@ Log("I am in in");
 }
 
 make_EHelper(out) {
-  TODO();
+// TODO();
+Log("I am in out");
+	switch(id_src->width)
+	{
+		case 4:	pio_write_l(id_dest->val,id_src->val);
+		case 2:	pio_write_w(id_dest->val,id_src->val);
+		case 1:	pio_write_b(id_dest->val,id_src->val);	
+	}
+	
+
 
   print_asm_template2(out);
 

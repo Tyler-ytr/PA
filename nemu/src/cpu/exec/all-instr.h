@@ -41,6 +41,7 @@ make_EHelper(lea);
 make_EHelper(cmp);
 
 make_EHelper(in);
+make_EHelper(out);
 
 make_EHelper(jcc);
 make_EHelper(ret);

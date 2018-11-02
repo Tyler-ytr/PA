@@ -52,8 +52,9 @@ Log("I am in in");
 		case	2:t1=pio_read_w(id_src->val);break;
 		case	1:t1=pio_read_b(id_src->val);break;}
 //	t1=pio_read_common(id_src->val,id_src->width);
-	operand_write(id_dest,&t1);
-
+//	operand_write(id_dest,&t1);
+reg_l(R_EAX)=t1;
+		Log("%d\n",t1);
   print_asm_template2(in);
 /*
 #if defined(DIFF_TEST)

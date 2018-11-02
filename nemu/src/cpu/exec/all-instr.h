@@ -40,6 +40,8 @@ make_EHelper(operand_size);
 make_EHelper(lea);
 make_EHelper(cmp);
 
+make_EHelper(in);
+
 make_EHelper(jcc);
 make_EHelper(ret);
 make_EHelper(inv);

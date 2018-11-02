@@ -68,7 +68,7 @@ make_EHelper(in) {
 
 make_EHelper(out) {
 // TODO();
-Log("I am in out");
+//Log("I am in out");
 	switch(id_src->width)
 	{
 		case 4:	pio_write_l(id_dest->val,id_src->val);

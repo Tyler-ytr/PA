@@ -46,6 +46,7 @@ make_EHelper(iret) {
 
 make_EHelper(in) {
 //  TODO();
+Log("I am in in");
 	switch(id_src->width)
 	{	case	4:t1=pio_read_l(id_src->val);break;
 		case	2:t1=pio_read_w(id_src->val);break;

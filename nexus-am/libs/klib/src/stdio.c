@@ -29,13 +29,39 @@ size_t strnlen(const char *s,size_t count)
 								       for(n=0;n<cnt && *s;n++,s++)
 										            ;
 									       return n;
-										     }       
+										     }      
+
+void myputc(char c,char** s_h)
+{
+	if(*s_h==0)_putc(c);
+	else
+	{
+	**s_h=c;
+	(*s_h)++;
+	}
+}
+
 static inline int isdigit(int ch)
 {
 	return (ch>='0')&&(ch<='9');
 }
 
-static char *getnumber(char *str,long num,int base,int size,int precision,int type)
+
+
+static int skip_atoi(const char **s)
+{
+	int i=0;
+	while(isdigit(**s))
+	{
+	
+	i=i*10+*((*s)++)-'0';
+	
+	}return i;
+
+}
+
+
+static char* getnumber(char *str,long num,int base,int size,int precision,int type)
 {
 	char c,sign,tmp[66];
 	const char *digits="0123456789abcdefghijklmnopqrstuvwxyz";
@@ -46,7 +72,7 @@ static char *getnumber(char *str,long num,int base,int size,int precision,int ty
 	if(type&LEFT)
 		type&=~ZEROPAD;
 	if(base<2||base>36)
-	return 0;	
+	return 0 ;	
 	c=(type&ZEROPAD)?'0':' ';
 
 
@@ -101,58 +127,90 @@ static char *getnumber(char *str,long num,int base,int size,int precision,int ty
 	size-=precision;
 	if(!(type&(ZEROPAD+LEFT)))
 		while(size-->0)
-			*str++=' ';
-
+		{//		*str++=' ';
+		myputc(' ',&str);
+		}
 	if(sign&&sign!=0)
-		*str++=sign;
-
+	{//	*str++=sign;
+		myputc(sign,&str);
+	}
 	if(type&SPECIAL)
 	{
 		if(base==8)
-			*str++=0;
+		{//	*str++=0;
+		myputc('0',&str);
+		
+		}
 		else if(base==16)
 		{
-			*str++='0';
-			*str++=digits[33];
-		
+		//	*str++='0';
+		//	*str++=digits[33];
+		myputc('0',&str);
+		myputc(digits[33],&str);
 		}
 	
 	
 	}
 
 	if(!(type&LEFT))
+	{while(size-->0)
+		{//	*str++=c;
+		myputc(c,&str);
+		}}
+		while(i<precision--){
+//		*str++='0';
+		myputc('0',&str);
+	}
+
+		while(i-->0)
+		{//	*str++=tmp[i];
+		myputc(tmp[i],&str);
+		
+		}
 		while(size-->0)
-			*str++=c;
-	while(i<precision--)
-		*str++='0';
-	while(i-->0)
-		*str++=tmp[i];
-	while(size-->0)
-		*str++=' ';
+		{	//	*str++=' ';
+		myputc(tmp[i],&str);
+		
+		}
+
 	return str;
 
 
 }
+/*void myputc(char c,char** s_h)
+{
+	if(*s_h==0)_putc(c);
+	else
+	{
+	**s_h=c;
+	(*s_h)++;
+	}
+}*/
 int vprintf(char *out,const char* fmt,va_list ap)
 {
 	const char*format=fmt;//format==fmt;
-	char *str;
-	const char *s;
+	char *str=out;
+//	char **s_p=&str;
+const	 char *s;
 	int len,i;
 	unsigned long num;
 	int flags=0;
 	int precision;
-//	int qualifier;
+	int qualifier;
 	int base;
 	int field_width=-1;
 	for(str=out;*format;++format)
 	{
 		if(*format!='%')
 		{ 
-			*str++=*format;
+//			*str++=*format;
+			
+
+	myputc(*format,&str);
+
 			continue;
 		
-		} 
+ 		} 
 			
 		flags=0;
 		repeat:
@@ -170,47 +228,49 @@ int vprintf(char *out,const char* fmt,va_list ap)
 					 goto repeat;
 			case '0':flags|=ZEROPAD;
 					 goto repeat;
-			}
+ 			}
 		//change process flags
 			
 		//get field width
 		//wait to do
 		field_width=-1;
 		if(isdigit(*format))
-		{//	Log("digit has not been set");
+ 		{//	Log("digit has not been set");
 			assert(0);}
 		else if(*format=='*'){
 		//	Log("* is not set");
 			assert(0);
 					
-				}
+ 				}
 		
 			precision=-1;
 			if(*format=='.')
-			{
+ 			{
 		//		Log(". is not set");
-				assert(0);	
+			//	assert(0);
+			format++;	
 				if (isdigit(*format))
-				{//	Log(". is not set");
-					assert(0);	}
+			 	{//	Log(". is not set");
+					precision=skip_atoi(&format);	}
 				else if(*format=='*')
 				{
 			
 				//	Log("* is not set");
-					assert(0);
+					format++;
+					precision=va_arg(ap,int);
 			
 				}
 				if(precision<0)
 					precision=0;
 			}
 			//get the conversion qualifier
-	//		qualifier=-1;
-	//		if(*format=='h'||*format=='l'||*format=='L')
-	//		{
-	//			qualifier=*format;
-	//			++format;
-	//		
-	//		}
+			qualifier=-1;
+			if(*format=='h'||*format=='l'||*format=='L')
+			{
+				qualifier=*format;
+				++format;
+			
+			}
 	base=10;
 			switch(*format){	
 			case 'c': 
@@ -232,14 +292,23 @@ int vprintf(char *out,const char* fmt,va_list ap)
 			case 's':
 					s=va_arg(ap,char *);
 					len=strnlen(s,precision);
-					
+			//	char*k=s;	
 					if(!(flags&LEFT))
 						while(len<field_width--)
-							*str++=' ';
+						{//	*str++=' ';
+							myputc(' ',&str);
+						}	
+
 					for(i=0;i<len;++i)
-						*str++=*s++;
+					{//*str++=*s++;
+					myputc(*s++,&str);
+			
+
+					}
 					while(len<field_width--)
-						*str++=' ';
+					{//		*str++=' ';
+						myputc(' ',&str);
+					}
 					continue;
 			case 'x':
 				//	Log("I am in x");assert(0);
@@ -258,13 +327,25 @@ int vprintf(char *out,const char* fmt,va_list ap)
 			case 'u':break;
 			default:
 					*str++='%';
+			//	myputc('%',s_p);
 				   if(*format)
-				   *str++=*format;
+				   { 
+					  // *str++=*format;
+					myputc(*format,&str);
+				   
+				   }
 				   else
 				--format;
 			continue;	   ;
 			}
-			
+			if(qualifier=='l')
+				num=va_arg(ap,unsigned long);
+			else if(qualifier=='h')
+			{
+				num=va_arg(ap,int);
+				if(flags&SIGN)
+				num=(short)num;	
+			}
 			if(flags&SIGN)
 				num=va_arg(ap,int);
 			else
@@ -272,7 +353,9 @@ int vprintf(char *out,const char* fmt,va_list ap)
 
 			str=getnumber(str,num,base,field_width,precision,flags);
 	}
-		*str='\0';
+	if(*str!=0)
+	*str='\0';
+		
 		return (str-out);
 
 }
@@ -283,7 +366,12 @@ int vprintf(char *out,const char* fmt,va_list ap)
 
 int printf(const char *fmt, ...) {
 //Log("I am in printf");
-  	return 0;
+	va_list ap;
+	va_start(ap,fmt);
+int ret=vprintf(0,fmt,ap);
+va_end(ap);
+
+	return ret;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {

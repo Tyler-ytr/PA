@@ -21,7 +21,8 @@ int main() {
       key ^= 0x8000;
       down = true;
 	printf("I am here");
-
+	
+	printf("%d\n",key);
     }
 //	printf("I am here");
     if (key != _KEY_NONE) {

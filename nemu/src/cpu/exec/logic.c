@@ -18,11 +18,11 @@ make_EHelper(test) {
 
 make_EHelper(and) {
 //  TODO();
-	Log("id_dest: %x id_src=%x id_dest->width=%x id_src->width=%x",id_dest->val,id_src->val,id_dest->width,id_src->width);
+//	Log("id_dest: %x id_src=%x id_dest->width=%x id_src->width=%x",id_dest->val,id_src->val,id_dest->width,id_src->width);
 	rtl_sext(&t0,&id_src->val,id_src->width);	
 	rtl_and(&t2,&id_dest->val,&t0);
 	operand_write(id_dest,&t2);
-	Log(" t2: %x\n",t2);
+//	Log(" t2: %x\n",t2);
 	rtl_update_ZFSF(&t2,id_dest->width);
 	t0=0;	
 	rtl_set_CF(&t0);
@@ -59,6 +59,15 @@ make_EHelper(or) {
 make_EHelper(sar) {
 //  TODO();
   // unnecessary to update CF and OF in NEMU
+	if(id_dest->width==1)
+	{
+		id_dest->val=(int8_t)id_dest->val;
+	}else if(id_dest->width==2)
+	{
+		id_dest->val=(int16_t)id_dest->val;
+	}
+
+
 	rtl_sar(&t2,&id_dest->val,&id_src->val);
 	operand_write(id_dest,&t2);
 	rtl_update_ZFSF(&t2,id_dest->width);

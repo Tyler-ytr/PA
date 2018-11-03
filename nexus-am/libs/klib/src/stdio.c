@@ -236,11 +236,11 @@ const	 char *s;
 		field_width=-1;
 		if(isdigit(*format))
  		{//	Log("digit has not been set");
-			assert(0);}
+			field_width=skip_atoi(&format);}
 		else if(*format=='*'){
 		//	Log("* is not set");
-			assert(0);
-					
+		//	assert(0);
+		format++;			
  				}
 		
 			precision=-1;

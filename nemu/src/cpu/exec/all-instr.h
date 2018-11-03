@@ -37,6 +37,7 @@ make_EHelper(jmp_rm);
 make_EHelper(leave);
 make_EHelper(test);
 make_EHelper(not);
+make_EHelper(neg);
 make_EHelper(operand_size);
 make_EHelper(lea);
 make_EHelper(cmp);

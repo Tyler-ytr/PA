@@ -26,13 +26,13 @@ size_t video_write(uintptr_t reg, void *buf, size_t size) {
 	  int x=ctl->x,y=ctl->y,w=ctl->w,h=ctl->h;
 	  uint32_t *pixels=ctl->pixels;
 	  int k;
-	  if(w<inw(0x100)-x)
+	  if(w<400-x)
 		  k=w;
-	  else k=inw(0x100)-x;
+	  else k=400-x;
 	  int cp_bytes=sizeof(uint32_t)*k;
-	  for(int j=0;j<h&&y+j<(inl(0x100)>>16);j++)
+	  for(int j=0;j<h&&y+j<300;j++)
 	  {
-		  memcpy(&fb[(y+j)*inw(0x100)+x],pixels,cp_bytes);
+		  memcpy(&fb[(y+j)*400+x],pixels,cp_bytes);
 		  
 		  pixels+=w;
 	  

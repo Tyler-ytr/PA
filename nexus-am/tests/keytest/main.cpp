@@ -16,6 +16,7 @@ int main() {
     int key = read_key();
     bool down = false;
 //	printf("%d\n",key);
+	down=false;
     if (key & 0x8000) {
       key ^= 0x8000;
       down = true;

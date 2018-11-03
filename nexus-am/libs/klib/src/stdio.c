@@ -326,7 +326,7 @@ const	 char *s;
 					{
 					int *ip=va_arg(ap,int *);
 					*ip=(str-out);
-					}
+					}//maybe wrong when it is printf
 			case '%':
 				//	Log("I am in %");
 				//	assert(0);

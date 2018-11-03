@@ -30,7 +30,18 @@ make_EHelper(and) {
 
 	print_asm_template2(and);
 }
+make_EHelper(rol)
+{
+	rtl_shl(&t1,&id_dest->val,&id_src->val);//11010 shl 3 10000 shr 2 00110 rol 3 10110
+	rtl_shri(&t0,&id_dest->val,id_src->width*8-id_src->val);
+	rtl_or(&t2,&t0,&t1);
+	operand_write(id_dest,&t2);
 
+
+//CF,OF may be wrong wait for set
+
+  print_asm_template2(rol);
+}
 make_EHelper(xor) {
 //  TODO();
 	rtl_xor(&t2,&id_dest->val,&id_src->val);

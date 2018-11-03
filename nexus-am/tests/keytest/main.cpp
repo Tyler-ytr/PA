@@ -16,10 +16,12 @@ int main() {
     int key = read_key();
     bool down = false;
 //	printf("%d\n",key);
-	down=false;
+//	down=false;
     if (key & 0x8000) {
       key ^= 0x8000;
       down = true;
+	printf("I am here");
+
     }
 //	printf("I am here");
     if (key != _KEY_NONE) {

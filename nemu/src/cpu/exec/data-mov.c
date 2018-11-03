@@ -94,10 +94,17 @@ make_EHelper(cltd) {
 
 make_EHelper(cwtl) {
   if (decoding.is_operand_size_16) {
-    TODO();
+   // TODO();
+   rtl_lr(&t1,R_AL,1);
+t1=(int16_t)(int8_t)(uint8_t)t1;
+rtl_sr(R_AX,&t1,2);
   }
   else {
-    TODO();
+   // TODO();
+   rtl_lr(&t1,R_AX,2);
+   t1=(int32_t)(int16_t)(uint16_t)t1;
+   rtl_sr(R_EAX,&t1,4);
+
   }
 
   print_asm(decoding.is_operand_size_16 ? "cbtw" : "cwtl");

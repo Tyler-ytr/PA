@@ -311,23 +311,33 @@ const	 char *s;
 					}
 					continue;
 			case 'x':
-				//	Log("I am in x");assert(0);
+					base=16;break;
 			case 'X':
-				//	Log("I am in X");assert(0);
+					flags|=LARGE;
+					base=16;break;
 			case 'p':
 				//	Log("I am in p");assert(0);
 			case 'n':
-				//	Log("I am in n");assert(0);
+					if(qualifier=='1')
+					{
+					long *ip=va_arg(ap,long *);
+					*ip=(str-out);
+					}else
+					{
+					int *ip=va_arg(ap,int *);
+					*ip=(str-out);
+					}
 			case '%':
 				//	Log("I am in %");
-					assert(0);
+				//	assert(0);
+					myputc('%',&str);continue;
 			case 'd':
 			case 'i':
 					flags|=SIGN;
 			case 'u':break;
 			default:
-					*str++='%';
-			//	myputc('%',s_p);
+			//		*str++='%';
+				myputc('%',&str);
 				   if(*format)
 				   { 
 					  // *str++=*format;

@@ -16,11 +16,11 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
 			}
 			else
 			{	kbd->keydown=0;
-			return _KEY_NONE;
+			return 0x8000;
 			}
 
 			
-      return sizeof(_KbdReg);
+   //   return sizeof(_KbdReg);
     }
   }
   return 0;

@@ -16,7 +16,7 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
 			}
 			else
 			{	kbd->keydown=0;
-			return 0;
+			return 0x0000;
 			}
 
 			

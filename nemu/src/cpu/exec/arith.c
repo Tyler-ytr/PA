@@ -2,7 +2,7 @@
 
 make_EHelper(add) {
 //  TODO();
-Log("I am in add");  
+//Log("I am in add");  
 	rtl_add(&t2,&id_dest->val,&id_src->val);
 	operand_write(id_dest,&t2);
 

@@ -20,7 +20,7 @@ int main() {
     if (key & 0x8000) {
       key ^= 0x8000;
       down = true;
-	printf("I am here");
+//	printf("I am here");
 	
 	printf("%d\n",key);
     }

@@ -13,7 +13,7 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
 			{	kbd->keydown=1;
 	//		return 0x8000;
 			return _KEY_NONE;
-      return sizeof(_KbdReg);
+   //   return sizeof(_KbdReg);
 			}
 			else
 			{	kbd->keydown=0;

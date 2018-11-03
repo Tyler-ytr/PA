@@ -9,7 +9,7 @@ size_t input_read(uintptr_t reg, void *buf, size_t size) {
      // kbd->keydown = 0;
      // kbd->keycode = _KEY_NONE;
 			kbd->keycode=inl(0x60);
-			if(kbd->keycode!=_KEY_NONE)
+			if(kbd->keycode&0x8000)
 			{	kbd->keydown=1;
 	//		return 0x8000;
 	//		return _KEY_NONE;

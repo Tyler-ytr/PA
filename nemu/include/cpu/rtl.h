@@ -81,7 +81,7 @@ static inline void interpret_rtl_lm(rtlreg_t *dest, const rtlreg_t* addr, int le
   *dest = vaddr_read(*addr, len);
 }
 
-static  void interpret_rtl_sm(const rtlreg_t* addr, const rtlreg_t* src1, int len) {
+static inline void interpret_rtl_sm(const rtlreg_t* addr, const rtlreg_t* src1, int len) {
   vaddr_write(*addr, *src1, len);
 }
 //write src1 into addr
@@ -170,7 +170,7 @@ static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   
 }
 
-static inline void rtl_push(const rtlreg_t* src1) {
+  void rtl_push(const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
  // TODO();

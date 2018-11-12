@@ -317,6 +317,12 @@ const	 char *s;
 					base=16;break;
 			case 'p':
 				//	Log("I am in p");assert(0);
+					if(field_width==-1)
+					{	field_width=2*sizeof(void*);
+					flags|=ZEROPAD;
+					}
+			str=getnumber(str,(unsigned long)va_arg(ap,void*),16,field_width,precision,flags);
+						
 			case 'n':
 					if(qualifier=='1')
 					{

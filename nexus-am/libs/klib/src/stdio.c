@@ -322,7 +322,7 @@ const	 char *s;
 					flags|=ZEROPAD;
 					}
 			str=getnumber(str,(unsigned long)va_arg(ap,void*),16,field_width,precision,flags);
-						
+		continue;				
 			case 'n':
 					if(qualifier=='1')
 					{

@@ -383,7 +383,7 @@ const	 char *s;
 int printf(const char *fmt, ...) {
 //Log("I am in printf")
 //only work for buf<200,maybe out
-char buf[2000];
+char buf[200];
 	va_list ap;
 	va_start(ap,fmt);
 int ret=vprintf(buf,fmt,ap);

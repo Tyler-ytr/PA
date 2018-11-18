@@ -9,7 +9,7 @@ void vecnull();
 _Context* irq_handle(_Context *tf) {
 	//assert(0);
 	_Context *next = tf;
-//	printf("0x%x\n",tf);
+	printf("0x%x\n",tf);
 //	assert(0);
   if (user_handler) {
     _Event ev;

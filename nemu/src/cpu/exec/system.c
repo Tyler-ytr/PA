@@ -71,8 +71,8 @@ make_EHelper(iret) {
 	rtl_pop(&cpu.eflags.value);
 	printf("jmp_eip: 0x%x\n",decoding.jmp_eip);
 	//rtl_pop(&cpu.eflags.value);
-	decoding.is_jmp=1;	
-
+	//decoding.is_jmp=1;	
+	rtl_j(decoding.jmp_eip);
   print_asm("iret");
 }
 

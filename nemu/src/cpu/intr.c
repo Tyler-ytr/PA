@@ -17,7 +17,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
 	eip_low=vaddr_read(idtr_base+NO*8,4)&0x0000ffff;
 	eip_high=vaddr_read(idtr_base+NO*8+4,4)&0xffff0000;
 	offset=eip_low|eip_high;
-	decoding.jmp_eip=offset;
+//	decoding.jmp_eip=offset;
 	rtl_j(offset);
 //	decoding.jmp_eip=offset;
 //	decoding.is_jmp=true;

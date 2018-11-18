@@ -47,6 +47,7 @@ typedef struct {
  };
 
   vaddr_t eip;
+  unsigned int cs;
   EFLAGS eflags;
 
 

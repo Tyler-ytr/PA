@@ -316,7 +316,8 @@ const	 char *s;
 					flags|=LARGE;
 					base=16;break;
 			case 'p':
-					assert(0);
+				//	assert(0);
+
 				//	Log("I am in p");assert(0);
 					if(field_width==-1)
 					{	field_width=2*sizeof(void*);

@@ -64,6 +64,7 @@ make_EHelper(int) {
 
 make_EHelper(iret) {
 //  TODO();
+	printf("jmp_eip: 0x%x\n",decoding.jmp_eip);
 	rtl_pop(&decoding.jmp_eip);
 	rtl_pop(&cpu.cs);
 	rtl_pop(&cpu.eflags.value);

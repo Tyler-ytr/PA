@@ -1,6 +1,6 @@
 #include <am.h>
 #include <x86.h>
-
+//#include <stdio.h>
 static _Context* (*user_handler)(_Event, _Context*) = NULL;
 
 void vectrap();
@@ -18,6 +18,7 @@ _Context* irq_handle(_Context *tf) {
     if (next == NULL) {
       next = tf;
     }
+//	printf("0x%x\n",tf);
   }
 
   return next;

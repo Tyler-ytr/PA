@@ -17,8 +17,9 @@ _Context* irq_handle(_Context *tf) {
       default: ev.event = _EVENT_ERROR; break;
     }
 	
-	assert(0);
+	//assert(0);
     next = user_handler(ev, tf);
+	assert(0);
     if (next == NULL) {
       next = tf;
     }

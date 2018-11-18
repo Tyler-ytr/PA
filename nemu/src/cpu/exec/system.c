@@ -10,7 +10,22 @@ void difftest_skip_ref();
 void difftest_skip_dut();
 
 make_EHelper(lidt) {
-  TODO();
+//  TODO();
+	cpu.idtr.limit=vaddr_read(id_dest->addr,2);
+//	rtl_lm(&cpu.idtr.limit,&id_dest->addr,2);
+	
+	if(decoding.is_operand_size_16)
+	{
+//		rtl_lm(&cpu.idtr.limit
+	cpu.idtr.base=vaddr_read(id_dest->addr+2,4)&0x00ffffff;
+	}
+	else
+	{
+	cpu.idtr.base=vaddr_read(id_dest->addr+2,4);
+	}
+
+
+
 
   print_asm_template1(lidt);
 }

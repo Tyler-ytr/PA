@@ -49,7 +49,10 @@ typedef struct {
   vaddr_t eip;
   unsigned int cs;
   EFLAGS eflags;
-
+	struct{
+	uint16_t limit;
+	uint32_t base;
+	}idtr;//in i386 p156
 
 
 

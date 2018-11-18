@@ -12,11 +12,12 @@ _Context* irq_handle(_Context *tf) {
   if (user_handler) {
     _Event ev;
 	
-	assert(0);
+	//assert(0);
     switch (tf->irq) {
       default: ev.event = _EVENT_ERROR; break;
     }
-
+	
+	assert(0);
     next = user_handler(ev, tf);
     if (next == NULL) {
       next = tf;

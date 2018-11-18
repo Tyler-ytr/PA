@@ -10,7 +10,7 @@ _Context* irq_handle(_Context *tf) {
 	//assert(0);
 	_Context *next = tf;
 //	printf("tf:0x%x,eax:0x%x,ebx:0x%x,ecx:0x%x,edx:0x%x,esp:0x%x\n",tf,cpu.eax,cpu.ebx,cpu.ecx,cpu.edx,esp);
-	printf("tf:0x%x\n",tf);
+//	printf("tf:0x%x\n",tf);
 //	assert(0);
   if (user_handler) {
     _Event ev;

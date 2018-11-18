@@ -11,6 +11,8 @@ _Context* irq_handle(_Context *tf) {
 	_Context *next = tf;
   if (user_handler) {
     _Event ev;
+	
+	assert(0);
     switch (tf->irq) {
       default: ev.event = _EVENT_ERROR; break;
     }

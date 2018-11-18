@@ -26,7 +26,21 @@ operand_write(id_dest,&t2);
 }
 
 make_EHelper(pusha) {
-  TODO();
+//  TODO();
+	//don't check the difference of 32 or 16,may cause trouble
+	t1=cpu.esp;
+	rtl_push(&cpu.eax);
+	rtl_push(&cpu.ecx);
+	rtl_push(&cpu.edx);
+	rtl_push(&cpu.ebx);
+	rtl_push(&t1);
+	
+	rtl_push(&cpu.ebp);
+	rtl_push(&cpu.esi);
+	rtl_push(&cpu.edi);
+
+
+
 
   print_asm("pusha");
 }

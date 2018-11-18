@@ -9,6 +9,7 @@ void vecnull();
 _Context* irq_handle(_Context *tf) {
 	//assert(0);
 	_Context *next = tf;
+	printf("0x%x\n",tf);
   if (user_handler) {
     _Event ev;
 	
@@ -25,8 +26,8 @@ _Context* irq_handle(_Context *tf) {
     }
 	//printf("0x%x\n",tf);
   }
-	assert(0);
-	printf("0x%x\n",tf);
+//	assert(0);
+//	printf("0x%x\n",tf);
 
   return next;
 }

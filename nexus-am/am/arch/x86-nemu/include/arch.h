@@ -12,10 +12,10 @@ struct _Context {
 //  uintptr_t esi, ebx, eax, eip, edx, err, eflags, ecx, cs, esp, edi, ebp;a
  uintptr_t edi,esi,ebp,esp,ebx,edx,ecx,eax;//from pusha;
 
- // struct _Protect *prot;
+  struct _Protect *prot;
   int       irq;
   uintptr_t err,eip,cs,eflags;//from int;
-  struct _Protect *prot;
+  //struct _Protect *prot;
 };
 
 #define GPR1 eax

@@ -18,8 +18,9 @@ _Context* irq_handle(_Context *tf) {
     if (next == NULL) {
       next = tf;
     }
-	printf("0x%x\n",tf);
+	//printf("0x%x\n",tf);
   }
+	printf("0x%x\n",tf);
 
   return next;
 }

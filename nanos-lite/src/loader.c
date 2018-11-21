@@ -3,13 +3,14 @@
 #define DEFAULT_ENTRY 0x4000000
 extern size_t get_ramdisk_size();
 size_t ramdisk_write(const void *buf,size_t offset,size_t len);
-
+size_t ramdisk_read(void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
 //  TODO();a
 	size_t filelen=get_ramdisk_size();
-
+char a[10000] ;
+filelen=ramdisk_read(&a,0,filelen);
 //	filelen=
-	filelen=ramdisk_write((void*)DEFAULT_ENTRY,0,filelen);
+	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY,filelen);
 	printf("%d\n",filelen);
   return DEFAULT_ENTRY;
 }

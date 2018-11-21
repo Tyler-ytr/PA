@@ -74,7 +74,7 @@ static char* getnumber(char *str,long num,int base,int size,int precision,int ty
 	if(base<2||base>36)
 	return 0 ;	
 	c=(type&ZEROPAD)?'0':' ';
-
+	sign=0;
 
 
 	if(type&SIGN)
@@ -109,7 +109,7 @@ static char* getnumber(char *str,long num,int base,int size,int precision,int ty
 	i=0;
 	if(num==0)
 	{
-	tmp[i++]=0;
+	tmp[i++]='0';
 	}
 	else
 	{

@@ -29,6 +29,7 @@ make_EHelper(pusha) {
 //  TODO();
 	//don't check the difference of 32 or 16,may cause trouble
 	t1=cpu.esp;
+	printf("In pusha\n");
 	rtl_push(&cpu.eax);
 	printf("eax:0x%x\n",cpu.eax);	
 	rtl_push(&cpu.ecx);

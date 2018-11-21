@@ -26,7 +26,7 @@ _Context* irq_handle(_Context *tf) {
   if (user_handler) {
     _Event ev;
 	
-	printf("tf->irq2:0x%x\n",tf->irq);
+//	printf("tf->irq2:0x%x\n",tf->irq);
 	//assert(0);
     switch (tf->irq) {
 	  case 0x80: ev.event=_EVENT_SYSCALL;break;

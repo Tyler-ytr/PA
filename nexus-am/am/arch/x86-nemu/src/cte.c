@@ -21,7 +21,7 @@ _Context* irq_handle(_Context *tf) {
 	      printf("tf->ecx:0x%x\n",tf->ecx);
 	      printf("tf->eax:0x%x\n",tf->eax);
 	//
-	assert(0);
+//	assert(0);
   if (user_handler) {
     _Event ev;
 	

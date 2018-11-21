@@ -65,7 +65,15 @@ make_EHelper(popa) {
 	rtl_pop(&cpu.esi);
 	rtl_pop(&cpu.edi);
 */
-
+	printf("In popa\n");
+	printf("edi:0x%x\n",cpu.edi);	
+	printf("esi:0x%x\n",cpu.esi);	
+	printf("ebp:0x%x\n",cpu.ebp);	
+	printf("esp:0x%x\n",cpu.esp);	
+	printf("ebx:0x%x\n",cpu.ebx);	
+	printf("edx:0x%x\n",cpu.edx);	
+	printf("ecx:0x%x\n",cpu.ecx);	
+	printf("eax:0x%x\n",cpu.eax);	
 	rtl_pop(&cpu.edi);
 	rtl_pop(&cpu.esi);
 	rtl_pop(&cpu.ebp);

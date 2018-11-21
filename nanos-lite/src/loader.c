@@ -13,8 +13,10 @@ filelen=ramdisk_read(&a,0,filelen);
 //	filele=
 //	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY-ramdisk_start,filelen);
 	//
+	size_t de=DEFAULT_ENTRY;
 	printf("%d\n",filelen);
 	printf("%d\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
+	printf("%d\n",(size_t)de-ramdisk_start);
   return DEFAULT_ENTRY;
 }
 

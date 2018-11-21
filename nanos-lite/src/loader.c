@@ -11,7 +11,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 char a[10000] ;
 filelen=ramdisk_read(&a,0,filelen);
 //	filelen=
-	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY-ramdisk_start,filelen);
+//	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY-ramdisk_start,filelen);
+	//
 	printf("%d\n",filelen);
   return DEFAULT_ENTRY;
 }

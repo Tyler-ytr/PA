@@ -33,7 +33,7 @@ make_EHelper(pusha) {
 	rtl_push(&cpu.eax);
 	printf("eax:0x%x\n",cpu.eax);	
 	rtl_push(&cpu.ecx);
-	printf("ecx:0x%x\n",cpu.eax);	
+	printf("ecx:0x%x\n",cpu.ecx);	
 	rtl_push(&cpu.edx);
 	printf("edx:0x%x\n",cpu.edx);	
 	rtl_push(&cpu.ebx);

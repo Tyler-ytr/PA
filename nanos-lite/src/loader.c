@@ -9,11 +9,12 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 //  TODO();a
 	size_t filelen=get_ramdisk_size();
 char a[10000] ;
-filelen=ramdisk_read(&a,0,filelen);
+filelen=ramdisk_read(&a,ramdisk_start,filelen);
 //	filelen=
 //	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY-ramdisk_start,filelen);
 	//
 	printf("%d\n",filelen);
+	printf("%d\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
   return DEFAULT_ENTRY;
 }
 

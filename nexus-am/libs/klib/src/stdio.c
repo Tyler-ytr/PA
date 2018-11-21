@@ -33,12 +33,12 @@ size_t strnlen(const char *s,size_t count)
 
 void myputc(char c,char** s_h)
 {
-	if(*s_h==0)_putc(c);
-	else
-	{
+//	if(*s_h==0)_putc(c);
+//	else
+//	{
 	**s_h=c;
 	(*s_h)++;
-	}
+//	}
 }
 
 static inline int isdigit(int ch)

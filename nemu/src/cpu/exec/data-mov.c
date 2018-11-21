@@ -30,14 +30,22 @@ make_EHelper(pusha) {
 	//don't check the difference of 32 or 16,may cause trouble
 	t1=cpu.esp;
 	rtl_push(&cpu.eax);
+	printf("eax:0x%x\n",cpu.eax);	
 	rtl_push(&cpu.ecx);
+	printf("ecx:0x%x\n",cpu.eax);	
 	rtl_push(&cpu.edx);
+	printf("edx:0x%x\n",cpu.edx);	
 	rtl_push(&cpu.ebx);
+	printf("ebx:0x%x\n",cpu.ebx);	
 	rtl_push(&t1);
+	printf("esp:0x%x\n",cpu.esp);	
 	
 	rtl_push(&cpu.ebp);
+	printf("ebp:0x%x\n",cpu.ebp);	
 	rtl_push(&cpu.esi);
+	printf("esi:0x%x\n",cpu.esi);	
 	rtl_push(&cpu.edi);
+	printf("edi:0x%x\n",cpu.edi);	
 
 
 

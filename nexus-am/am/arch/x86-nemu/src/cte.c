@@ -12,7 +12,7 @@ _Context* irq_handle(_Context *tf) {
 	_Context *next = tf;
 //	printf("tf:0x%x,eax:0x%x,ebx:0x%x,ecx:0x%x,edx:0x%x,esp:0x%x\n",tf,cpu.eax,cpu.ebx,cpu.ecx,cpu.edx,esp);
 //	printf("tf:0x%x\n",tf);
-/*	printf("tf->irq:0x%x\n",tf->irq);
+	printf("tf->irq:0x%x\n",tf->irq);
 	  printf("tf:0x%x\n",tf);
 	  printf("tf->edi:0x%x\n",tf->edi); 
 	      printf("tf->esi:0x%x\n",tf->esi);
@@ -20,7 +20,7 @@ _Context* irq_handle(_Context *tf) {
 	      printf("tf->edx:0x%x\n",tf->edx);
 	      printf("tf->ebx:0x%x\n",tf->ebx);
 	      printf("tf->ecx:0x%x\n",tf->ecx);
-	      printf("tf->eax:0x%x\n",tf->eax);*/
+	      printf("tf->eax:0x%x\n",tf->eax);
 	//
 //	assert(0);
   if (user_handler) {

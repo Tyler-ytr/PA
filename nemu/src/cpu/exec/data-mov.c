@@ -54,7 +54,7 @@ make_EHelper(pusha) {
 }
 
 make_EHelper(popa) {
- // TODO();
+  TODO();
 /*	rtl_pop(&cpu.eax);
 	rtl_pop(&cpu.ecx);
 	rtl_pop(&cpu.edx);

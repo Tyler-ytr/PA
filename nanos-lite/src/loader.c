@@ -8,10 +8,10 @@ size_t ramdisk_read(void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
 //  TODO();a
 	size_t filelen=get_ramdisk_size();
-char a[10000] ;
-filelen=ramdisk_read(&a,0,filelen);
+//char a[10000] ;
+//filelen=ramdisk_read(&a,0,filelen);
 //	filele=
-//	filelen=ramdisk_write(&a,(size_t)DEFAULT_ENTRY-ramdisk_start,filelen);
+	filelen=ramdisk_read((void *)DEFAULT_ENTRY,0,filelen);
 	//
 	size_t de=DEFAULT_ENTRY;
 	printf("%d\n",filelen);

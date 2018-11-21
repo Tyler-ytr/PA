@@ -7,7 +7,10 @@ size_t ramdisk_write(const void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
 //  TODO();a
 	size_t filelen=get_ramdisk_size();
+
+//	filelen=
 	filelen=ramdisk_write((void*)DEFAULT_ENTRY,0,filelen);
+	printf("%d\n",filelen);
   return DEFAULT_ENTRY;
 }
 

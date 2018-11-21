@@ -13,10 +13,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 //	filele=
 	filelen=ramdisk_read((void *)DEFAULT_ENTRY,0,filelen);
 	//
-	size_t de=DEFAULT_ENTRY;
-	printf("%d\n",filelen);
-	printf("%x\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
-	printf("%d\n",(size_t)de-ramdisk_start);
+//	size_t de=DEFAULT_ENTRY;
+//	printf("%d\n",filelen);
+//	printf("%x\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
+//	printf("%d\n",(size_t)de-ramdisk_start);
   return DEFAULT_ENTRY;
 }
 

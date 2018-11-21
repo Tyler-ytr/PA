@@ -371,7 +371,7 @@ const	 char *s;
 
 			str=getnumber(str,num,base,field_width,precision,flags);
 	}
-	if(*str!='0')
+//	if(*str!='0')
 	*str='\0';
 		
 		return (str-out);

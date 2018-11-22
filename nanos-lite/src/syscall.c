@@ -13,8 +13,8 @@ printf("a0(ebx): 0x%x\n",a[1]);
 printf("a0(ecx): 0x%x\n",a[2]);
 printf("a0(edx): 0x%x\n",a[3]);
   switch (a[0]) {
-	  case SYS_exit:_halt(a[1]);					//ID=0
-	  case SYS_yield:_yield();return 0; //ID=1
+	  case SYS_exit:Log("I am before halt");_halt(a[1]);					//ID=0
+	  case SYS_yield:_yield();Log("I experienced tield");return 0; //ID=1
 	 
     default: panic("Unhandled syscall ID = %d", a[0]);
   }

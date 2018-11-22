@@ -74,7 +74,7 @@ void cpu_exec(uint64_t n) {
 	WP* tw=check_watch(NULL);
 	while(tw!=NULL)
 	{
-        printf("w[%d] changed : %s=%d | 0x%x\n",tw->NO,tw->str,tw->value,tw->value);
+        Log("w[%d] changed : %s=%d | 0x%x",tw->NO,tw->str,tw->value,tw->value);
 		if(nemu_state!=NEMU_END)
 		{		nemu_state=NEMU_STOP;	}
 		tw=check_watch(tw);	

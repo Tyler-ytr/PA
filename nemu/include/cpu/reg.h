@@ -47,7 +47,7 @@ typedef struct {
  };
 
   vaddr_t eip;
-  unsigned int cs;
+  unsigned int cs;//it should be 16bit
   EFLAGS eflags;
 	struct{
 	uint16_t limit;

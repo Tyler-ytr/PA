@@ -39,7 +39,7 @@ make_EHelper(pusha) {
 	rtl_push(&cpu.ebx);
 	printf("ebx:0x%x\n",cpu.ebx);	
 	rtl_push(&t1);
-	printf("esp:0x%x\n",cpu.esp);	
+	printf("esp:0x%x\n",t1);	
 	
 	rtl_push(&cpu.ebp);
 	printf("ebp:0x%x\n",cpu.ebp);	
@@ -70,7 +70,7 @@ make_EHelper(popa) {
 	printf("edi:0x%x\n",cpu.edi);	
 	printf("esi:0x%x\n",cpu.esi);	
 	printf("ebp:0x%x\n",cpu.ebp);	
-	printf("esp:0x%x\n",cpu.esp);	
+	printf("esp:0x%x\n",t1);	
 	printf("ebx:0x%x\n",cpu.ebx);	
 	printf("edx:0x%x\n",cpu.edx);	
 	printf("ecx:0x%x\n",cpu.ecx);	

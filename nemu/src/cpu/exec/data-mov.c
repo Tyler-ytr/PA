@@ -29,24 +29,24 @@ make_EHelper(pusha) {
 //  TODO();
 	//don't check the difference of 32 or 16,may cause trouble
 	t1=cpu.esp;
-	printf("In pusha\n");
+//	printf("In pusha\n");
 	rtl_push(&cpu.eax);
-	printf("eax:0x%x\n",cpu.eax);	
+//	printf("eax:0x%x\n",cpu.eax);	
 	rtl_push(&cpu.ecx);
-	printf("ecx:0x%x\n",cpu.ecx);	
+//	printf("ecx:0x%x\n",cpu.ecx);	
 	rtl_push(&cpu.edx);
-	printf("edx:0x%x\n",cpu.edx);	
+//	printf("edx:0x%x\n",cpu.edx);	
 	rtl_push(&cpu.ebx);
-	printf("ebx:0x%x\n",cpu.ebx);	
+//	printf("ebx:0x%x\n",cpu.ebx);	
 	rtl_push(&t1);
-	printf("esp:0x%x\n",t1);	
+//	printf("esp:0x%x\n",t1);	
 	
 	rtl_push(&cpu.ebp);
-	printf("ebp:0x%x\n",cpu.ebp);	
+//	printf("ebp:0x%x\n",cpu.ebp);	
 	rtl_push(&cpu.esi);
-	printf("esi:0x%x\n",cpu.esi);	
+//	printf("esi:0x%x\n",cpu.esi);	
 	rtl_push(&cpu.edi);
-	printf("edi:0x%x\n",cpu.edi);	
+//	printf("edi:0x%x\n",cpu.edi);	
 
 
 
@@ -66,7 +66,7 @@ make_EHelper(popa) {
 	rtl_pop(&cpu.esi);
 	rtl_pop(&cpu.edi);
 */
-	printf("In popa\n");
+/*	printf("In popa\n");
 	printf("edi:0x%x\n",cpu.edi);	
 	printf("esi:0x%x\n",cpu.esi);	
 	printf("ebp:0x%x\n",cpu.ebp);	
@@ -74,7 +74,7 @@ make_EHelper(popa) {
 	printf("ebx:0x%x\n",cpu.ebx);	
 	printf("edx:0x%x\n",cpu.edx);	
 	printf("ecx:0x%x\n",cpu.ecx);	
-	printf("eax:0x%x\n",cpu.eax);	
+	printf("eax:0x%x\n",cpu.eax);	*/
 	rtl_pop(&cpu.edi);
 	rtl_pop(&cpu.esi);
 	rtl_pop(&cpu.ebp);

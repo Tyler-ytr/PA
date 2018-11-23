@@ -1,6 +1,12 @@
 #include "common.h"
 #include "syscall.h"
+int sys_yield()
+{
+	_yield();
+	return 0;
 
+
+}
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;//eax
@@ -25,10 +31,17 @@ printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);
   switch (a[0]) {
 	  case SYS_exit:Log("I am before halt");_halt(a[1]);					//ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1
-	  case SYS_yield:c->GPR1=1;Log("I experienced yield");break; //ID=1
-	 
+	  case SYS_yield:{c->GPRx=sys_yield();Log("I experienced yield");
+						 
+printf("a0(eax): 0x%x\n",a[0]);
+printf("a1(ebx): 0x%x\n",a[1]);
+printf("a2(ecx): 0x%x\n",a[2]);
+printf("a3(edx): 0x%x\n",a[3]);
+						 break; //ID=1
+					
+					 }
     default: panic("Unhandled syscall ID = %d", a[0]);
-  }
+  } 
 
   return NULL;
 }

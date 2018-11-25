@@ -8,7 +8,7 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;//ebx
   a[2] = c->GPR3;//ecx
   a[3] = c->GPR4;//edx
-/*Log("I am in syscall");
+Log("I am in syscall");
     printf("c ->irq:0x%x\n",c->irq);                                                  
 	printf(":0x%x\n",c); 
 	printf("c->edi:0x%x\n",c->edi);                                               
@@ -23,7 +23,7 @@ _Context* do_syscall(_Context *c) {
 printf("a0(eax): 0x%x\n",a[0]);
 printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
-printf("a3(edx): 0x%x\n",a[3]);*/
+printf("a3(edx): 0x%x\n",a[3]);
   switch (a[0]) {
 	  case SYS_exit:_halt(a[1]);					//ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();
@@ -37,7 +37,9 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					 }
 		case SYS_open:Log("wait for sysopen");assert(0);
 		case SYS_read:Log("wait for sysread");assert(0);
-		case SYS_write:Log("wait for syswrite");assert(0);
+		case SYS_write:{
+					   
+					  Log("wait for syswrite");assert(0);}
     default: panic("Unhandled syscall ID = %d", a[0]);
   } 
 

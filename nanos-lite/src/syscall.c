@@ -37,7 +37,7 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					 }
 		case SYS_open:Log("wait for sysopen");assert(0);
 		case SYS_read:Log("wait for sysread");assert(0);
-		case SYS_write:{
+		case SYS_write:{Log("I am in write");
 					//	   int len=a[3];
 					//	   void*buf=(void *)a[2];
 					//	   if(a[1]==1||a[1]==2)

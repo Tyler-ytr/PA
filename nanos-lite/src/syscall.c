@@ -48,7 +48,7 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_brk:{
 					 
 					 
-					 
+					return 0; 
 					 Log("wait for sysbrk");assert(0);
 					 }
 		

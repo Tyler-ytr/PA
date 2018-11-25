@@ -45,7 +45,15 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 													}
 							break;	  
 					  Log("wait for syswrite");assert(0);}
-    default: panic("Unhandled syscall ID = %d", a[0]);
+		case SYS_brk:{
+					 
+					 
+					 
+					 Log("wait for sysbrk");assert(0);
+					 }
+		
+		
+		default: panic("Unhandled syscall ID = %d", a[0]);
   } 
 
   return NULL;

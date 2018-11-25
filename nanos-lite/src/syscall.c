@@ -1,7 +1,7 @@
 #include "common.h"
 #include "syscall.h"
 int sys_yield();
-
+int sys_write(int fd,const void*buf,size_t len);
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;//eax
@@ -38,13 +38,13 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_open:Log("wait for sysopen");assert(0);
 		case SYS_read:Log("wait for sysread");assert(0);
 		case SYS_write:{
-						   int len=a[3];
-						   void*buf=(void *)a[2];
-						   if(a[1]==1||a[1]==2)
-						   {					  for(int i = 0; i < len; i++) {
-											_putc(((char*)buf)[i]);
-													}}
-					c->GPRx=len;
+					//	   int len=a[3];
+					//	   void*buf=(void *)a[2];
+					//	   if(a[1]==1||a[1]==2)
+					//	   {					  for(int i = 0; i < len; i++) {
+					//						_putc(((char*)buf)[i]);
+					//								}}
+					c->GPRx=sys_write(a[1],(void*)a[2],a[3]);
 							break;	  
 					  Log("wait for syswrite");assert(0);}
 		case SYS_brk:{
@@ -66,4 +66,26 @@ int sys_yield()
 {
 	_yield();
 	return 0;
+}
+
+int sys_write(int fd,const void*buf,size_t len)
+{
+	int time=0;
+	if(fd==1||fd==2)
+	{
+	for(;len>0;len--)
+	{
+		_putc(((char*)buf)[time]);
+		
+	time++;
+	
+	
+	}
+	
+	}	
+
+return time;
+
+
+
 }

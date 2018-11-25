@@ -38,7 +38,12 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_open:Log("wait for sysopen");assert(0);
 		case SYS_read:Log("wait for sysread");assert(0);
 		case SYS_write:{
-					   
+						   int len=a[3];
+						   void*buf=(void *)a[2];
+					  for(int i = 0; i < len; i++) {
+											_putc(((char*)buf)[i]);
+													}
+							break;	  
 					  Log("wait for syswrite");assert(0);}
     default: panic("Unhandled syscall ID = %d", a[0]);
   } 

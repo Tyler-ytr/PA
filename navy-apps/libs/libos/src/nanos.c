@@ -42,7 +42,7 @@ int _write(int fd, void *buf, size_t count){
 
 void *_sbrk(intptr_t increment){
 	intptr_t oldplace=program_break;
-	if(_syscall(SYS_brk,oldplace+increment,0,0)==0)
+	if(_syscall_(SYS_brk,oldplace+increment,0,0)==0)
 	{
 	program_break+=increment;
 	return (void *)oldplace;

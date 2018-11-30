@@ -48,7 +48,7 @@ void init_fs() {
 
 
 int fs_open(const char*pathname,int flags,int mode)
-{
+{Log("I am in open");
 	for(int i=0;i<NR_FILES;i++)
 	{
 	Log("filename:%s",file_table[i].name);
@@ -61,7 +61,7 @@ return -1;
 }
 
 ssize_t fs_read(int fd,void *buf,size_t len)
-{
+{Log("I am in read");
 	ssize_t fsize=fs_filesz(fd);
 	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);

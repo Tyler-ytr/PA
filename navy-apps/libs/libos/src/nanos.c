@@ -60,13 +60,15 @@ int _read(int fd, void *buf, size_t count) {
 }
 
 int _close(int fd) {
-  _exit(SYS_close);
-  return 0;
+ // _exit(SYS_close);
+  
+  return _syscall_(SYS_close,(intptr_t)fd,(intptr_t)0,(intptr_t)0);
 }
 
 off_t _lseek(int fd, off_t offset, int whence) {
-  _exit(SYS_lseek);
-  return 0;
+//  _exit(SYS_lseek);
+ assert(0); 
+  return _syscall_(SYS_lseek,(intptr_t)fd,(intptr_t)offset,(intptr_t)whence);
 }
 
 int _execve(const char *fname, char * const argv[], char *const envp[]) {

@@ -4,7 +4,7 @@
 int main() {
   FILE *fp = fopen("/share/texts/num", "r+");
   assert(fp);
-	Log("I am before fseek");
+	printf("I am before fseek\n");
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
   assert(size == 5000);

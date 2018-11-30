@@ -49,6 +49,11 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					c->GPRx=sys_write(a[1],(void*)a[2],a[3]);
 							break;	  
 					  Log("wait for syswrite");assert(0);}
+		
+		case SYS_kill:Log("wait for syskill");assert(0);
+		case SYS_getpid:Log("wait for sysgetpid");assert(0);
+		case SYS_close:Log("wait for sysclose");assert(0);
+		case SYS_lseek:Log("wait for syslseek");assert(0);
 		case SYS_brk:{
 					 
 			c->GPR1=0;	 
@@ -57,6 +62,16 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					 Log("wait for sysbrk");assert(0);
 					 }
 		
+		case SYS_fstat:Log("wait for syslfstat");assert(0);
+		case SYS_time:Log("wait for sysltime");assert(0);
+		case SYS_signal:Log("wait for syssignal");assert(0);
+		case SYS_execve:Log("wait for sysexecve");assert(0);
+		case SYS_fork:Log("wait for sysfork");assert(0);
+		case SYS_link:Log("wait for syslink");assert(0);
+		case SYS_unlink:Log("wait for sysunlink");assert(0);
+		case SYS_wait:Log("wait for syswait");assert(0);
+		case SYS_times:Log("wait for systime");assert(0);
+		case SYS_gettimeofday:Log("wait for sysgettimeofday");assert(0);
 		
 		default: panic("Unhandled syscall ID = %d", a[0]);
   } 

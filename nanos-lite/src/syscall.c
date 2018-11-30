@@ -59,7 +59,9 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		
 		case SYS_kill:Log("wait for syskill");assert(0);
 		case SYS_getpid:Log("wait for sysgetpid");assert(0);
-		case SYS_close:Log("wait for sysclose");assert(0);
+		case SYS_close:{//Log("wait for sysclose");assert(0);
+					   c->GPRx=fs_close((int)a[1]);
+					   }
 		case SYS_lseek:{//Log("wait for syslseek");
 						  // assert(0);
 					   c->GPRx=fs_lseek((int)a[1],(off_t)a[2],(int)a[3]);break;}

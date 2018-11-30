@@ -15,10 +15,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 Log("I am after get_ramdisk");
 	filelen=ramdisk_read((void *)DEFAULT_ENTRY,0,filelen);
 	Log("I am pass ramdisk_read in loader");
-//	size_t de=DEFAULT_ENTRY;
-//	printf("%d\n",filelen);
-//	printf("%x\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
-//	printf("%d\n",(size_t)de-ramdisk_start);
+	size_t de=DEFAULT_ENTRY;
+	printf("%d\n",filelen);
+printf("%x\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
+	printf("%d\n",(size_t)de-ramdisk_start);
   return DEFAULT_ENTRY;
 }
 

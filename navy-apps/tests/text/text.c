@@ -5,9 +5,9 @@ int main() {
 //	printf("I am before fseek\n");
   FILE *fp = fopen("/share/texts/num", "r+");
   assert(fp);
-	printf("I am before fseek\n");
+//	printf("I am before fseek\n");
   fseek(fp, 0, SEEK_END);
-	printf("I am after fseek\n");
+//	printf("I am after fseek\n");
   long size = ftell(fp);
   assert(size == 5000);
 
@@ -18,6 +18,7 @@ int main() {
     assert(n == i + 1);
   }
 
+	printf("I am after fscanf\n");
   fseek(fp, 0, SEEK_SET);
   for (i = 0; i < 500; i ++) {
     fprintf(fp, "%4d\n", i + 1 + 1000);

@@ -67,7 +67,7 @@ int _close(int fd) {
 
 off_t _lseek(int fd, off_t offset, int whence) {
 //  _exit(SYS_lseek);
- assert(0); 
+// assert(0); 
   return _syscall_(SYS_lseek,(intptr_t)fd,(intptr_t)offset,(intptr_t)whence);
 }
 

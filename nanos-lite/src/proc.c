@@ -20,6 +20,7 @@ void hello_fun(void *arg) {
 }
 
 void init_proc() {
+	Log("I am in proc");
 naive_uload(NULL,"/bin/text");
 }
 

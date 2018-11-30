@@ -96,21 +96,20 @@ int sys_yield()
 
 int sys_write(int fd,const void*buf,size_t len)
 {
-	int time=0;
+	int i=0;
 	if(fd==1||fd==2)
 	{
-	for(;len>0;len--)
-	{
-		_putc(((char*)buf)[time]);
-		
-	time++;
-	
-	
-	}
-	
+		for(;i<len;i++)
+		{
+			_putc(((char*)buf)[i]);
+		}
 	}	
+	else
+	{
+		return fs_write(fd,buf,len);
+	}
 
-return time;
+return len;
 
 
 

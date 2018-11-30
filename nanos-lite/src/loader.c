@@ -7,6 +7,7 @@ size_t ramdisk_write(const void *buf,size_t offset,size_t len);
 size_t ramdisk_read(void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
+  Log("I am in loader");
 	size_t filelen=get_ramdisk_size();
 //char a[10000] ;
 //filelen=ramdisk_read(&a,0,filelen);
@@ -21,7 +22,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
-  uintptr_t entry = loader(pcb, filename);
+Log("I am in naive_uload");
+  	uintptr_t entry = loader(pcb, filename);
   ((void(*)())entry) ();
 }
 

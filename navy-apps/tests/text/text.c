@@ -2,11 +2,12 @@
 #include <assert.h>
 
 int main() {
-	printf("I am before fseek\n");
+//	printf("I am before fseek\n");
   FILE *fp = fopen("/share/texts/num", "r+");
   assert(fp);
 	printf("I am before fseek\n");
   fseek(fp, 0, SEEK_END);
+	printf("I am after fseek\n");
   long size = ftell(fp);
   assert(size == 5000);
 

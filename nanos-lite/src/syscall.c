@@ -46,15 +46,16 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					  
 					  
 					  }
-		case SYS_write:{//Log("I am in write");
+		case SYS_write:{
+						   //Log("I am in write");
 					//	   int len=a[3];
 					//	   void*buf=(void *)a[2];
 					//	   if(a[1]==1||a[1]==2)
 					//	   {					  for(int i = 0; i < len; i++) {
 					//						_putc(((char*)buf)[i]);
 					//								}}
-					c->GPRx=sys_write(a[1],(void*)a[2],a[3]);
-							break;	  
+				//	c->GPRx=sys_write(a[1],(void*)a[2],a[3]);
+				//			break;	  
 					  Log("wait for syswrite");assert(0);}
 		
 		case SYS_kill:Log("wait for syskill");assert(0);

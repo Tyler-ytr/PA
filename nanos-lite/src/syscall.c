@@ -39,7 +39,13 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					 }
 		case SYS_open://Log("wait for sysopen");assert(0);
 					  c->GPRx=fs_open((char*)a[1],(int)a[2],(int)a[3]);break;
-		case SYS_read:Log("wait for sysread");assert(0);
+		case SYS_read:{
+						  //Log("wait for sysread");assert(0);
+					  
+					 c->GPRx=fs_read((int)a[1],(void*)a[2],(size_t)a[3]);break; 
+					  
+					  
+					  }
 		case SYS_write:{//Log("I am in write");
 					//	   int len=a[3];
 					//	   void*buf=(void *)a[2];

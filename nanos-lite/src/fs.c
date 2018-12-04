@@ -77,6 +77,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);
 		case FD_STDERR:Log("in case stderr of fs_read");assert(0);
 		case FD_FB:Log("in case fd_fb of fs_read");assert(0);
+		case FD_DISPINFO: dispinfo_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
 		default:{
 					if(file_table[fd].open_offset>fsize)
 						return 0;

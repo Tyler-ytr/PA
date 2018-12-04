@@ -1,5 +1,7 @@
 #include "fs.h"
 #include <sys/types.h>
+extern size_t fb_write(const void *buf,size_t offset,size_t len);
+extern size_t dispinfo_read(void *buf,size_t offset,size_t len);
 typedef size_t (*ReadFn) (void *buf, size_t offset, size_t len);
 typedef size_t (*WriteFn) (const void *buf, size_t offset, size_t len);
 extern size_t serial_write(const void *buf,size_t offset,size_t len);
@@ -12,7 +14,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO};
 extern int screen_width();
 extern int screen_height();
 extern size_t ramdisk_read(void *buf,size_t offset,size_t len);
@@ -39,7 +41,9 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, 0, invalid_read, invalid_write},
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
-  {"/dev/fb", 0, 0, 0, invalid_read, invalid_write},
+ [FD_FB]= {"/dev/fb", 0, 0, 0, invalid_read, fb_write},
+ [FD_EVENTS]={"dev/events",0,0,0,invalid_read,invalid_write},
+ [FD_DISPINFO]={"proc/dispinfo",0,0,0,dispinfo_read,invalid_write},
 #include "files.h"
 };
 

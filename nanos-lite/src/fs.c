@@ -37,6 +37,7 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, 0, invalid_read, invalid_write},
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
+  {"/dev/fb", 0, 0, 0, invalid_read, invalid_write},
 #include "files.h"
 };
 

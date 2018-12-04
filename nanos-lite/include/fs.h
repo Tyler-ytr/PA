@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include <sys/types.h>
+#include <klib.h>
 #ifndef SEEK_SET
 enum {SEEK_SET, SEEK_CUR, SEEK_END};
 #endif

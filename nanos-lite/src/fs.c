@@ -13,6 +13,8 @@ typedef struct {
 } Finfo;
 
 enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB};
+extern int screen_width();
+extern int screen_height();
 extern size_t ramdisk_read(void *buf,size_t offset,size_t len);
 extern size_t ramdisk_write(const void *buf,size_t offset,size_t len);
 int fs_open(const char*pathname,int flags,int mode);
@@ -45,6 +47,7 @@ static Finfo file_table[] __attribute__((used)) = {
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+  file_table[FD_FB].size=screen_height()*screen_width();
 }
 
 

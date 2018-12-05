@@ -131,7 +131,9 @@ assert(0<=len+file_table[fd].open_offset);
 assert(len+file_table[fd].open_offset<=file_table[fd].disk_offset+file_table[fd].size);
 //	newlen=len>size?size:len;
 ssize_t	newlen=len;	
-if(newlen==0)newlen=file_table[fd].size;
+if(newlen==0){
+	printf("size %d",file_table[fd].size);
+	newlen=(ssize_t)file_table[fd].size;}
 	if(file_table[fd].read!=NULL)
 			{
 				printf("len:%d\n",len);

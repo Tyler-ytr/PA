@@ -121,10 +121,10 @@ ssize_t fs_read(int fd,void *buf,size_t len)
  size=fs_filesz(fd);
 					if(file_table[fd].open_offset>size)
 						return 0;
-//					if(file_table[fd].open_offset+len>size)
-//				    {
-//						len=size-file_table[fd].open_offset;
-//					}
+					if(file_table[fd].open_offset+len>size)
+				    {
+						len=size-file_table[fd].open_offset;
+					}
 //			if(len+file_table[fd].open_offset>file_table[fd].disk_offset+file_table[fd].size)
 //		len=file_table[fd].size+file_table[fd].disk_offset-file_table[fd].open_offset;
 //assert(0<=len+file_table[fd].open_offset);

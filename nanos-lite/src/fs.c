@@ -136,7 +136,7 @@ ssize_t	newlen=len;
 				printf("len:%d\n",len);
 				printf("newlen:%d\n",newlen);
 			file_table[fd].open_offset+=newlen;
-	newlen=	 (*file_table[fd].read)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
+		 (*file_table[fd].read)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
 			return newlen;
 			}
 

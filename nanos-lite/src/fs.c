@@ -85,6 +85,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 				    {
 						len=fsize-file_table[fd].open_offset;
 					}
+					printf("len %d\n",len);
 			//	 if(fd!=FD_DISPINFO) 
 				len= dispinfo_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
 				   

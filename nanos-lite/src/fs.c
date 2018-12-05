@@ -136,8 +136,8 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 //return	newlen=(ssize_t)file_table[fd].size;}
 	if(file_table[fd].read!=NULL)
 			{
-				printf("len:%d\n",len);
-				printf("newlen:%d\n",newlen);
+//				printf("len:%d\n",len);
+//				printf("newlen:%d\n",newlen);
 			file_table[fd].open_offset+=newlen;
 		 (*file_table[fd].read)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
 			return newlen;

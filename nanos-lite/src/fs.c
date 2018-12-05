@@ -72,7 +72,7 @@ return -1;
 
 ssize_t fs_read(int fd,void *buf,size_t len)
 {Log("I am in read");
-	ssize_t fsize=fs_filesz(fd);
+/*	ssize_t fsize=fs_filesz(fd);
 	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);
 		case FD_STDERR:Log("in case stderr of fs_read");assert(0);
@@ -88,7 +88,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 					printf("len %d\n",len);
 			//	 if(fd!=FD_DISPINFO) 
 				len= dispinfo_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
-				   
+*/				   
 				/*	   if(file_table[fd].open_offset>fsize)
 					   {return 0;}
 					   if(file_table[fd].open_offset+len>fsize)
@@ -100,7 +100,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 					   
 					   break;*/
 				   
-				   }
+/*				   }
 		default:{
 					if(file_table[fd].open_offset>fsize)
 						return 0;
@@ -115,10 +115,12 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 				}
 	}
 	file_table[fd].open_offset+=len;
-	return len;
-/*	ssize_t size,newlen;
+	return len;*/
+	ssize_t size,newlen;
 //	size=file_table[fd].size-file_table[fd].open_offset;
  size=fs_filesz(fd);
+					if(file_table[fd].open_offset>size)
+						return 0;
 	newlen=len>size?size:len;
 	if(file_table[fd].read!=NULL)
 			{
@@ -133,7 +135,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 		return -1;
 	ramdisk_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,newlen);
 	file_table[fd].open_offset+=newlen;
-	return newlen;*/
+	return newlen;
 }
 
 ssize_t fs_write(int fd,const void *buf,size_t len)

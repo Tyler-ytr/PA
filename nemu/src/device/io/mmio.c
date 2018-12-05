@@ -40,7 +40,7 @@ int is_mmio(paddr_t addr) {
       return i;
     }
   }
- printf("in mmio :addr: %d\n",addr);
+// printf("in mmio :addr: %d\n",addr);
  // assert(0);
   return -1;
 }

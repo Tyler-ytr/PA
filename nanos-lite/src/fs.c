@@ -116,11 +116,11 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	}
 	file_table[fd].open_offset+=len;
 	return len;*/
-	ssize_t size,newlen;
+//	ssize_t size,newlen;
 //	size=file_table[fd].size-file_table[fd].open_offset;
- size=fs_filesz(fd);
-					if(file_table[fd].open_offset>size)
-						return 0;
+ //size=fs_filesz(fd);
+			//		if(file_table[fd].open_offset>size)
+			//			return 0;
 		//			if(file_table[fd].open_offset+len>size)
 		//		    {
 		//				len=size-file_table[fd].open_offset;
@@ -130,7 +130,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 assert(0<=len+file_table[fd].open_offset);
 assert(len+file_table[fd].open_offset<=file_table[fd].disk_offset+file_table[fd].size);
 //	newlen=len>size?size:len;
-	newlen=len;		
+ssize_t	newlen=len;		
 	if(file_table[fd].read!=NULL)
 			{
 				printf("len:%d\n",len);

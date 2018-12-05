@@ -61,7 +61,8 @@ int fs_open(const char*pathname,int flags,int mode)
 	{
 	Log("filename:%s",file_table[i].name);
 	if(strcmp(file_table[i].name,pathname)==0)
-		return i;
+	{	file_table[i].open_offset=0;
+		return i;}
 	}
 
 	Log("pathname:%s",pathname);

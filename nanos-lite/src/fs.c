@@ -78,7 +78,17 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 		case FD_STDERR:Log("in case stderr of fs_read");assert(0);
 		case FD_FB:Log("in case fd_fb of fs_read");assert(0);
 		case FD_DISPINFO:
-				   {	if(file_table[fd].open_offset>fsize)
+				   {
+					if(file_table[fd].open_offset>fsize)
+						return 0;
+					if(file_table[fd].open_offset+len>fsize)
+				    {
+						len=fsize-file_table[fd].open_offset;
+					}
+			//	 if(fd!=FD_DISPINFO) 
+				len= dispinfo_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
+				   
+				/*	   if(file_table[fd].open_offset>fsize)
 					   {return 0;}
 					   if(file_table[fd].open_offset+len>fsize)
 					   {	len=file_table[fd].size-file_table[fd].open_offset;
@@ -87,7 +97,9 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 					   
 					   
 					   
-					   break;}
+					   break;*/
+				   
+				   }
 		default:{
 					if(file_table[fd].open_offset>fsize)
 						return 0;
@@ -96,7 +108,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 						len=fsize-file_table[fd].open_offset;
 					}
 			//	 if(fd!=FD_DISPINFO) 
-				 ramdisk_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
+				len= ramdisk_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
 			//	 else
               //  len= dispinfo_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
 				}

@@ -75,9 +75,11 @@ void cpu_exec(uint64_t n) {
 	while(tw!=NULL)
 	{
         Log("w[%d] changed : %s=%d | 0x%x",tw->NO,tw->str,tw->value,tw->value);
-		if(nemu_state!=NEMU_END)
-		{		nemu_state=NEMU_STOP;	}
+		if(nemu_state==NEMU_RUNNING)
+		{		nemu_state=NEMU_STOP;
+	return;	}
 		tw=check_watch(tw);	
+		
 	}
 
 

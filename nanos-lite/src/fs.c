@@ -117,8 +117,8 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	file_table[fd].open_offset+=len;
 	return len;*/
 	ssize_t size,newlen;
-	size=file_table[fd].size-file_table[fd].open_offset;
-// size=fs_filesz(fd);
+//	size=file_table[fd].size-file_table[fd].open_offset;
+ size=fs_filesz(fd);
 					if(file_table[fd].open_offset>size)
 						return 0;
 					if(file_table[fd].open_offset+len>size)

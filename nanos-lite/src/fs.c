@@ -140,8 +140,25 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 
 ssize_t fs_write(int fd,const void *buf,size_t len)
 {Log("I am in write");
-	ssize_t fsize=fs_filesz(fd);
-	switch(fd){
+	ssize_t size ,newlen;
+	size=fs_filesz(fd);
+	if(file_table[fd].open_offset>size)
+		return 0;
+	newlen=len>size?size:len;
+	if(file_table[fd].write!=NULL)
+	{
+		file_table[fd].open_offset+=newlen;
+
+		 (*file_table[fd].write)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
+	return newlen;
+	}
+
+	if(fd<6||fd>NR_FILES)
+		return -1;
+	ramdisk_write(buf,file_table[fd].disk_offset+file_table[fd].open_offset,newlen);
+	file_table[fd].open_offset+=newlen;
+	return newlen;
+/*	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_write");assert(0);
 		case FD_STDERR:Log("in case stderr of fs_write");assert(0);
 		case FD_FB:Log("in case fd_fb of fs_write");assert(0);
@@ -156,7 +173,7 @@ ssize_t fs_write(int fd,const void *buf,size_t len)
 				}
 	}
 	file_table[fd].open_offset+=len;
-	return len;
+	return len;*/
 }
 
 

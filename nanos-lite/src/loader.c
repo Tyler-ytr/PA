@@ -35,7 +35,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 }
 
 void naive_uload(PCB *pcb, const char *filename) {
-Log("I am in naive_uload");
+Log("I am in naive_uload: %s",filename);
   	uintptr_t entry = loader(pcb, filename);
   ((void(*)())entry) ();
 }

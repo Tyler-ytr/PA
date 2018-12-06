@@ -33,7 +33,9 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					//
 					//naive_uload(NULL,"/bin/init");
 					c->GPRx=SYS_execve;
-					c->GPR2=(uintptr_t)"/bin/init";
+					c->GPR2=(uintptr_t)"/bin/init"
+						;
+					Log("I am in exit");
 					do_syscall(c);
 					break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.

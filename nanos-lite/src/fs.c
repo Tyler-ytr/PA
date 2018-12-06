@@ -28,7 +28,8 @@ off_t fs_lseek(int fd,off_t offset,int whence);
 int fs_close(int fd);
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
-  panic("should not reach here");
+  Log("invalid read:%s",buf);
+	panic("should not reach here");
   return 0;
 }
 

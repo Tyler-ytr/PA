@@ -12,7 +12,7 @@ void difftest_skip_dut();
 
 make_EHelper(lidt) {
 //  TODO();
-	cpu.idtr.limit=vaddr_read(id_dest->addr,2);
+	cpu.idtr.limit=vaddr_read(id_dest->addr,2);//wait for fixing; because limit is uint16
 //	rtl_lm(&cpu.idtr.limit,&id_dest->addr,2);
 	
 	if(decoding.is_operand_size_16)
@@ -80,10 +80,10 @@ make_EHelper(in) {
 //  TODO();
 //Log("I am in in");
 	switch(id_src->width)
-	{	case	4:t1=pio_read_l(id_src->val);break;
-		case	2:t1=pio_read_w(id_src->val);break;
+	{	case	4:rtl_li(&t1,pio_read_l(id_src->val));break;
+		case	2:rtl_li(&t1,pio_read_w(id_src->val));break;
 	//	case	1:t1=pio_read_b(reg_w(R_EDX));break;}
-	 	case	1:t1=pio_read_b(id_src->val);break;}
+	 	case	1:rtl_li(&t1,pio_read_b(id_src->val));break;}
 //	t1=pio_read_common(id_src->val,id_src->width);
 	operand_write(id_dest,&t1);
 //reg_l(R_EAX)=t1;

@@ -59,9 +59,12 @@ int fs_open(const char*pathname,int flags,int mode)
 {//Log("I am in open");
 	for(int i=0;i<NR_FILES;i++)
 	{
-	Log("filename:%s",file_table[i].name);
+//	Log("filename:%s",file_table[i].name);
 	if(strcmp(file_table[i].name,pathname)==0)
-	{	file_table[i].open_offset=0;
+//	Log("filename:%s",file_table[i].name);
+	{
+	Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
+		file_table[i].open_offset=0;
 		return i;}
 	}
 

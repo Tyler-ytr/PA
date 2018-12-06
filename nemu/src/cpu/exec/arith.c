@@ -148,13 +148,13 @@ make_EHelper(inc) {
 make_EHelper(dec) {
 //  TODO();
 
-  t0=1;
+  rtl_li(&t0,1);
   rtl_sub(&t2, &id_dest->val,&t0 );
   rtl_setrelop(RELOP_LTU, &t3, &id_dest->val, &t2);
  // rtl_get_CF(&t1);
  // rtl_sub(&t2, &t2, &t1);
   operand_write(id_dest, &t2);
-  t0=0;
+  rtl_li(&t0,0);
   rtl_update_ZFSF(&t2, id_dest->width);
 
   rtl_setrelop(RELOP_LTU, &t0, &id_dest->val, &t2);
@@ -172,16 +172,19 @@ make_EHelper(dec) {
 
 make_EHelper(neg) {
 //  TODO();
-	t0=0;
+//	rtl_li(&t0,0);
 	if(!id_dest->val)
 	{
+	rtl_li(&t0,0);
 		rtl_set_CF(&t0);
 	}else
 	{
-		t0=1;
+	rtl_li(&t0,1);
+	//	t0=1;
 		rtl_set_CF(&t0);
 	}
-	t0=0;
+//	t0=0;
+	rtl_li(&t0,0);
 	rtl_add(&t2,&t0,&id_dest->val);
 	t2=-t2;
 

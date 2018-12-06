@@ -46,7 +46,7 @@ static Finfo file_table[] __attribute__((used)) = {
  [FD_FB]= {"/dev/fb", 0, 0, 0, invalid_read, fb_write},
  [FD_EVENTS]={"/dev/events",0,0,0,events_read,invalid_write},
  [FD_DISPINFO]={"/proc/dispinfo",128,0,0,dispinfo_read,invalid_write},
- [FD_TTY]={"/dev/tty",0,0,0,invalid_read,serial_write},
+ {"/dev/tty",0,0,0,invalid_read,serial_write},
 #include "files.h"
 };
 
@@ -59,14 +59,14 @@ void init_fs() {
 
 
 int fs_open(const char*pathname,int flags,int mode)
-{//Log("I am in open:%s",pathname);
+{Log("I am in open:%s",pathname);
 	for(int i=0;i<NR_FILES;i++)
 	{
 //	Log("filename:%s",file_table[i].name);
 	if(strcmp(file_table[i].name,pathname)==0)
 //	Log("filename:%s",file_table[i].name);
 	{
-	//Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
+	Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
 	//	file_table[i].open_offset=0;
 		return i;}
 	}
@@ -78,7 +78,7 @@ return -1;
 }
 
 ssize_t fs_read(int fd,void *buf,size_t len)
-{//Log("I am in read");
+{Log("I am in read");
 /*	ssize_t fsize=fs_filesz(fd);
 	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);

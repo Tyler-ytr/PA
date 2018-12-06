@@ -1,8 +1,10 @@
 #include "common.h"
 #include "syscall.h"
 #include "fs.h"
+#include "proc.h"
 //extern int fs_open(const char*pathname,int flags,int mode);
 int sys_yield();
+extern void naive_uload(PCB *pcb,const char *filename);
 int sys_write(int fd,const void*buf,size_t len);
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
@@ -27,7 +29,9 @@ printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
-	  case SYS_exit:_halt(a[1]);					//ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
+	  case SYS_exit://_halt(a[1]);	
+					naive_uload(NULL,"/bin/init");break;
+		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();
 /*						 
 printf("a0(eax): 0x%x\n",a[0]);
@@ -76,7 +80,13 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_fstat:Log("wait for syslfstat");assert(0);
 		case SYS_time:Log("wait for sysltime");assert(0);
 		case SYS_signal:Log("wait for syssignal");assert(0);
-		case SYS_execve:Log("wait for sysexecve");assert(0);
+		case SYS_execve:{
+						
+						Log("wait for sysexecve");assert(0);
+						Log("sys_execve: name=%s",(char*)a[1]);
+						naive_uload(NULL,(char*)a[1]);
+						break;
+						}
 		case SYS_fork:Log("wait for sysfork");assert(0);
 		case SYS_link:Log("wait for syslink");assert(0);
 		case SYS_unlink:Log("wait for sysunlink");assert(0);

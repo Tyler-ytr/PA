@@ -170,7 +170,8 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 }
 
 ssize_t fs_write(int fd,const void *buf,size_t len)
-{Log("I am in write");
+{//Log("I am in write");
+	
 	ssize_t size ,newlen;
 	size=fs_filesz(fd);
 	if(file_table[fd].open_offset>size)

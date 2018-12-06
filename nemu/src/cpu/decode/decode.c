@@ -35,7 +35,7 @@ static inline make_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
 
   op->type = OP_TYPE_IMM;
-
+//big change
 op->simm=1;
 	rtl_li(&t0,instr_fetch(eip,op->width));
 	rtl_sext(&t0,&t0,op->width);

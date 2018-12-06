@@ -59,10 +59,10 @@ void init_fs() {
 
 
 int fs_open(const char*pathname,int flags,int mode)
-{//Log("I am in open");
+{Log("I am in open");
 	for(int i=0;i<NR_FILES;i++)
 	{
-//	Log("filename:%s",file_table[i].name);
+	Log("filename:%s",file_table[i].name);
 	if(strcmp(file_table[i].name,pathname)==0)
 	Log("filename:%s",file_table[i].name);
 	{

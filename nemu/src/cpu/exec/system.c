@@ -18,11 +18,11 @@ make_EHelper(lidt) {
 	if(decoding.is_operand_size_16)
 	{
 //		rtl_lm(&cpu.idtr.limit
-	cpu.idtr.base=vaddr_read(id_dest->addr+2,4)&0x00ffffff;
+rtl_li(&cpu.idtr.base,vaddr_read(id_dest->addr+2,4)&0x00ffffff);
 	}
 	else
 	{
-	cpu.idtr.base=vaddr_read(id_dest->addr+2,4);
+rtl_li(&cpu.idtr.base,vaddr_read(id_dest->addr+2,4));
 	}
 
 

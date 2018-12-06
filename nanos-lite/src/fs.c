@@ -15,7 +15,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB,FD_EVENTS,FD_DISPINFO,FD_TTY};
 extern int screen_width();
 extern int screen_height();
 extern size_t ramdisk_read(void *buf,size_t offset,size_t len);
@@ -45,6 +45,7 @@ static Finfo file_table[] __attribute__((used)) = {
  [FD_FB]= {"/dev/fb", 0, 0, 0, invalid_read, fb_write},
  [FD_EVENTS]={"/dev/events",0,0,0,events_read,invalid_write},
  [FD_DISPINFO]={"/proc/dispinfo",128,0,0,dispinfo_read,invalid_write},
+ [FD_TTY]={"/dev/tty",0,0,0,invalid_read,serial_write},
 #include "files.h"
 };
 

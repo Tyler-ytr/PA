@@ -32,7 +32,10 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 	  case SYS_exit://_halt(a[1]);	
 					//
 					//naive_uload(NULL,"/bin/init");
-					c->GPRx=SYS_execve;break;
+					c->GPRx=SYS_execve;
+
+					do_syscall(c);
+					break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();
 /*						 

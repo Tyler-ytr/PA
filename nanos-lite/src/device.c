@@ -38,7 +38,11 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 		}
 	}else
 	{
-		snprintf(buf,len,"t %d\n",uptime());
+		uint32_t timen=uptime();
+		sprintf(temp,"t %d\n",timen);
+		strncpy(buf,temp,len);
+
+		//snprintf(buf,len,"t %d\n",uptime());
 	}
 
 	

@@ -111,23 +111,27 @@ make_EHelper(leave) {
   print_asm("leave");
 }
 
-make_EHelper(cltd) {
+make_EHelper(cltd) {//sign_extended ex,eax
   if (decoding.is_operand_size_16) {
  // TODO();
- rtl_lr(&t1,R_AX,2);
+/* rtl_lr(&t1,R_AX,2);
 	if((int32_t)(int16_t)(uint16_t)t1<0)
-		{t2=0;t0=0;
+		{
+			t2=0;t0=0;
 			rtl_addi(&t0,&t2,0xffff);
 			rtl_sr(R_DX,&t2,2);
  		}
 	else
  		{t2=0;
 		rtl_sr(R_DX,&t2,2);
- 		}	
+ 		}	*/
+	  rtl_sext(&t0,&reg_l(R_EAX),2);
+	  rtl_mv(&reg_l(R_EDX),(&t0)+2);
   }
    else {
+   rtl_sari(&reg_l(R_EDX),&reg_l(R_EAX),31);
   //  TODO();
-	rtl_lr(&t1,R_EAX,4);
+/*	rtl_lr(&t1,R_EAX,4);
 	if((int32_t)t1<0)
 		{t2=0;t0=0;
 		rtl_addi(&t0,&t2,0xffffffff);
@@ -137,7 +141,7 @@ make_EHelper(cltd) {
 		{
 		t2=0;
 		rtl_sr(R_EDX,&t2,4);	
-		}
+		}*/
    }
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");

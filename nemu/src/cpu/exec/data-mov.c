@@ -88,7 +88,7 @@ make_EHelper(popa) {
 
 make_EHelper(leave) {
 //  TODO();
-	reg_l(R_ESP)=reg_l(R_EBP);
+/*	reg_l(R_ESP)=reg_l(R_EBP);
 	rtl_lm(&t0,&reg_l(R_ESP),id_src->width);
 	id_dest->type=OP_TYPE_REG;
 	id_dest->reg=R_EBP;
@@ -104,7 +104,9 @@ make_EHelper(leave) {
 	
 	
 	}
-
+*/
+	rtl_mv(&cpu.esp,&cpu.ebp);
+	rtl_pop(&cpu.ebp);
 
   print_asm("leave");
 }

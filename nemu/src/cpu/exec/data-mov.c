@@ -149,7 +149,7 @@ make_EHelper(cltd) {//sign_extended ex,eax
 
 make_EHelper(cwtl) {
   if (decoding.is_operand_size_16) {
-   // TODO();
+   // TODO();AX<---SIGN-EXT OF AL
 	  rtl_sext(&t0,&reg_l(R_EAX),1);
 	  rtl_mv(&reg_l(R_EAX),&t0);
   /* rtl_lr(&t1,R_AL,1);
@@ -157,7 +157,7 @@ t1=(int16_t)(int8_t)(uint8_t)t1;
 rtl_sr(R_AX,&t1,2);*/
   }
   else {
-   // TODO();
+   // TODO();EAX<----SIGN-EXT OF AX
   /* rtl_lr(&t1,R_AX,2);
    t1=(int32_t)(int16_t)(uint16_t)t1;
    rtl_sr(R_EAX,&t1,4);
@@ -183,7 +183,8 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(lea) {
-rtl_li(&t2, id_src->addr);
-  	operand_write(id_dest, &t2);
+//rtl_li(&t2, id_src->addr);
+  //	operand_write(id_dest, &t2);
+  	operand_write(id_dest, &id_src->addr);
   print_asm_template2(lea);
 }

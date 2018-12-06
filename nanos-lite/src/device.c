@@ -1,6 +1,6 @@
 #include "common.h"
 #include <amdev.h>
-
+#include <klib.h>
 size_t serial_write(const void *buf, size_t offset, size_t len) {
 //  return 0;
 	int i=0;
@@ -20,7 +20,30 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  return 0;
+  Log("events_read: buf:%s, offset:%d, len:%d",buf,offset,len);
+//	int key=read_key()&0xffff;
+	short key_event=(short)read_key();
+	char temp[128];
+	if(key_event!=0)
+	{
+		Log("get! key:%d",key_event^0x8000);
+		if((key_event&0x8000)!=0)
+			{
+				sprintf(temp,"kd %s\n",keyname[key_event^0x8000]);
+				strncpy(buf,temp,len);
+			}	
+		else{
+			sprintf(temp,"ku %s\n",keyname[key_event]);
+				strncpy(buf,temp,len);
+		}
+	}else
+	{
+		snprintf(buf,len,"t %d\n",uptime());
+	}
+
+	
+	
+	return strlen(buf);
 }
 
 static char dispinfo[128] __attribute__((used));

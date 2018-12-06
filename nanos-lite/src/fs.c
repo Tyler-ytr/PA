@@ -67,7 +67,7 @@ int fs_open(const char*pathname,int flags,int mode)
 //	Log("filename:%s",file_table[i].name);
 	{
 	Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
-	//	file_table[i].open_offset=0;
+//		file_table[i].open_offset=0;
 		return i;}
 	}
 
@@ -156,7 +156,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	file_table[fd].open_offset+=newlen;
 	return newlen;*/
 	int ret=0;
-//	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
+	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
 	if(fd!=FD_EVENTS&&file_table[fd].open_offset+len>file_table[fd].size)
 	{
 		len=file_table[fd].size-file_table[fd].open_offset;

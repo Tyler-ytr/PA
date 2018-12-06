@@ -29,10 +29,10 @@ printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
-	  case SYS_exit://_halt(a[1]);	
+	  case SYS_exit:_halt(a[1]);	
 					//
 					//naive_uload(NULL,"/bin/init");
-					a[0]=SYS_execve;break;
+//					a[0]=SYS_execve;break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();
 /*						 
@@ -84,7 +84,7 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_signal:Log("wait for syssignal");assert(0);
 		case SYS_execve:{
 						
-//						Log("wait for sysexecve");assert(0);
+						Log("wait for sysexecve");assert(0);
 						Log("sys_execve: name=%s",(char*)a[1]);
 						naive_uload(NULL,(char*)a[1]);
 						break;

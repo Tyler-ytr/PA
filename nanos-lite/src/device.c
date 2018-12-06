@@ -20,7 +20,7 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t offset, size_t len) {
-  Log("events_read: buf:%s, offset:%d, len:%d",buf,offset,len);
+ // Log("events_read: buf:%s, offset:%d, len:%d",buf,offset,len);
 //	int key=read_key()&0xffff;
 	short key_event=(short)read_key();
 	char temp[128];

@@ -20,7 +20,7 @@ make_EHelper(test) {
 make_EHelper(and) {
 //  TODO();
 //	Log("id_dest: %x id_src=%x id_dest->width=%x id_src->width=%x",id_dest->val,id_src->val,id_dest->width,id_src->width);
-//	rtl_sext(&t0,&id_src->val,id_src->width);	
+	rtl_sext(&t0,&id_src->val,id_src->width);	
 	rtl_and(&t2,&id_dest->val,&t0);
 	operand_write(id_dest,&t2);
 //	Log(" t2: %x\n",t2);

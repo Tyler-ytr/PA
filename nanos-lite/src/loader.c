@@ -12,7 +12,7 @@ extern size_t fs_filesz(int fd);
 size_t ramdisk_read(void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
-  Log("I am in loader");
+  Log("I am in loader,filename:%s",filename);
 //	size_t filelen=get_ramdisk_size();
 //char a[10000] ;
 //filelen=ramdisk_read(&a,0,filelen);

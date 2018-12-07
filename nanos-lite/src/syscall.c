@@ -31,12 +31,13 @@ printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
 	  case SYS_exit://_halt(a[1]);	
 					//
+		//			Log("I am in exit");
 					naive_uload(NULL,"/bin/init");
 			//		c->GPRx=SYS_execve;
 			//		c->GPR2=(uintptr_t)"/bin/init"
 						
-						;
-					Log("I am in exit");
+						
+		//			Log("I am in exit");
 				//	do_syscall(c);
 					break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
@@ -92,10 +93,10 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 						
 //						Log("wait for sysexecve");assert(0);
 						Log("sys_execve: name=%s",(char*)a[1]);
-						assert(0);
+				//		assert(0);
 						naive_uload(NULL,(char*)a[1]);
 						c->GPRx=0;
-						assert(0);
+				//		assert(0);
 						break;
 						}
 		case SYS_fork:Log("wait for sysfork");assert(0);

@@ -59,15 +59,15 @@ void init_fs() {
 
 
 int fs_open(const char*pathname,int flags,int mode)
-{Log("I am in open:%s",pathname);
+{//Log("I am in open:%s",pathname);
 	for(int i=0;i<NR_FILES;i++)
 	{
 //	Log("filename:%s",file_table[i].name);
 	if(strcmp(file_table[i].name,pathname)==0)
 //	Log("filename:%s",file_table[i].name);
 	{
-	Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
-//		file_table[i].open_offset=0;
+//	Log("fs_open : i=%d , name=%s, offset=%d, pathname=%s ",i,file_table[i].name,file_table[i].open_offset,pathname);
+		file_table[i].open_offset=0;
 		return i;}
 	}
 
@@ -78,7 +78,7 @@ return -1;
 }
 
 ssize_t fs_read(int fd,void *buf,size_t len)
-{Log("I am in read");
+{//Log("I am in read");
 /*	ssize_t fsize=fs_filesz(fd);
 	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);
@@ -156,7 +156,7 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	file_table[fd].open_offset+=newlen;
 	return newlen;*/
 	int ret=0;
-	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
+//	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
 	if(fd!=FD_EVENTS&&file_table[fd].open_offset+len>file_table[fd].size)
 	{
 		len=file_table[fd].size-file_table[fd].open_offset;
@@ -183,7 +183,7 @@ ssize_t fs_write(int fd,const void *buf,size_t len)
 	{
 		file_table[fd].open_offset+=newlen;
 
-		 (*file_table[fd].write)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
+	 (*file_table[fd].write)(buf,file_table[fd].disk_offset+file_table[fd].open_offset-newlen,newlen);
 	return newlen;
 	}
 

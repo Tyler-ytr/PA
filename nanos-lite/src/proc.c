@@ -21,7 +21,7 @@ void hello_fun(void *arg) {
 
 void init_proc() {
 	Log("I am in proc");
-naive_uload(current,"/bin/init");
+naive_uload(NULL,"/bin/pal");
 }
 
 _Context* schedule(_Context *prev) {

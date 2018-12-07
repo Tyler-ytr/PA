@@ -29,7 +29,7 @@ printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
-	  case SYS_exit://_halt(a[1]);	
+	  case SYS_exit:_halt(a[1]);	
 					//
 					naive_uload(NULL,"/bin/init");
 			//		c->GPRx=SYS_execve;

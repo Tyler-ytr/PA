@@ -90,7 +90,7 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 		case SYS_signal:Log("wait for syssignal");assert(0);
 		case SYS_execve:{
 						
-//						Log("wait for sysexecve");assert(0);
+						Log("wait for sysexecve");assert(0);
 						Log("sys_execve: name=%s",(char*)a[1]);
 						naive_uload(NULL,(char*)a[1]);
 						c->GPRx=0;

@@ -3,7 +3,7 @@
 //#ifndef __ISA_NATIVE__
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 size_t strlen(const char *s) {
-	const char *p=s;
+/*	const char *p=s;
 	if(s==NULL)
 		return -1;
 
@@ -12,7 +12,11 @@ size_t strlen(const char *s) {
 	}
 	
 //	_put((p-s));
-  	return ((int)(p-s));
+  	return ((int)(p-s));*/
+	size_t i=0;
+	while(*(s+i)!='\0')
+	{i++;
+	}return i;
 }
 /*size_t strnlen(const char *s,size_t count)
 {
@@ -53,7 +57,7 @@ char *strcpy(char* dst,const char* src) {
 }
 
 char* strncpy(char* dst, const char* src, size_t n) {
-  char *s=dst;
+/*  char *s=dst;
 	while(*src!='\0'&&0<n--)
 	{
 		*s++=*src++;
@@ -64,7 +68,14 @@ char* strncpy(char* dst, const char* src, size_t n) {
 		*s++='\0';
 	}
 //	_put(*dst);
-	return dst;
+	return dst;*/
+	size_t i;
+	for(i=0;i<n&&src[i]!='\0';++i)
+	{dst[i]=src[i];
+	}for(;i<n;i++)
+	{
+	dst[i]='\0';
+	}return dst;
 }
 
 char* strcat(char* dst, const char* src) {
@@ -78,7 +89,7 @@ char* strcat(char* dst, const char* src) {
 }
 
 int strcmp(const char* s1, const char* s2) {
-  int flag=0;
+/*  int flag=0;
   while(*s1==*s2)
   {
 	if(*s1!='\0')
@@ -93,7 +104,20 @@ int strcmp(const char* s1, const char* s2) {
 	flag=*s1-*s2;
 //	_put(*s1);
 //	_put(*s2);
-	return flag;
+	return flag;*/
+	int len1=strlen(s1);
+//	_put(*s2);
+	int len2=strlen(s2);
+	int len=0;
+	if(len1<len2)len=len1;
+	else len=len2;
+	for(int i=0;i<=len;i++)
+	{if(s1[i]<s2[i])return -1;
+		else if(s1[i]>s2[i])return 1;
+
+	}
+return 0;
+
 }
 
 

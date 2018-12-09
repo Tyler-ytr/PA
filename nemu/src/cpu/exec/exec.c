@@ -215,7 +215,7 @@ static make_EHelper(2byte_esc) {
   idex(eip, &opcode_table[opcode]);
  // Log("in 2byte end");
 }
-
+/*
 //#ifndef __PROC_H__
 #define __PROC_H__
 #define PGSIZE 4096
@@ -248,20 +248,20 @@ typedef union
 		uintptr_t cur_brk;
 		uintptr_t max_brk;
 	};
-}PCB;
+}PCB;*/
 make_EHelper(real) {
   uint32_t opcode = instr_fetch(eip, 1);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
   idex(eip, &opcode_table[opcode]);
 
-
+/*
 	extern uint8_t pmem[];
 	if(((PCB *)(&(pmem[0x400adf2])))->stack[0]!=0)
 	{printf("stack changed@%08x\n",cpu.eip);
 		}
 
-
+*/
 
 }
 

@@ -229,6 +229,7 @@ return file_table[fd].size;
 }
 int fs_close(int fd)
 {
+	Log("fs_close : fd=%d , name=%s, offset=%d, ",fd,file_table[fd].name,file_table[fd].open_offset);
 return 0;
 }
 

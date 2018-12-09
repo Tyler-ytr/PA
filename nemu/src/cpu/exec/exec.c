@@ -254,6 +254,15 @@ make_EHelper(real) {
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
   idex(eip, &opcode_table[opcode]);
+
+
+	extern uint8_t pmem[];
+	if(((PCB *)(&(pmem[0x400adf2])))->stack[0]!=0)
+	{printf("stack changed@%08x\n",cpu.eip);
+		}
+
+
+
 }
 
 static inline void update_eip(void) {

@@ -156,12 +156,12 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	file_table[fd].open_offset+=newlen;
 	return newlen;*/
 	int ret=0;
-	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
+//	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
 	if(fd!=FD_EVENTS&&file_table[fd].open_offset+len>file_table[fd].size)
 	{
 		len=file_table[fd].size-file_table[fd].open_offset;
 	}
-	Log("fs_read : len=%d",len);
+//	Log("fs_read : len=%d",len);
 	if(file_table[fd].read!=NULL)
 	{
 	ret=file_table[fd].read(buf,file_table[fd].open_offset,len);	

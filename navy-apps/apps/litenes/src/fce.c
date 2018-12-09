@@ -182,6 +182,7 @@ int main(int argc, char *argv[]) {
   const char *fname;
   if (argc < 2) {
     fname = "/share/games/nes/kungfu.nes";
+	printf("argc:%d",argc);
     fprintf(stderr, "No ROM specified. Deafult to %s\n", fname);
   } else {
     fname = argv[1];

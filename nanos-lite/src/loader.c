@@ -25,12 +25,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 //	printf("%x\n",(size_t)DEFAULT_ENTRY-ramdisk_start);
 //	printf("%d\n",(size_t)de-ramdisk_start);
 	int fd=fs_open(filename,0,0);
-
 	fs_read(fd,(void*)DEFAULT_ENTRY,fs_filesz(fd));
 	fs_close(fd);
-
- 
- 
   return DEFAULT_ENTRY;
 }
 

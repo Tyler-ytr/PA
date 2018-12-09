@@ -216,6 +216,31 @@ static make_EHelper(2byte_esc) {
  // Log("in 2byte end");
 }
 
+//#ifndef __PROC_H__
+#define __PROC_H__
+#define PGSIZE 4096
+#define PG_ALIGN __attribute((aligned(PGSIZE)))
+struct _Context {
+	//  uintptr_t esi, ebx, eax, eip, edx, err, eflags, ecx, cs, esp, edi, ebp;a
+	   struct _Protect *prot;
+	    uintptr_t edi,esi,ebp,esp,ebx,edx,ecx,eax;//from pusha;
+	//
+	//    //  struct _Protect *prot;
+	      int       irq;
+	        uintptr_t err,eip,cs,eflags;//from int;
+	//        //  struct _Protect *prot;
+	        };
+/*
+typedef union
+{
+	uint8_t stack[STACK_SIZE] PG_ALIGN;
+	struct{
+		_Context *tf;
+		_Protect as;
+		uintptr_t cur_brk;
+		uintptr_t max_brk;
+	};
+}PCB;*/
 make_EHelper(real) {
   uint32_t opcode = instr_fetch(eip, 1);
   decoding.opcode = opcode;

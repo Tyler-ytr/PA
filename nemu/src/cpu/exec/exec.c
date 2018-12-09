@@ -220,27 +220,35 @@ static make_EHelper(2byte_esc) {
 #define __PROC_H__
 #define PGSIZE 4096
 #define PG_ALIGN __attribute((aligned(PGSIZE)))
-struct _Context {
+typedef struct _Area{
+	void *start , *end;
+}_Area;
+typedef struct _Protect{
+	size_t pgsize;
+	_Area area;
+	void *ptr;
+}_Protect;
+typedef struct _Context{
 	//  uintptr_t esi, ebx, eax, eip, edx, err, eflags, ecx, cs, esp, edi, ebp;a
 	   struct _Protect *prot;
 	    uintptr_t edi,esi,ebp,esp,ebx,edx,ecx,eax;//from pusha;
-	//
-	//    //  struct _Protect *prot;
+	
+	    //  struct _Protect *prot;
 	      int       irq;
 	        uintptr_t err,eip,cs,eflags;//from int;
-	//        //  struct _Protect *prot;
-	        };
-/*
+	       //  struct _Protect *prot;
+	        }_Context;
+
 typedef union
 {
-	uint8_t stack[STACK_SIZE] PG_ALIGN;
+	uint8_t stack[512] PG_ALIGN;
 	struct{
 		_Context *tf;
 		_Protect as;
 		uintptr_t cur_brk;
 		uintptr_t max_brk;
 	};
-}PCB;*/
+}PCB;
 make_EHelper(real) {
   uint32_t opcode = instr_fetch(eip, 1);
   decoding.opcode = opcode;

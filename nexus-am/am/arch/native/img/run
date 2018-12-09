@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$1
+make -C $NEMU_HOME gdb ARGS="-b -l `dirname $1`/native-log.txt $1.bin"
 
 
 

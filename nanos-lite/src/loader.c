@@ -28,7 +28,9 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   Log("I am in loader,after filename:%s 0x%x",filename,filename);
 	fs_read(fd,(void*)DEFAULT_ENTRY,fs_filesz(fd));
   Log("I am in loader,after read:%s 0x%x",filename,filename);
+  Log("I am in loader,after read:%d 0x%x",*filename,filename);
 	fs_close(fd);
+  Log("I am in loader,after read:%d 0x%x",*filename,filename);
   return DEFAULT_ENTRY;
 }
 

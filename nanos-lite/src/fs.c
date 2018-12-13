@@ -20,8 +20,8 @@ extern int screen_width();
 extern int screen_height();
 extern size_t ramdisk_read(void *buf,size_t offset,size_t len);
 extern size_t ramdisk_write(const void *buf,size_t offset,size_t len);
-//int fs_open(const char*pathname,int flags,int mode);
-int fs_open(char*pathname,int flags,int mode);
+int fs_open(const char*pathname,int flags,int mode);
+//int fs_open(char*pathname,int flags,int mode);
 ssize_t fs_read(int fd,void *buf,size_t len);
 ssize_t fs_write(int fd,const void *buf,size_t len);
 size_t fs_filesz(int fd);
@@ -58,12 +58,12 @@ void init_fs() {
   file_table[FD_FB].size=screen_height()*screen_width()*sizeof(size_t);
 }
 
-char *temppathname;
-//int fs_open(const char*pathname,int flags,int mode)
-int fs_open( char*pathname,int flags,int mode)
+//char *temppathname;
+int fs_open(const char*pathname,int flags,int mode)
+//int fs_open( char*pathname,int flags,int mode)
 {//Log("I am in open:%s",pathname);
-	temppathname=pathname;
-	Log("temp:%s",temppathname);
+//	temppathname=pathname;
+	//Log("temp:%s",temppathname);
 	for(int i=0;i<NR_FILES;i++)
 	{
 //	Log("filename:%s",file_table[i].name);
@@ -166,24 +166,26 @@ ssize_t fs_read(int fd,void *buf,size_t len)
 	{
 		len=file_table[fd].size-file_table[fd].open_offset;
 	}
-if(fd!=FD_EVENTS)
-{	Log("readfiletname:%s",temppathname);
+//if(fd!=FD_EVENTS)
+//{//	Log("readfiletname:%s",temppathname);
 
-	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
-}
+//	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d ",fd,file_table[fd].name,file_table[fd].open_offset,len);
+//}
 //	Log("fs_read : len=%d",len);
 	if(file_table[fd].read!=NULL)
 	{
 	ret=file_table[fd].read(buf,file_table[fd].open_offset,len);	
 	
 	}else
-	{Log("beforetname:%s",temppathname);
-	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d size=:%d disk_offset=%d",fd,file_table[fd].name,file_table[fd].open_offset,len,file_table[fd].size,file_table[fd].disk_offset);
+	{
+		//Log("beforetname:%s",temppathname);
+//	Log("fs_read : fd=%d , name=%s, offset=%d, len=%d size=:%d disk_offset=%d",fd,file_table[fd].name,file_table[fd].open_offset,len,file_table[fd].size,file_table[fd].disk_offset);
 		ret=ramdisk_read(buf,file_table[fd].disk_offset+file_table[fd].open_offset,len);
-	Log("aftertname:%s",temppathname);
+	//	Here the above may change something in pathname in the fs_open above, but not every process may cause it;in native and run xianjian, it may change bin/pal into E in the pathname;MAY WRONG!!
+//	Log("aftertname:%s",temppathname);
 	}
 	file_table[fd].open_offset+=ret;
-if(fd!=FD_EVENTS)	Log("readfiletname:%s",temppathname);
+//if(fd!=FD_EVENTS)	Log("readfiletname:%s",temppathname);
 	return ret;
 }
 

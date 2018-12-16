@@ -81,6 +81,7 @@ int _map(_Protect *p, void *va, void *pa, int mode) {
 
 _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *args) {
   uint32_t* temp1=(uint32_t*)ustack.end;
+  //printf("i am in ucontext\n");
   *(--temp1)=0x0;//argc
   *(--temp1)=0x0;//argv
   *(--temp1)=0x0;//enc
@@ -100,7 +101,7 @@ _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *
   temp2->eip=(uintptr_t)entry;
   temp2->cs=0x8;
   temp2->eflags=0x202;
-
+//assert(0);
 	
 	
 	

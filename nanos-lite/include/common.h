@@ -12,5 +12,5 @@
 typedef char bool;
 #define true 1
 #define false 0
-
+extern _Context* schedule(_Context *prev);
 #endif

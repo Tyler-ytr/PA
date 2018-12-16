@@ -15,7 +15,10 @@ static _Context* do_event(_Event e, _Context* c) {
 			       printf("\n");
 */
   switch (e.event) {
-	case _EVENT_YIELD:Log("I am in EVENT_YIELD event");break;
+	case _EVENT_YIELD:{Log("I am in EVENT_YIELD event");
+						return schedule(c);  
+						  
+						  break;}
 case _EVENT_SYSCALL:return do_syscall(c);
     default: panic("Unhandled event ID = %d", e.event);
   }

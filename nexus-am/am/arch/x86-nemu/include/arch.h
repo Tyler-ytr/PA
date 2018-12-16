@@ -14,7 +14,7 @@ struct _Context {
  uintptr_t edi,esi,ebp,esp,ebx,edx,ecx,eax;//from pusha;
 
 //  struct _Protect *prot;
-  int       irq;
+  intptr_t       irq;
   uintptr_t err,eip,cs,eflags;//from int;
 //  struct _Protect *prot;
 };

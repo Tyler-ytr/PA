@@ -70,7 +70,40 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
 }
 
 _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
-  return NULL;
+/*	_Context* temp_c=stack.end;
+	temp_c.eflags=0x2;
+	temp_c.cs=0x8;
+*/
+/*	uintptr_t *temp_stack=(uintptr_t*)stack.end;
+   	*(--temp_stack)=0x2;//eflags
+   	*(--temp_stack)=0x8;//cs
+   	*(--temp_stack)=0x81;//eip
+   	*(--temp_stack)=0x0;//err
+   	*(--temp_stack)=0x0;//irq
+   	*(--temp_stack)=0x0;//eax
+   	*(--temp_stack)=0x0;//ecx
+   	*(--temp_stack)=0x0;//ebx
+   	*(--temp_stack)=0x0;//esp
+   	*(--temp_stack)=0x0;//ebp
+   	*(--temp_stack)=0x0;//esi
+   	*(--temp_stack)=0x0;//edi
+*/
+	_Context*temp_c=(_Context*)(stack.end-sizeof(_Context));
+	temp_c->edi=0;
+	temp_c->esi=0;
+	temp_c->ebp=(uintptr_t)stack.end;
+	temp_c->esp=0;
+	temp_c->ebx=0;
+	temp_c->edx=0;
+	temp_c->ecx=0;
+	temp_c->eax=0;
+	temp_c->irq=0x81;
+	temp_c->err=0;
+	temp_c->eip=(uintptr_t)entry;
+	temp_c->cs=0x8;
+	temp_c->eflags=0x0;
+//maywrong!!!
+	return temp_c;
 }
 
 void _yield() {

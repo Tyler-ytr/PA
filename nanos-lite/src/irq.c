@@ -2,8 +2,8 @@
 extern _Context* do_syscall(_Context *c);
 static _Context* do_event(_Event e, _Context* c) {
 	Log("I am in do event");
-	      printf("c ->irq:0x%x\n",c->irq);                                                                                                                   
-	       printf(":0x%x\n",c);
+	      printf("c ->irq:0x%x\n",c->irq);        
+	       printf("c:0x%x\n",c);
 	        printf("c->edi:0x%x\n",c->edi);
 	         printf("c->esi:0x%x\n",c->esi);
 		      printf("c->ebp:0x%x\n",c->ebp);

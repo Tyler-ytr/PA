@@ -28,6 +28,7 @@ void init_proc() {
 
 _Context* schedule(_Context *prev) {
  // save the context pointer
+Log("I am in schedule"); 
   current->cp = prev;
  
   // always select pcb[0] as the new process

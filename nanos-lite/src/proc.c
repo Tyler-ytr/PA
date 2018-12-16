@@ -22,8 +22,9 @@ void hello_fun(void *arg) {
 void init_proc() {
 	Log("I am in proc");
 //naive_uload(NULL,"/bin/init");
-  context_kload(&pcb[1], "/bin/init");
-//    switch_boot_pcb();
+//  context_kload(&pcb[1], "/bin/init");
+ context_kload(&pcb[0], (void *)hello_fun);  
+    switch_boot_pcb();
 }
 
 _Context* schedule(_Context *prev) {

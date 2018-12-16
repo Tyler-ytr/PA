@@ -42,11 +42,11 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 					break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();
-/*						 
+printf("in sys_yield\n");						 
 printf("a0(eax): 0x%x\n",a[0]);
 printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
-printf("a3(edx): 0x%x\n",a[3]);*/
+printf("a3(edx): 0x%x\n",a[3]);
 						 break; //ID=1
 					
 					 }

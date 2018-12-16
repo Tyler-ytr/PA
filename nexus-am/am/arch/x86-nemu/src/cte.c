@@ -102,6 +102,7 @@ _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
 	temp_c->eip=(uintptr_t)entry;
 	temp_c->cs=0x8;
 	temp_c->eflags=0x0;
+	printf("in kcontext:0x%x",(uintptr_t)entry);
 //maywrong!!!
 	return temp_c;
 }

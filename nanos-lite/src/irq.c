@@ -1,7 +1,7 @@
 #include "common.h"
 extern _Context* do_syscall(_Context *c);
 static _Context* do_event(_Event e, _Context* c) {
-/*	Log("I am in do event");
+	Log("I am in do event");
 	      printf("c ->irq:0x%x\n",c->irq);        
 	       printf("c:0x%x\n",c);
 	        printf("c->edi:0x%x\n",c->edi);
@@ -13,7 +13,7 @@ static _Context* do_event(_Event e, _Context* c) {
 			      printf("c->ecx:0x%x\n",c->ecx);
 			       printf("c->eax:0x%x\n",c->eax);
 			       printf("\n");
-*/
+
   switch (e.event) {
 	case _EVENT_YIELD:{Log("I am in EVENT_YIELD event");
 						return schedule(c);  

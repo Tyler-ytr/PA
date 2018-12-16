@@ -34,7 +34,6 @@ Log("I am in schedule");
   // always select pcb[0] as the new process
   //current = &pcb[0];
 current = (current == &pcb[0] ? &pcb[1] : &pcb[0]); 
-Log("I am in schedule"); 
   // then return the new context
   return current->cp; 
 	

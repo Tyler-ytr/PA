@@ -90,7 +90,7 @@ _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *
   _Context* temp2=(_Context*)ustack.end;
   temp2->edi=0;
   temp2->esi=0;
-  temp2->ebp=(uintptr_t)ustack.end;
+  temp2->ebp=0;
   temp2->esp=0;
   temp2->ebx=0;
   temp2->edx=0;

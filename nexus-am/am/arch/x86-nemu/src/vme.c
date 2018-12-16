@@ -89,7 +89,7 @@ _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *
   //assert(0);
   return NULL;
   ustack.end-=4*sizeof(uint32_t);
-  _Context* temp2=(_Context*)ustack.end;
+  _Context* temp2=(_Context*)ustack.end-1;
   temp2->edi=0;
   temp2->esi=0;
   temp2->ebp=0;

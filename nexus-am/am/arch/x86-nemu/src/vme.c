@@ -85,7 +85,7 @@ _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *
   *(--temp1)=0x0;//argc
   *(--temp1)=0x0;//argv
   *(--temp1)=0x0;//enc
-  *(--temp1)=0x0;//ret_addr
+  //*(--temp1)=0x0;//ret_addr
   ustack.end-=4*sizeof(uint32_t);
   _Context* temp2=(_Context*)ustack.end;
   temp2->edi=0;

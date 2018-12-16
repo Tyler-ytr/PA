@@ -43,7 +43,7 @@ printf("prev->err:0x%x\n",prev->err);
 printf("prev->eip:0x%x\n",prev->eip);
 printf("prev->cs:0x%x\n",prev->cs);
 printf("prev->eflags:0x%x\n",prev->eflags);
-  current->cp = prev;
+//  current->cp = prev;
  
   // always select pcb[0] as the new process
   //current = &pcb[0];

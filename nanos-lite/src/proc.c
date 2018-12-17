@@ -30,7 +30,7 @@ void init_proc() {
 _Context* schedule(_Context *prev) {
  // save the context pointer
 Log("I am in schedule"); 
-printf("prev->edi:0x%x\n",prev->edi);
+/*printf("prev->edi:0x%x\n",prev->edi);
 printf("prev->esi:0x%x\n",prev->esi);
 printf("prev->ebp:0x%x\n",prev->ebp);
 printf("prev->esp:0x%x\n",prev->esp);
@@ -42,7 +42,7 @@ printf("prev->irq:0x%x\n",prev->irq);
 printf("prev->err:0x%x\n",prev->err);
 printf("prev->eip:0x%x\n",prev->eip);
 printf("prev->cs:0x%x\n",prev->cs);
-printf("prev->eflags:0x%x\n",prev->eflags);
+printf("prev->eflags:0x%x\n",prev->eflags);*/
   current->cp = prev;
  
   // always select pcb[0] as the new process

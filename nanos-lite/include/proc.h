@@ -19,4 +19,5 @@ typedef union {
 
 extern PCB *current;
 extern void context_kload(PCB *pcb, void *entry);
+extern void context_uload(PCB *pcb, const char *filename);
 #endif

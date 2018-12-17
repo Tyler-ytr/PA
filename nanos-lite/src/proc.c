@@ -20,16 +20,16 @@ void hello_fun(void *arg) {
 }
 
 void init_proc() {
-	Log("I am in proc");
+//	Log("I am in proc");
 //naive_uload(NULL,"/bin/init");
   context_uload(&pcb[1], "/bin/init");
-// context_kload(&pcb[0], (void *)hello_fun);  
+ context_kload(&pcb[0], (void *)hello_fun);  
     switch_boot_pcb();
 }
 
 _Context* schedule(_Context *prev) {
  // save the context pointer
-Log("I am in schedule"); 
+//Log("I am in schedule"); 
 /*printf("prev->edi:0x%x\n",prev->edi);
 printf("prev->esi:0x%x\n",prev->esi);
 printf("prev->ebp:0x%x\n",prev->ebp);

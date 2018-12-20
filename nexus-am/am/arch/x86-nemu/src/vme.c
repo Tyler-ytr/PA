@@ -12,7 +12,7 @@ _Area segments[] = {      // Kernel memory mappings
 };
 
 #define NR_KSEG_MAP (sizeof(segments) / sizeof(segments[0]))
-
+//准备一些内核页表
 int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
@@ -47,7 +47,7 @@ int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
 
   return 0;
 }
-
+//用于创建一个默认的地址空间
 int _protect(_Protect *p) {
   PDE *updir = (PDE*)(pgalloc_usr(1));
   p->pgsize = 4096;
@@ -61,7 +61,7 @@ int _protect(_Protect *p) {
   p->area.end = (void*)0xc0000000;
   return 0;
 }
-
+//用于销毁指定的地址空间
 void _unprotect(_Protect *p) {
 }
 
@@ -74,7 +74,7 @@ void _switch(_Context *c) {
   set_cr3(c->prot->ptr);
   cur_as = c->prot;
 }
-
+//它用于将地址空间p中虚拟地址va所在的虚拟页, 以prot的权限映射到pa所在的物理页. 当prot中的present位为0时, 表示让va的映射无效.
 int _map(_Protect *p, void *va, void *pa, int mode) {
   return 0;
 }

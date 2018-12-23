@@ -48,6 +48,7 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 	paddr = page_translate((addr & ~0xfff) + 0x1000);
 	*(uint32_t *)(temp + 4) = paddr_read(paddr, len + temp_offset - 4);
 	return (*(uint32_t *)(temp + temp_offset)) & (~0u >> ((4 - len) << 3));
+	//分两次读进去
 	}
 	else
 	{

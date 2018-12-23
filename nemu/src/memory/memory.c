@@ -66,6 +66,21 @@ void vaddr_write(vaddr_t addr, uint32_t data, int len) {
 
 }
 
+//from nexus-am/am/arch/x86-nemu/include/x86.h
+//|		10		|		10		|		12		|
+//	PDI				PTI				OFF
+//	PDX(va)			PTX(va)			OFF(va)
+//#define PDXSHFT 22
+//#define PTXSHFT 12
+#define PDX(va)		(((uint32_t)(va)>>22)&0x3ff)
+#define PTX(va)		(((uint32_t)(va)>>12)&0x3ff)
+#define OFF(va)		((uint32_t)(va)&0xfff)
+
+
+
+
+
+
 paddr_t page_translate(vaddr_t vaddr){
 //	Log("I am in page_translate");
 	if(cpu.CR0.PG==0)
@@ -73,16 +88,18 @@ paddr_t page_translate(vaddr_t vaddr){
 
 	//通过页目录索引DIR以及页目录基地址PDB寻页表基地址
 	uint32_t PDB=cpu.CR3.page_directory_base;
-	uint32_t TEMPDIR=(((uint32_t)(vaddr)>>22)&0x3ff);
+	//uint32_t TEMPDIR=(((uint32_t)(vaddr)>>22)&0x3ff);
+	uint32_t TEMPDIR=PDX(vaddr);
 	uint32_t PDE_page_frame=paddr_read((PDB<<12)+(TEMPDIR<<2),4);
 	assert(PDE_page_frame&0x1);//页表或页不在主存中
 
 	//通过页表索引PAGE以及页表基地址寻找页表项
-	uint32_t TEMPPAGE=(((uint32_t)(vaddr)>>12)&0x3ff);
+//	uint32_t TEMPPAGE=(((uint32_t)(vaddr)>>12)&0x3ff);
+	uint32_t TEMPPAGE=PTX(vaddr);
 	uint32_t PTE_page_frame=paddr_read((PDE_page_frame&0xfffff000)+(TEMPPAGE<<2),4);
 	assert(PTE_page_frame&0x1);//页表或页不在主存中
 	
-	paddr_t phyaddr=(PTE_page_frame&0xfffff000)+((uint32_t)(vaddr)&0xfff);
+	paddr_t phyaddr=(PTE_page_frame&0xfffff000)+OFF(vaddr);
 	return phyaddr;
 }
 

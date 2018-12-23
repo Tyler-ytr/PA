@@ -68,11 +68,11 @@ void vaddr_write(vaddr_t addr, uint32_t data, int len) {
 
 paddr_t page_translate(vaddr_t vaddr){
 //	Log("I am in page_translate");
-	if(cpu.cr0.PG==0)
+	if(cpu.CR0.PG==0)
 		return vaddr;//PG=0则直接把段机制产生的线性地址当作物理地址使用
 
 	//通过页目录索引DIR以及页目录基地址PDB寻页表基地址
-	uint32_t PDB=cpu.cr3.page_directory_base;
+	uint32_t PDB=cpu.CR3.page_directory_base;
 	uint32_t TEMPDIR=(((uint32_t)(vaddr)>>22)&0x3ff);
 	uint32_t PDE_page_frame=paddr_read((PDB<<12)+(TEMPDIR<<2),4);
 	assert(PDE_page_frame&0x1);//页表或页不在主存中

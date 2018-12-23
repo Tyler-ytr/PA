@@ -87,13 +87,14 @@ paddr_t page_translate(vaddr_t vaddr){
 	//	Log("I AM PG==0");
 		return vaddr;//PG=0则直接把段机制产生的线性地址当作物理地址使用
 	}
+	assert(0);
 	//通过页目录索引DIR以及页目录基地址PDB寻页表基地址
 	uint32_t PDB=cpu.CR3.page_directory_base;
 	//uint32_t TEMPDIR=(((uint32_t)(vaddr)>>22)&0x3ff);
 	uint32_t TEMPDIR=PDX(vaddr);
 	uint32_t PDE_page_frame=paddr_read((PDB<<12)+(TEMPDIR<<2),4);
 	assert(PDE_page_frame&0x1);//页表或页不在主存中
-	assert(0);
+//	assert(0);
 	//通过页表索引PAGE以及页表基地址寻找页表项
 //	uint32_t TEMPPAGE=(((uint32_t)(vaddr)>>12)&0x3ff);
 	uint32_t TEMPPAGE=PTX(vaddr);

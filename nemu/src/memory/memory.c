@@ -9,6 +9,7 @@
     })
 
 uint8_t pmem[PMEM_SIZE];
+paddr_t page_translate(vaddr_t vaddr);
 
 /* Memory accessing interfaces */
 
@@ -33,9 +34,53 @@ void paddr_write(paddr_t addr, uint32_t data, int len) {
 }
 //vadde_t==paddr_t==uint32_t
 uint32_t vaddr_read(vaddr_t addr, int len) {
-  return paddr_read(addr, len);
+	if (((addr & 0xfff) + len) > 0x1000) 
+	{
+		/* this is a special case, you can handle it later. */
+		Log("In vaddr_read , GG because addr+len>bound");
+		assert(0);
+	}
+	else
+	{
+		paddr_t paddr = page_translate(addr);
+		return paddr_read(paddr, len);
+	}
+//  return paddr_read(addr, len);
 }
 
 void vaddr_write(vaddr_t addr, uint32_t data, int len) {
-  paddr_write(addr, data, len);
+	if (((addr & 0xfff) + len) > 0x1000) {
+		/* this is a special case, you can handle it later. */
+		Log("In vaddr_read , GG because addr+len>bound");
+		assert(0);
+	}
+	else{	
+		paddr_t paddr = page_translate(addr);
+		paddr_write(paddr,data,len);
+	}	
+	
+	
+//	paddr_write(addr, data, len);
+
 }
+
+paddr_t page_translate(vaddr_t vaddr){
+	if(cpu.cr0.PG==0)
+		return vaddr;//PG=0则直接把段机制产生的线性地址当作物理地址使用
+
+	//通过页目录索引DIR以及页目录基地址PDB寻页表基地址
+	uint32_t PDB=cpu.cr3.page_directory_base;
+	uint32_t TEMPDIR=(((uint32_t)(vaddr)>>22)&0x3ff);
+	uint32_t PDE_page_frame=paddr_read((PDB<<12)+(TEMPDIR<<2),4);
+	assert(PDE_page_frame&0x1);//页表或页不在主存中
+
+	//通过页表索引PAGE以及页表基地址寻找页表项
+	uint32_t TEMPPAGE=(((uint32_t)(vaddr)>>12)&0x3ff);
+	uint32_t PTE_page_frame=paddr_read((PDE_page_frame&0xfffff000)+(TEMPPAGE<<2),4);
+	assert(PTE_page_frame&0x1);//页表或页不在主存中
+	
+	paddr_t phyaddr=(PTE_page_frame&0xfffff000)+((uint32_t)(vaddr)&0xfff);
+	return phyaddr;
+}
+
+

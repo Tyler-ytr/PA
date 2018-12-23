@@ -13,6 +13,7 @@ _Area segments[] = {      // Kernel memory mappings
 
 #define NR_KSEG_MAP (sizeof(segments) / sizeof(segments[0]))
 //准备一些内核页表
+//用于进行VME相关的初始化操作. 其中它还接受两个来自操作系统的页面分配回调函数的指针, 让AM在必要的时候通过这两个回调函数来申请/释放一页物理页.
 int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
@@ -78,7 +79,7 @@ void _switch(_Context *c) {
 int _map(_Protect *p, void *va, void *pa, int mode) {
   return 0;
 }
-
+// 用于创建用户进程上下文. 我们之前已经介绍过这个API, 但加入虚存管理之后, 我们需要对这个API的实现进行一些改动, 具体改动会在下文介绍.
 _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *args) {
 //  uint32_t* temp1=(uint32_t*)ustack.end;
 //  printf("i am in ucontext\n");

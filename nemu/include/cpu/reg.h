@@ -54,8 +54,28 @@ typedef struct {
 	uint32_t base;
 	}idtr;//in i386 p156
 
-
-
+union{
+	rtlreg_t value;
+	struct{//i386 p421
+		uint32_t PE			:1;//Protection Enable
+		uint32_t MP			:1;//Math Present
+		uint32_t EM			:1;//Emulation
+		uint32_t TS			:1;//Task Switched
+		uint32_t ET			:1;//Extension Type
+		uint32_t RESERVED	:26;
+		uint32_t PG			:1;	//Paging
+		};
+}cr0;
+union{
+rtlreg_t value;//CR3 is used when PG is set. CR3 enables the processor to locate the page table directory for the current task.
+	struct{
+		uint32_t pad0				:3;
+		uint32_t page_write_through	:1;
+		uint32_t page_cache_disable	:1;
+		uint32_t pad1				:7;
+		uint32_t page_directory_base:20;
+	};//from include/memory/mmu.h
+}cr3;
 } CPU_state;
 
 extern CPU_state cpu;

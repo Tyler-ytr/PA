@@ -103,7 +103,7 @@ paddr_t page_translate(vaddr_t vaddr){
 	assert(PTE_page_frame&0x1);//页表或页不在主存中
 	
 	paddr_t phyaddr=(PTE_page_frame&0xfffff000)+OFF(vaddr);
-	Log("in translate phyaddr:0x%x",phyaddr);
+//	Log("in translate phyaddr:0x%x",phyaddr);
 	return phyaddr;
 }
 

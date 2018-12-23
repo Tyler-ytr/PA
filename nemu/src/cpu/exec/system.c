@@ -32,8 +32,18 @@ rtl_li(&cpu.idtr.base,vaddr_read(id_dest->addr+2,4));
 }
 
 make_EHelper(mov_r2cr) {
-  TODO();
-
+//  TODO();
+	switch(id_dest->reg)
+	{
+		case 0:
+				cpu.CR0.value=id_src->val;break;
+		case 3:
+				cpu.CR3.value=id_src->val;break;
+		default:
+				Log("I am in mov_r2cr,default");
+				assert(0);
+				break;
+	}
   print_asm("movl %%%s,%%cr%d", reg_name(id_src->reg, 4), id_dest->reg);
 }
 

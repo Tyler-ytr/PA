@@ -38,8 +38,16 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 	if (((addr & 0xfff) + len) > 0x1000) 
 	{
 		/* this is a special case, you can handle it later. */
-		Log("In vaddr_read , GG because addr+len>bound,addr:0x%x; len:0x%x",addr,len);
-		assert(0);
+	//	Log("In vaddr_read , GG because addr+len>bound,addr:0x%x; len:0x%x",addr,len);
+	//	assert(0);
+	uint8_t temp[8];
+	uint32_t temp_offset = addr & 3;	    
+	paddr_t paddr = page_translate(addr);
+	*(uint32_t *)(temp + temp_offset) = paddr_read(paddr, 4 - temp_offset);
+
+	paddr = page_translate((addr & ~0xfff) + 0x1000);
+	*(uint32_t *)(temp + 4) = paddr_read(paddr, len + temp_offset - 4);
+	return (*(uint32_t *)(temp + temp_offset)) & (~0u >> ((4 - len) << 3));
 	}
 	else
 	{

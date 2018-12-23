@@ -34,7 +34,7 @@ void paddr_write(paddr_t addr, uint32_t data, int len) {
 }
 //vadde_t==paddr_t==uint32_t
 uint32_t vaddr_read(vaddr_t addr, int len) {
-	Log("I am in vaddr_read");
+//	Log("I am in vaddr_read");
 	if (((addr & 0xfff) + len) > 0x1000) 
 	{
 		/* this is a special case, you can handle it later. */

@@ -22,7 +22,7 @@ void hello_fun(void *arg) {
 void init_proc() {
 //	Log("I am in proc");
 //naive_uload(NULL,"/bin/init");
-naive_uload(NULL,"/bin/proc");
+naive_uload(NULL,"/bin/pal");
 //  context_uload(&pcb[1], "/bin/init");
 // context_kload(&pcb[0], (void *)hello_fun);  
   //  switch_boot_pcb();

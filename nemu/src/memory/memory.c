@@ -38,7 +38,7 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 	if (((addr & 0xfff) + len) > 0x1000) 
 	{
 		/* this is a special case, you can handle it later. */
-		Log("In vaddr_read , GG because addr+len>bound");
+		Log("In vaddr_read , GG because addr+len>bound,addr:0x%x; len:0x%x",addr,len);
 		assert(0);
 	}
 	else

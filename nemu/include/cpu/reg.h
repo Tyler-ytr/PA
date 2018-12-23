@@ -58,16 +58,17 @@ union{
 	uint32_t value;
 	struct{//i386 p421
 		uint32_t PE			:1;//Protection Enable
-		uint32_t MP			:1;//Math Present
-		uint32_t EM			:1;//Emulation
-		uint32_t TS			:1;//Task Switched
-		uint32_t ET			:1;//Extension Type
-		uint32_t RESERVED	:26;
+//		uint32_t MP			:1;//Math Present
+//		uint32_t EM			:1;//Emulation
+//		uint32_t TS			:1;//Task Switched
+//		uint32_t ET			:1;//Extension Type
+//		uint32_t RESERVED	:26;
+		uint32_t notused	:30;
 		uint32_t PG			:1;	//Paging
 		};
 }CR0;
 union{
-rtlreg_t value;//CR3 is used when PG is set. CR3 enables the processor to locate the page table directory for the current task.
+uint32_t value;//CR3 is used when PG is set. CR3 enables the processor to locate the page table directory for the current task.
 	struct{
 		uint32_t pad0				:3;
 		uint32_t page_write_through	:1;

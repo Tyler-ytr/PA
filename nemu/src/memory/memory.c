@@ -85,7 +85,7 @@ paddr_t page_translate(vaddr_t vaddr){
 //	Log("I am in page_translate");
 	if(cpu.CR0.PG==0){
 	//	Log("I AM PG==0");
-	assert(0);
+//	assert(0);
 		return vaddr;//PG=0则直接把段机制产生的线性地址当作物理地址使用
 	}
 	assert(0);

@@ -65,7 +65,7 @@ printf("a3(edx): 0x%x\n",a[3]);
 					  
 					  
 					  }
-		case SYS_write:{Log("I am in write");
+		case SYS_write:{//Log("I am in write");
 					//	   int len=a[3];
 					//	   void*buf=(void *)a[2];
 					//	   if(a[1]==1||a[1]==2)
@@ -103,7 +103,7 @@ printf("a3(edx): 0x%x\n",a[3]);
 		case SYS_execve:{
 						
 //						Log("wait for sysexecve");assert(0);
-						Log("sys_execve: name=%s",(char*)a[1]);
+//						Log("sys_execve: name=%s",(char*)a[1]);
 				//		assert(0);
 						naive_uload(NULL,(char*)a[1]);
 						c->GPRx=0;
@@ -131,7 +131,7 @@ int sys_yield()
 
 int sys_write(int fd,const void*buf,size_t len)
 {
-	printf("I am in sys_write");
+//	printf("I am in sys_write");
 	_yield();
 	int i=0;
 	if(fd==1||fd==2)

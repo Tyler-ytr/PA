@@ -3,8 +3,8 @@
 #include <klib.h>
 size_t serial_write(const void *buf, size_t offset, size_t len) {
 //  return 0;
-Log("before yield()");
-assert(0);
+//Log("before yield()");
+//assert(0);
 _yield(); 
 	int i=0;
 	for(;i<len;i++)
@@ -25,7 +25,7 @@ static const char *keyname[256] __attribute__((used)) = {
 size_t events_read(void *buf, size_t offset, size_t len) {
  // Log("events_read: buf:%s, offset:%d, len:%d",buf,offset,len);
 //	int key=read_key()&0xffff;
-Log("before yield");
+//Log("before yield");
 	_yield();
 	int key_event=read_key()&0xffff;
 	char temp[128];
@@ -66,7 +66,7 @@ strncpy(buf, (char*)dispinfo, len);
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
-	Log("before yield");
+//	Log("before yield");
 	_yield();
 	int my_x,my_y,my_len;
 	offset=offset/4;

@@ -11,7 +11,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
 
 	rtl_push((rtlreg_t *)&cpu.eflags);
 	// eflags(IF) = 0;
-	Log("before");
+//	Log("before");
 	cpu.eflags.IF=0;
 	rtl_push((rtlreg_t *)&cpu.cs);
 	rtl_push((rtlreg_t *)&ret_addr);

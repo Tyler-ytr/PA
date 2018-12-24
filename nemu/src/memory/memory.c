@@ -110,6 +110,7 @@ if(!(PDE_page_frame&0x1))	printf("vaddr: 0x%x, PDB :0x%x tempdir:0x%x \n",vaddr,
 //	uint32_t TEMPPAGE=(((uint32_t)(vaddr)>>12)&0x3ff);
 	uint32_t TEMPPAGE=PTX(vaddr);
 	uint32_t PTE_page_frame=paddr_read((PDE_page_frame&0xfffff000)+(TEMPPAGE<<2),4);
+if(!(PTE_page_frame&0x1))	printf("vaddr: 0x%x, PTE_page_frame :0x%x tempage:0x%x \n",vaddr,PTE_page_frame,TEMPPAGE);
 	assert(PTE_page_frame&0x1);//页表或页不在主存中
 	
 	paddr_t phyaddr=(PTE_page_frame&0xfffff000)+OFF(vaddr);

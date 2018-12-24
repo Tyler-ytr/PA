@@ -5,7 +5,7 @@ size_t serial_write(const void *buf, size_t offset, size_t len) {
 //  return 0;
 //Log("before yield()");
 //assert(0);
-_yield(); 
+//_yield(); 
 	int i=0;
 	for(;i<len;i++)
 	{
@@ -26,7 +26,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
  // Log("events_read: buf:%s, offset:%d, len:%d",buf,offset,len);
 //	int key=read_key()&0xffff;
 //Log("before yield");
-	_yield();
+//	_yield();
 	int key_event=read_key()&0xffff;
 	char temp[128];
 	if(key_event!=0)
@@ -67,7 +67,7 @@ strncpy(buf, (char*)dispinfo, len);
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
 //	Log("before yield");
-	_yield();
+//	_yield();
 	int my_x,my_y,my_len;
 	offset=offset/4;
 	my_x=offset%screen_width();	

@@ -132,7 +132,7 @@ int sys_yield()
 int sys_write(int fd,const void*buf,size_t len)
 {
 //	printf("I am in sys_write");
-	_yield();
+//	_yield();
 	int i=0;
 	if(fd==1||fd==2)
 	{

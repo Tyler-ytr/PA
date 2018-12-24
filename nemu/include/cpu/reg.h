@@ -77,6 +77,7 @@ uint32_t value;//CR3 is used when PG is set. CR3 enables the processor to locate
 		uint32_t page_directory_base:20;
 	};//from include/memory/mmu.h
 }CR3;
+bool INTR;
 } CPU_state;
 
 extern CPU_state cpu;

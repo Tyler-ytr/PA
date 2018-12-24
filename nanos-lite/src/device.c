@@ -1,4 +1,5 @@
 #include "common.h"
+#include "proc.h"
 #include <amdev.h>
 #include <klib.h>
 size_t serial_write(const void *buf, size_t offset, size_t len) {

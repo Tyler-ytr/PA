@@ -11,6 +11,7 @@ extern ssize_t fs_read(int fd, void *buf, size_t len);
 extern int fs_close(int fd);
 extern size_t fs_filesz(int fd);
 extern int _map(_Protect *p,void *va,void *pa,int mode);
+extern int _protect(_Protect *p);
 size_t ramdisk_read(void *buf,size_t offset,size_t len);
 static uintptr_t loader(PCB *pcb, const char *filename) {
   //TODO();
@@ -41,7 +42,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	uint32_t filesize=fs_filesz(fd);
 	void* va=(void*)DEFAULT_ENTRY;
 	//fs_read(fd,va,filesize);
-	uint32_t pagenum=((filesize-1)>>12);
+	uint32_t pagenum=((filesize-1)>>12)+1;
 	Log("filesize: :%d pagenum: %d",filesize,pagenum);
 	while(1)
 	{	if(pagenum==0)break;
@@ -74,6 +75,7 @@ void context_kload(PCB *pcb, void *entry) {
 }
 
 void context_uload(PCB *pcb, const char *filename) {
+	_protect(&pcb->as);
   uintptr_t entry = loader(pcb, filename);
 
   _Area stack;

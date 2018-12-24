@@ -43,13 +43,13 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	//fs_read(fd,va,filesize);
 	uint32_t pagenum=((filesize-1)>>12)+1;
 	Log("filesize: :%d pagenum: %d",filesize,pagenum);
-	while(pagenum--)
-	{
+	while(1)
+	{	if(pagenum==0)break;
 		void* pa=new_page(1);
 		_map(&pcb->as,va,pa,1);
 		fs_read(fd,pa,PGSIZE);	
 		va=va+PGSIZE;	
-	
+		pagenum--;
 	}
 	fs_close(fd);
 	return DEFAULT_ENTRY;

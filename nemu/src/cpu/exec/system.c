@@ -52,9 +52,11 @@ make_EHelper(mov_cr2r) {
 	switch(id_dest->reg)
 	{
 		case 0:
-				id_src->val=cpu.CR0.value;break;
+				id_dest->val=cpu.CR0.value;
+				operand_write(id_dest,&cpu.CR0.value);break;
 		case 3:
-				id_src->val=cpu.CR3.value;break;
+				id_dest->val=cpu.CR3.value;
+				operand_write(id_dest,&cpu.CR3.value);break;
 		default:
 				Log("I am in mov_cr2r,default");
 				assert(0);

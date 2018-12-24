@@ -79,11 +79,17 @@ printf("a3(edx): 0x%x\n",a[3]);
 						  // assert(0);
 					   c->GPRx=fs_lseek((int)a[1],(off_t)a[2],(int)a[3]);break;}
 		case SYS_brk:{
+printf("in sys_brk\n");						 
+printf("a0(eax): 0x%x\n",a[0]);
+printf("a1(ebx): 0x%x\n",a[1]);
+printf("a2(ecx): 0x%x\n",a[2]);
+printf("a3(edx): 0x%x\n",a[3]);
 					 
 			c->GPR1=0;	 
+	//		mm_brk
 				//	return 0; 
 		//		break;
-					 Log("wait for sysbrk");assert(0);break;
+					 Log("I am in sysbrk");break;
 					 }
 		
 		case SYS_fstat:Log("wait for syslfstat");assert(0);

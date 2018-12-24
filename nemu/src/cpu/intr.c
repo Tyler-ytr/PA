@@ -7,7 +7,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
    */
 
  //TODO()
-	Log("NO:%d",NO);
+//	Log("NO:%d",NO);
 	
 
 	rtl_push((rtlreg_t *)&cpu.eflags);
@@ -20,11 +20,11 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
 	uint32_t idtr_base=cpu.idtr.base;
 //	uint32_t eip_low,eip_high,offset;
 	uint32_t address=NO*8+idtr_base;
-	Log("address:%d",address);
+//	Log("address:%d",address);
 	uint32_t offset=vaddr_read(address+4,4);
 	uint32_t selector=vaddr_read(address,4);
 	offset=(offset&0xffff0000)+(selector&0xffff);
-	Log("offset:%d",offset);
+//	Log("offset:%d",offset);
 	rtl_j(offset);
 
 

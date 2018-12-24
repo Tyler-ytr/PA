@@ -32,7 +32,8 @@ printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
 	  case SYS_exit:_halt(a[1]);	
 					//
-		//			Log("I am in exit");
+					Log("I am in exit");
+		//
 				//	naive_uload(NULL,"/bin/init");
 					//c_uload(NULL,"/bin/init");
 			//		c->GPRx=SYS_execve;
@@ -53,16 +54,18 @@ printf("a3(edx): 0x%x\n",a[3]);
 						 break; //ID=1
 					
 					 }
-		case SYS_open://Log("wait for sysopen");assert(0);
+		case SYS_open:Log("wait for sysopen");
+					  //assert(0);
 					  c->GPRx=fs_open((char*)a[1],(int)a[2],(int)a[3]);break;
 		case SYS_read:{
-						  //Log("wait for sysread");assert(0);
+						  Log("wait for sysread");
+						  //assert(0);
 					  
 					 c->GPRx=fs_read((int)a[1],(void*)a[2],(size_t)a[3]);break; 
 					  
 					  
 					  }
-		case SYS_write:{//Log("I am in write");
+		case SYS_write:{Log("I am in write");
 					//	   int len=a[3];
 					//	   void*buf=(void *)a[2];
 					//	   if(a[1]==1||a[1]==2)
@@ -128,6 +131,8 @@ int sys_yield()
 
 int sys_write(int fd,const void*buf,size_t len)
 {
+	printf("I am in sys_write");
+	_yield();
 	int i=0;
 	if(fd==1||fd==2)
 	{

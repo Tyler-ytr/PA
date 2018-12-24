@@ -42,7 +42,7 @@ printf("a3(edx): 0x%x\n",a[3]);*/
 						
 		//			Log("I am in exit");
 		//
-					do_syscall(c);
+				//	do_syscall(c);
 					break;
 		  //ID=0 it should be a[1] and the result of that is I can't go through the dummy. the result of it is ebx=0x1.it has fixed.
 	  case SYS_yield:{c->GPRx=sys_yield();

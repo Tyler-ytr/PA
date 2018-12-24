@@ -13,7 +13,7 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;//ebx
   a[2] = c->GPR3;//ecx
   a[3] = c->GPR4;//edx
-/*Log("I am in syscall");
+Log("I am in syscall");
     printf("c ->irq:0x%x\n",c->irq);                                                  
 	printf(":0x%x\n",c); 
 	printf("c->edi:0x%x\n",c->edi);                                               
@@ -28,7 +28,7 @@ _Context* do_syscall(_Context *c) {
 printf("a0(eax): 0x%x\n",a[0]);
 printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
-printf("a3(edx): 0x%x\n",a[3]);*/
+printf("a3(edx): 0x%x\n",a[3]);
   switch (a[0]) {
 	  case SYS_exit:_halt(a[1]);	
 					//

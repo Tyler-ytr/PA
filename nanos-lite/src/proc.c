@@ -23,6 +23,7 @@ void init_proc() {
 //	Log("I am in proc");
 //naive_uload(NULL,"/bin/init");
 context_uload(&pcb[1],"/bin/pal");
+context_uload(&pcb[0],"/bin/hello");
 //context_uload(&pcb[1],"/bin/dummy");
 //  context_uload(&pcb[1], "/bin/init");
 // context_kload(&pcb[0], (void *)hello_fun);  
@@ -48,8 +49,8 @@ printf("prev->eflags:0x%x\n",prev->eflags);*/
   current->cp = prev;
  
   // always select pcb[0] as the new process
-  current = &pcb[1];
-//current = (current == &pcb[0] ? &pcb[1] : &pcb[0]); 
+//  current = &pcb[1];
+current = (current == &pcb[0] ? &pcb[1] : &pcb[0]); 
   // then return the new context
   return current->cp; 
 	

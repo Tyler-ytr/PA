@@ -21,7 +21,7 @@ static _Context* do_event(_Event e, _Context* c) {
 					//	  break;
 					  }
 		case _EVENT_SYSCALL:return do_syscall(c);
-		case _EVENT_IRQ_TIMER:Log("I am in _EVENT_IRQ_TIMER"); _yield();
+		case _EVENT_IRQ_TIMER:Log("I am in _EVENT_IRQ_TIMER"); _yield();break;
 	
     default: panic("Unhandled event ID = %d", e.event);
   }

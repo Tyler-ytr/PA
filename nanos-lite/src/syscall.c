@@ -54,7 +54,7 @@ printf("a3(edx): 0x%x\n",a[3]);
 						 break; //ID=1
 					
 					 }
-		case SYS_open:Log("wait for sysopen");
+		case SYS_open://Log("wait for sysopen");
 					  //assert(0);
 					  c->GPRx=fs_open((char*)a[1],(int)a[2],(int)a[3]);break;
 		case SYS_read:{

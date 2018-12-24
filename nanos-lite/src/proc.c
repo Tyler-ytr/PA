@@ -49,7 +49,7 @@ printf("prev->eflags:0x%x\n",prev->eflags);*/
   current->cp = prev;
  
   // always select pcb[0] as the new process
-//  current = &pcb[1];
+ current = &pcb[1];
 //current = (current == &pcb[0] ? &pcb[1] : &pcb[0]); 
   // then return the new context
   return current->cp; 

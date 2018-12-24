@@ -7,6 +7,8 @@ extern void get_cur_as(_Context *c);
 void vecsys();
 void vectrap();
 void vecnull();
+//void vectimer();
+void irq0();
 
 _Context* irq_handle(_Context *tf) {
 	//assert(0);
@@ -63,7 +65,8 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   // -------------------- system call --------------------------
   idt[0x81] = GATE(STS_TG32, KSEL(SEG_KCODE), vectrap, DPL_KERN);
   idt[0x80] = GATE(STS_TG32, KSEL(SEG_KCODE), vecsys, DPL_USER);
-
+  //idt[32] = GATE(STS_TG32, KSEL(SEG_KCODE), irq0, DPL_USER);
+  
   set_idt(idt, sizeof(idt));
 
   // register event handler

@@ -5,6 +5,7 @@
 //extern int fs_open(const char*pathname,int flags,int mode);
 int sys_yield();
 extern void naive_uload(PCB *pcb,const char *filename);
+extern int mm_brk(uintptr_t new_brk);
 int sys_write(int fd,const void*buf,size_t len);
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
@@ -86,7 +87,7 @@ printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);
 					 
 			c->GPR1=0;	 
-	//		mm_brk
+			mm_brk(a[1]);
 				//	return 0; 
 		//		break;
 					 Log("I am in sysbrk");break;

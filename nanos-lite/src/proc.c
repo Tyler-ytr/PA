@@ -32,7 +32,7 @@ context_uload(&pcb[1],"/bin/hello");
 
 _Context* schedule(_Context *prev) {
  // save the context pointer
-Log("I am in schedule"); 
+//Log("I am in schedule"); 
 /*printf("prev->edi:0x%x\n",prev->edi);
 printf("prev->esi:0x%x\n",prev->esi);
 printf("prev->ebp:0x%x\n",prev->ebp);

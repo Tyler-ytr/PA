@@ -41,7 +41,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 	uint32_t filesize=fs_filesz(fd);
 	void* va=(void*)DEFAULT_ENTRY;
 	//fs_read(fd,va,filesize);
-	uint32_t pagenum=((filesize-1)>>12)+1;
+	uint32_t pagenum=((filesize-1)>>12);
 	Log("filesize: :%d pagenum: %d",filesize,pagenum);
 	while(1)
 	{	if(pagenum==0)break;

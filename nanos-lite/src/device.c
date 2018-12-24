@@ -36,7 +36,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 		if(key_event==4||key_event==2||key_event==3){
 			
 			fg_pcb=key_event;
-	assert(0);
+//	assert(0);
 	
 	
 		}

@@ -82,8 +82,8 @@ printf("a3(edx): 0x%x\n",a[3]);
 					 
 			c->GPR1=0;	 
 				//	return 0; 
-				break;
-					 Log("wait for sysbrk");assert(0);
+		//		break;
+					 Log("wait for sysbrk");assert(0);break;
 					 }
 		
 		case SYS_fstat:Log("wait for syslfstat");assert(0);

@@ -24,7 +24,7 @@ void init_proc() {
 //naive_uload(NULL,"/bin/init");
 fg_pcb=1;
 context_uload(&pcb[0],"/bin/hello");
-context_uload(&pcb[1],"/bin/event");
+context_uload(&pcb[1],"/bin/pal");
 //context_uload(&pcb[1],"/bin/hello");
 context_uload(&pcb[2],"/bin/pal");
 context_uload(&pcb[3],"/bin/pal");

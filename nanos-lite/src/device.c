@@ -33,6 +33,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
 	if(key_event!=0)
 	{
 //		Log("get! key:%d",key_event^0x8000);
+		if(key_event==1||key_event==2||key_event==3)fg_pcb=key_event;	
 		if((key_event&0x8000)!=0)
 			{
 				sprintf(temp,"kd %s\n",keyname[key_event^0x8000]);

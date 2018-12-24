@@ -30,7 +30,9 @@ int mm_brk(uintptr_t new_brk) {
 				pa=new_page(1);
 				_map(&current->as,va,pa,1);
 			}
+			printf("max_brkbefore:0x%x\n",current->max_brk);
 			current->max_brk=new_brk;
+			printf("max_after:0x%x\n",current->max_brk);
 		}
 		current->cur_brk=new_brk;		
 	}

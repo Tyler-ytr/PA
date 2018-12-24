@@ -4,6 +4,7 @@
 size_t serial_write(const void *buf, size_t offset, size_t len) {
 //  return 0;
 Log("before yield()");
+assert(0);
 _yield(); 
 	int i=0;
 	for(;i<len;i++)

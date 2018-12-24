@@ -52,6 +52,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 		va=va+PGSIZE;	
 		pagenum--;
 	}
+	pcb->cur_brk=pcb->max_brk=DEFAULT_ENTRY+pagenum*PGSIZE;
 	fs_close(fd);
 	return DEFAULT_ENTRY;
 

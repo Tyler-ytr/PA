@@ -14,5 +14,5 @@
 #define PGROUNDDOWN(a)  (((a)) & ~PGMASK)
 
 void* new_page(size_t);
-
+//extern PCB*current;
 #endif

@@ -82,7 +82,7 @@ return -1;
 }
 
 ssize_t fs_read(int fd,void *buf,size_t len)
-{//Log("I am in read");
+{Log("I am in read");
 /*	ssize_t fsize=fs_filesz(fd);
 	switch(fd){
 		case FD_STDOUT:Log("in case stdout of fs_read");assert(0);

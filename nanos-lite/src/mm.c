@@ -26,7 +26,7 @@ int mm_brk(uintptr_t new_brk) {
 			void* va;
 			void* pa;
 			for(uint32_t i=pgstart;i<=pgend;i+=PGSIZE){
-				va=(void*)i;
+				va=(void *)i;
 				pa=new_page(1);
 				_map(&current->as,va,pa,1);
 			}

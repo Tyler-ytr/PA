@@ -77,7 +77,21 @@ void _switch(_Context *c) {
 }
 //它用于将地址空间p中虚拟地址va所在的虚拟页, 以prot的权限映射到pa所在的物理页. 当prot中的present位为0时, 表示让va的映射无效.
 int _map(_Protect *p, void *va, void *pa, int mode) {
-  return 0;
+	if(!(mode&0x1))return -1;
+	
+	PDE* pt=(PDE*)p->ptr;//pt==page_table
+	PDE* pde=&pt[PDX(va)];//get pde from page_table;
+
+	if(!(*pde&PTE_P)){
+		*pde=(uint32_t)pgalloc_usr(1)|PTE_P|PTE_W|PTE_U;	
+	}
+
+	PTE* pte=&((PTE*)PTE_ADDR(*pde))[PTX(va)];
+
+	if(!(*pte&PTE_P)){
+		*pte=(uint32_t)pa|PTE_P|PTE_W|PTE_U;
+	}
+  return 0;//参考了yzh在https://github.com/njuallen/nexus-am/blob/master/am/arch/x86-nemu/src/pte.c里面的实现
 }
 // 用于创建用户进程上下文. 我们之前已经介绍过这个API, 但加入虚存管理之后, 我们需要对这个API的实现进行一些改动, 具体改动会在下文介绍.
 _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *args) {
@@ -91,6 +105,7 @@ _Context *_ucontext(_Protect *p, _Area ustack, _Area kstack, void *entry, void *
 //  return NULL;
   ustack.end-=4*sizeof(int);
   _Context* temp2=(_Context*)(ustack.end-sizeof(_Context));
+  temp2->prot=p;
   temp2->edi=0;
   temp2->esi=0;
   temp2->ebp=0;

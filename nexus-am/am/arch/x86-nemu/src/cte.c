@@ -2,13 +2,15 @@
 #include <x86.h>
 #include <klib.h>
 static _Context* (*user_handler)(_Event, _Context*) = NULL;
-
+extern void _switch(_Context *c);
+extern void get_cur_as(_Context *c);
 void vecsys();
 void vectrap();
 void vecnull();
 
 _Context* irq_handle(_Context *tf) {
 	//assert(0);
+	get_cur_as(tf);
 	_Context *next = tf;
 //	printf("tf:0x%x,eax:0x%x,ebx:0x%x,ecx:0x%x,edx:0x%x,esp:0x%x\n",tf,cpu.eax,cpu.ebx,cpu.ecx,cpu.edx,esp);
 //	printf("tf:0x%x\n",tf);
@@ -45,7 +47,7 @@ _Context* irq_handle(_Context *tf) {
   }
 //	assert(0);
 //	printf("0x%x\n",tf);
-
+_switch(next);
   return next;
 }
 

@@ -29,10 +29,10 @@ printf("a1(ebx): 0x%x\n",a[1]);
 printf("a2(ecx): 0x%x\n",a[2]);
 printf("a3(edx): 0x%x\n",a[3]);*/
   switch (a[0]) {
-	  case SYS_exit://_halt(a[1]);	
+	  case SYS_exit:_halt(a[1]);	
 					//
 		//			Log("I am in exit");
-					naive_uload(NULL,"/bin/init");
+					//naive_uload(NULL,"/bin/init");
 			//		c->GPRx=SYS_execve;
 			//		c->GPR2=(uintptr_t)"/bin/init"
 						

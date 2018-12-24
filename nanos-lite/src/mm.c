@@ -21,18 +21,18 @@ int mm_brk(uintptr_t new_brk) {
 	}
 	else{
 		if(new_brk>current->max_brk){
-			uint32_t pgstart=PGROUNDUP(current->max_brk);
-			uint32_t pgend=PGROUNDUP(new_brk);//from memory.h
+			void* pgstart=(void*)PGROUNDUP(current->max_brk);
+			void* pgend=(void*)PGROUNDUP(new_brk);//from memory.h
 			void* va;
 			void* pa;
-			for(uint32_t i=pgstart;i<=pgend;i+=PGSIZE){
+			for(void* i=pgstart;i<=pgend;i+=PGSIZE){
 				va=(void *)i;
 				pa=new_page(1);
 				_map(&current->as,va,pa,1);
 			}
-			printf("max_brkbefore:0x%x\n",current->max_brk);
+//			printf("max_brkbefore:0x%x\n",current->max_brk);
 			current->max_brk=new_brk;
-			printf("max_after:0x%x\n",current->max_brk);
+//			printf("max_after:0x%x\n",current->max_brk);
 		}
 		current->cur_brk=new_brk;		
 	}
